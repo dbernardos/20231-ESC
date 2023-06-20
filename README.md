@@ -32,7 +32,8 @@ Insira os tópicos do README em links para facilitar a navegação do leitor
 ## Descrição do projeto 
 
 <p align="justify">
-  O principal objetivo deste projeto é desenvolver um sistema para extrair características de tarefas em linguagem C de código-fonte. 
+  O principal objetivo deste projeto é desenvolver um sistema para extrair características de tarefas de código-fonte  escritas em linguagem C. A relação de características extraídas poderá auxiliar o professor na compreensão dos pontos fortes e fracos de cada estudante, sem que o professor precise abrir qualquer código-fonte.
+
 </p>
 
 ## Funcionalidades
