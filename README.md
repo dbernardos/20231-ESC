@@ -32,7 +32,7 @@ Insira os tópicos do README em links para facilitar a navegação do leitor
 ## Descrição do projeto 
 
 <p align="justify">
-  Descrição breve do projeto compondo um paragrafo ou dois. 
+  O principal objetivo deste projeto é desenvolver um sistema para extrair características de tarefas em linguagem C de código-fonte. 
 </p>
 
 ## Funcionalidades
