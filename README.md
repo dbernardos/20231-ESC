@@ -83,9 +83,9 @@ $ npm test, rspec, etc
 
 ## Casos de Uso
 
-No sistema o professor efetua o login e apenas o professor pode utilizá-lo, registrando tarefas. A função do sistema é analisar as características e extrair dados presentes nos códigos seguindo as instruções prévias adotadas pelo professor.
+No sistema o professor efetua o login e apenas o professor pode utilizá-lo, registrando tarefas, visualizando os resultados e carreagando as características. A função do sistema é analisar as características e extrair dados presentes nos códigos seguindo as instruções prévias adotadas pelo professor.
 
-Exemplo: Caso a sua aplicação tenha alguma funcionalidade de login apresente neste tópico os dados necessários para acessá-la.
+Exemplo: Para efetuar o login o professor precisa realizar um cadastro com email, senha e nome. 
 
 ## JSON :floppy_disk:
 
