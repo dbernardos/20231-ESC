@@ -83,7 +83,7 @@ $ npm test, rspec, etc
 
 ## Casos de Uso
 
-Explique com mais detalhes como a sua aplicação poderia ser utilizada. O uso de **gifs** aqui seria bem interessante. 
+No sistema o professor efetua o login e apenas o professor pode utilizá-lo, registrando tarefas. A função do sistema é analisar as características e extrair dados presentes nos códigos seguindo as instruções prévias adotadas pelo professor.
 
 Exemplo: Caso a sua aplicação tenha alguma funcionalidade de login apresente neste tópico os dados necessários para acessá-la.
 
