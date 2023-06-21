@@ -1,4 +1,4 @@
-<h1>ESC: Sistema de... </h1> 
+<h1>ESC: SISTEMA DE EXTRAÇÃO DE CARACTERÍSTICAS DE TAREFAS DE CÓDIGO-FONTE</h1> 
 
 <p align="center">
   <img src="https://img.shields.io/static/v1?label=react&message=framework&color=blue&style=for-the-badge&logo=REACT"/>
@@ -19,13 +19,9 @@
 
 :small_blue_diamond: [Funcionalidades](#funcionalidades)
 
-:small_blue_diamond: [Deploy da Aplicação](#deploy-da-aplicação-dash)
-
 :small_blue_diamond: [Pré-requisitos](#pré-requisitos)
 
 :small_blue_diamond: [Como rodar a aplicação](#como-rodar-a-aplicação-arrow_forward)
-
-... 
 
 
 ## Descrição do projeto 
@@ -44,14 +40,6 @@
 :heavy_check_mark: Funcionalidade 3  
 
 :heavy_check_mark: Funcionalidade 4  
-
-## Layout ou Deploy da Aplicação :dash:
-
-> Link do deploy da aplicação. Exemplo com netlify: https://certificates-for-everyone-womakerscode.netlify.app/
-
-... 
-
-Se ainda não houver deploy, insira capturas de tela da aplicação ou gifs
 
 ## Pré-requisitos
 
@@ -99,7 +87,7 @@ Exemplo: Para efetuar o login o professor precisa realizar um cadastro com email
 
 Se quiser, coloque uma amostra do banco de dados 
 
-## Iniciando/Configurando banco de dados
+## Configuração do banco de dados
 
 Se for necessário configurar algo antes de iniciar o banco de dados insira os comandos a serem executados 
 
@@ -130,7 +118,7 @@ Se for o caso, liste tarefas/funcionalidades que ainda precisam ser implementada
 
 Equipe responsável pelo desenvolvimento do projeto
 
-| [<img src="./img/caioIgor.png" width=115><br><sub>Caio Igor</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Gabriel Sousa</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Igor Simon</sub>](https://github.com/Diana-ops) | [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>José Carlos</sub>](https://github.com/Diana-ops) | [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Davi Bernardo</sub>](https://github.com/Diana-ops) |
+| [<img src="./img/caioIgor.png" width=115><br><sub>Caio Igor</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Gabriel Sousa</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Igor Simon</sub>](https://github.com/Diana-ops) | [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>José Carlos</sub>](https://github.com/Diana-ops) | [<img src="./img/davi.jpeg" width=115><br><sub>Davi Bernardo</sub>](https://github.com/Diana-ops) |
 | :---: | :---: | :---: | :---:| :---:
 
 ## Licença 
