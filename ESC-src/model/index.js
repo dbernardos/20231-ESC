@@ -1,4 +1,7 @@
 (async () => {
+    const express = require ('express');
+    const routes = require ('./rotas')
+    const app = express ()
     const database = require('./connection-db');
     const Usuario = require('./create-db'); 
     await database.sync();
