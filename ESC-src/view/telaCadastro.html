@@ -4,8 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="css/layoutCadastro.css">
 </head>
 <body>
-    
+    <div class="container">
+        <form id="form"class="row">
+            <h1 class="col-12">Registre-se</h1>
+            <div class="col-6">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="col-6">
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" name="sobrenome" id="sobrenome" placeholder="Digite seu sobrenome">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="col-6"> 
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Digite seu email">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="col-6">
+                <label for="celular">Celular</label>
+                <input type="text" name="celular" id="celular" placeholder="(XX) XXXXX-XXXX">
+                <i class="fa-sharp fa-solid fa-calendar"></i>
+            </div>
+            <div class="col-6">
+                <label for="senha">Senha</label>
+                <input type="text" name="senha" id="senha" placeholder="Digite sua senha">
+                <i class="fa-sharp fa-solid fa-calendar"></i>
+            </div>
+            <div class="col-6">
+                <label for="confirmar">Confirmar Senha</label>
+                <input type="text" name="confirmar" id="confirmar" placeholder="Digite sua senha novamente">
+                <i class="fa-sharp fa-solid fa-calendar"></i>
+            </div>
+            <div class="col-12">
+                <button>
+                    <input type="submit" value="Salvar cadastro">
+                </button>
+                
+            </div>
+        </form>
+    </div>
 </body>
 </html>
