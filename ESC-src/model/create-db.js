@@ -29,17 +29,29 @@ const Usuario = database.define('usuario', {
     }
     });
 
-
-module.exports = Usuario;
-const Tarefas = database.define('tarefas',{
-    idTarefas:{
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true
+    const Tarefas = database.define('tarefas',{
+        idTarefas:{
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true
+        
+        },
+        tipo:{
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        dataEntreg:{
+            type: Sequelize.DATE,
+            allowNull: false
+        },
+        descr:{
+            type: Sequelize.STRING,
+            allowNull: false
+        }
+    });
+        
     
-    },
+    module.exports = Tarefas;
+    module.exports = Usuario;
 
-
-});
-   
