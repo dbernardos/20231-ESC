@@ -22,10 +22,24 @@ const Usuario = database.define('usuario', {
             }
         } 
     },
+    
     senha: {
         type: Sequelize.STRING,
         allowNull: false
     }
     });
 
+
 module.exports = Usuario;
+const Tarefas = database.define('tarefas',{
+    idTarefas:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+    
+    },
+
+
+});
+   
