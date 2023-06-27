@@ -50,7 +50,14 @@ const Usuario = database.define('usuario', {
             allowNull: false
         }
     });
+    Tarefas.belongsTo(Usuario,{
+        constarint:true,
+        foreignKey:'idUsuario'
+    })
 
+    Usuario.hasMany(Tarefas,{
+        foreignKey: 'idUsuario'
+    })
 
     module.exports = Tarefas;
     module.exports = Usuario;
