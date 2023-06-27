@@ -50,8 +50,8 @@ const Usuario = database.define('usuario', {
             allowNull: false
         }
     });
-        
-    
+
+
     module.exports = Tarefas;
     module.exports = Usuario;
 
