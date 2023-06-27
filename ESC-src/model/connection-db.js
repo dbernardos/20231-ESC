@@ -1,21 +1,22 @@
-import Sequelize from 'sequelize';
-
 const database = 'db_esc';
-const hostname = 'localhost';
 const user = 'root';
+const hostname = 'localhost';
 const password = '';
 const sgbd = 'mysql';
+const portbd = 3306;
 
-//const Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize(database, user, password, {
     host: hostname,
-    dialect: sgbd
+    dialect: sgbd,
+    port: portbd
 });
 
-//const sequelize = new Sequelize(`mysql://${user}:${password}@localhost:3306/${nomeDoBanco}`);
+module.exports = sequelize;
 
-async function criarDatabase() {
+//const sequelize = new Sequelize(`mysql://${user}:${password}@localhost:3306/${nomeDoBanco}`);
+/*async function criarDatabase() {
   try {
     await sequelize.query(`CREATE DATABASE IF NOT EXISTS ${database}`);
     console.log('Banco de dados criado com sucesso!');
@@ -26,4 +27,4 @@ async function criarDatabase() {
   }
 }
 
-criarDatabase();
+criarDatabase();*/
