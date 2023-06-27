@@ -19,10 +19,9 @@
 
 :small_blue_diamond: [Funcionalidades](#funcionalidades)
 
-:small_blue_diamond: [Pré-requisitos](#pré-requisitos)
+:small_blue_diamond: [Pré-requisitos](#pré-requisitos-books)
 
 :small_blue_diamond: [Como rodar a aplicação](#como-rodar-a-aplicação-arrow_forward)
-
 
 ## Descrição do projeto 
 
@@ -41,15 +40,17 @@
 
 :heavy_check_mark: Funcionalidade 4  
 
-## Pré-requisitos
+## Pré-requisitos :books:
 
-:warning: [Node](https://nodejs.org/en/download/)
+- :warning: [Node](https://nodejs.org/en/download/)
+- :warning: [React](https://pt-br.reactjs.org/docs/create-a-new-react-app.html)
+- :warning: [React PDF](https://react-pdf.org/)
 
-...
 
-Liste todas as dependencias e libs que o usuário deve ter instalado na máquina antes de rodar a aplicação 
+<span style="color: red;">Liste todas as linguagens, dependencias e libs que o usuário deve ter instalado na máquina antes de rodar a aplicação</span>
 
 ## Como rodar a aplicação :arrow_forward:
+Coloque um passo a passo para rodar a sua aplicação.
 
 No terminal, clone o projeto: 
 
@@ -57,9 +58,28 @@ No terminal, clone o projeto:
 git clone https://github.com/React-Bootcamp-WoMarkersCode/certificate-generator
 ```
 
-... 
+Posteriormente execute os comandos para iniciar o node, instalar o framework de rotas e os requisitos para rodar o banco de dados:
 
-Coloque um passo a passo para rodar a sua aplicação. **Dica: clone o próprio projeto e verfique se o passo a passo funciona**
+```
+npm init
+npm install --save express
+npm i sequelize mysql2
+```
+
+### Configuração do banco de dados
+
+Se for necessário configurar algo antes de iniciar o banco de dados insira os comandos a serem executados 
+
+
+### Como usar a aplicação
+
+Explique com mais detalhes como a sua aplicação poderia ser utilizada. O uso de **gifs** aqui seria bem interessante. 
+
+Caso a sua aplicação tenha alguma funcionalidade de login apresente neste tópico os dados necessários para acessá-la.
+
+|name|email|password|token|
+| -------- |-------- |-------- |-------- |
+|Lais Lima|laislima98@hotmail.com|lais123|true|
 
 ## Como rodar os testes
 
@@ -68,41 +88,6 @@ Coloque um passo a passo para executar os testes
 ```
 $ npm test, rspec, etc 
 ```
-
-## Casos de Uso
-
-No sistema o professor efetua o login e apenas o professor pode utilizá-lo, registrando tarefas, visualizando os resultados e carreagando as características. A função do sistema é analisar as características e extrair dados presentes nos códigos seguindo as instruções prévias adotadas pelo professor.
-
-Exemplo: Para efetuar o login o professor precisa realizar um cadastro com email, senha e nome. 
-
-## JSON :floppy_disk:
-
-### Usuários: 
-
-|name|email|password|token|avatar|
-| -------- |-------- |-------- |-------- |-------- |
-|Lais Lima|laislima98@hotmail.com|lais123|true|https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS9-U_HbQAipum9lWln3APcBIwng7T46hdBA42EJv8Hf6Z4fDT3&usqp=CAU|
-
-... 
-
-Se quiser, coloque uma amostra do banco de dados 
-
-## Configuração do banco de dados
-
-Se for necessário configurar algo antes de iniciar o banco de dados insira os comandos a serem executados 
-
-## Linguagens, dependencias e libs utilizadas :books:
-
-- [React](https://pt-br.reactjs.org/docs/create-a-new-react-app.html)
-- [React PDF](https://react-pdf.org/)
-
-...
-
-Liste as tecnologias utilizadas no projeto que **não** forem reconhecidas pelo Github 
-
-## Resolvendo Problemas :exclamation:
-
-Em [issues]() foram abertos alguns problemas gerados durante o desenvolvimento desse projeto e como foram resolvidos. 
 
 ## Tarefas em aberto
 
@@ -118,7 +103,7 @@ Se for o caso, liste tarefas/funcionalidades que ainda precisam ser implementada
 
 Equipe responsável pelo desenvolvimento do projeto
 
-| [<img src="./img/caioIgor.png" width=115><br><sub>Caio Igor</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Gabriel Sousa</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Igor Simon</sub>](https://github.com/Diana-ops) | [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>José Carlos</sub>](https://github.com/Diana-ops) | [<img src="./img/davi.jpeg" width=115><br><sub>Davi Bernardo</sub>](https://github.com/Diana-ops) |
+| [<img src="./img/caioIgor.png" width=115><br><sub>Caio Igor</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Gabriel Sousa</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Igor Simon</sub>](https://github.com/Diana-ops) | [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>José Carlos</sub>](https://github.com/Diana-ops) | [<img src="./ESC-doc/img/davi.jpeg" width=115><br><sub>Davi Bernardo</sub>](https://github.com/davibernardos) |
 | :---: | :---: | :---: | :---:| :---:
 
 ## Licença 
