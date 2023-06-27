@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&family=Source+Sans+Pro:ital@1&display=swap');
 
 body {
-    background: rgb(212, 227, 233);
+    background: rgb(227, 241, 241);
     background-position: center;
     
 }
@@ -14,7 +14,7 @@ body {
     background-color: transparent;
     padding: 40px 20px;
     margin-top: 50px;
-    box-shadow: 0 0 15px blue;
+    box-shadow: 0 0 15px rgba(139, 139, 176, 0.76);
     border-radius: 15px;
     backdrop-filter: blur(10px);
     color: #000000;
@@ -31,7 +31,7 @@ body {
     font-family: 'Roboto Condesed', sans-serif;
     font-weight: bold;
 }
-#form input, #form select {
+#form input {
     width: 100%;
     padding: 10px;
     background-color: rgb(204, 219, 230);
@@ -44,4 +44,21 @@ body {
 }
 .col-6{
     width: 50%;
+}
+input {
+    
+    padding: 40px 20px;
+    background-color: rgb(146, 217, 239);
+    color:black;
+    transition: all .5s;
+}
+button {
+    border-radius: 30px;
+}
+
+button:hover {
+    background-color: rgb(108, 108, 172);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 30px;
 }
