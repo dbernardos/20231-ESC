@@ -6,6 +6,11 @@
     const Usuario = require('./create-db'); 
     await database.sync();
 
+    app.use(express.json())
+    app.use(routes)
+    app.listen(300)
+
+
     const novoUsuario = await Usuario.create({
         nome: 'admin',
         email: 'admin@ifsc.edu.br',
