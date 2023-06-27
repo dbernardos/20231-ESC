@@ -30,8 +30,6 @@ const Usuario = database.define('usuario', {
     }
     });
 
-<<<<<<< HEAD
-module.exports = Usuario;
 
 const Caracteristicas = database.define('caracteristicas',{
     idCarac: {
@@ -58,8 +56,6 @@ const Caracteristicas = database.define('caracteristicas',{
         foreignKey: 'idTarefas'
     })
 
-module.exports = Caracteristicas;
-=======
     const Tarefas = database.define('tarefas',{
         idTarefas:{
             type: Sequelize.INTEGER,
@@ -92,5 +88,4 @@ module.exports = Caracteristicas;
 
     module.exports = Tarefas;
     module.exports = Usuario;
-
->>>>>>> 5778df9916281a819ba1e3c45ff9fd9c5ed36b26
+    module.exports = Caracteristicas;
