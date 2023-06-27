@@ -12,6 +12,7 @@ body {
 }
 #form {
     background-color: transparent;
+    background-position: center;
     padding: 40px 20px;
     margin-top: 50px;
     box-shadow: 0 0 15px rgba(139, 139, 176, 0.76);
@@ -42,8 +43,10 @@ body {
 #form [class*= "col-"] {
     padding: 10px;
 }
-.col-6{
-    width: 50%;
+#form  i {
+    position: absolute;
+    margin: 0px 0 0 0px;
+    color: #000000;
 }
 input {
     

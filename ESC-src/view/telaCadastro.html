@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
     <link rel="stylesheet" href="css/layoutCadastro.css">
+    <script src="https://kit.fontawesome.com/5c7c6d79df.js" crossorigin="anonymous"></script>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+      </svg>
 </head>
 <body>
     <div class="container">
@@ -13,25 +19,25 @@
             <div class="col-6">
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
-                <i class="fa-solid fa-user"></i>
+                <i class="bi bi-person-circle"></i>
             </div>
             <div class="col-6"> 
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" placeholder="Digite seu email">
-                <i class="fa-solid fa-envelope"></i>
+                <i class="fa-regular fa-envelope"></i>
             </div>
             <div class="col-6">
                 <label for="senha">Senha</label>
                 <input type="text" name="senha" id="senha" placeholder="Digite sua senha">
-                <i class="fa-sharp fa-solid fa-calendar"></i>
+                <i class="fa-regular fa-lock"></i>
             </div>
             <div class="col-6">
                 <label for="confirmar">Confirmar Senha</label>
                 <input type="text" name="confirmar" id="confirmar" placeholder="Digite sua senha novamente">
-                <i class="fa-sharp fa-solid fa-calendar"></i>
+                <i class="fa-regular fa-lock"></i>
             </div>
             <div class="col-12">
-                    <button><input type="submit" value="Continuar"></button>
+                    <button><a href="telaLogin.html"><input type="submit" value="Continuar"></button></a>
             </div>
         </form>
     </div>
