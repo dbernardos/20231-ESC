@@ -58,6 +58,14 @@ No terminal, clone o projeto:
 git clone https://github.com/React-Bootcamp-WoMarkersCode/certificate-generator
 ```
 
+Posteriormente execute os comandos para iniciar o node, instalar o framework de rotas e os requisitos para rodar o banco de dados:
+
+```
+npm init
+npm install --save express
+npm i sequelize mysql2
+```
+
 ### Configuração do banco de dados
 
 Se for necessário configurar algo antes de iniciar o banco de dados insira os comandos a serem executados 
@@ -95,7 +103,7 @@ Se for o caso, liste tarefas/funcionalidades que ainda precisam ser implementada
 
 Equipe responsável pelo desenvolvimento do projeto
 
-| [<img src="./img/caioIgor.png" width=115><br><sub>Caio Igor</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Gabriel Sousa</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Igor Simon</sub>](https://github.com/Diana-ops) | [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>José Carlos</sub>](https://github.com/Diana-ops) | [<img src="./img/davi.jpeg" width=115><br><sub>Davi Bernardo</sub>](https://github.com/Diana-ops) |
+| [<img src="./img/caioIgor.png" width=115><br><sub>Caio Igor</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Gabriel Sousa</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Igor Simon</sub>](https://github.com/Diana-ops) | [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>José Carlos</sub>](https://github.com/Diana-ops) | [<img src="./ESC-doc/img/davi.jpeg" width=115><br><sub>Davi Bernardo</sub>](https://github.com/davibernardos) |
 | :---: | :---: | :---: | :---:| :---:
 
 ## Licença 
