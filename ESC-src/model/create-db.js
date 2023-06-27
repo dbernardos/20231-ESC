@@ -23,12 +23,14 @@ const Usuario = database.define('usuario', {
             }
         } 
     },
+    
     senha: {
         type: Sequelize.STRING,
         allowNull: false
     }
     });
 
+<<<<<<< HEAD
 module.exports = Usuario;
 
 const Caracteristicas = database.define('caracteristicas',{
@@ -57,3 +59,31 @@ const Caracteristicas = database.define('caracteristicas',{
     })
 
 module.exports = Caracteristicas;
+=======
+    const Tarefas = database.define('tarefas',{
+        idTarefas:{
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true
+        
+        },
+        tipo:{
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        dataEntreg:{
+            type: Sequelize.DATE,
+            allowNull: false
+        },
+        descr:{
+            type: Sequelize.STRING,
+            allowNull: false
+        }
+    });
+
+
+    module.exports = Tarefas;
+    module.exports = Usuario;
+
+>>>>>>> 5778df9916281a819ba1e3c45ff9fd9c5ed36b26

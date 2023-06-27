@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&family=Source+Sans+Pro:ital@1&display=swap');
+
+body {
+    background: rgb(212, 227, 233);
+    background-position: center;
+    
+}
+.container {
+    width: 768px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+}
+#form {
+    background-color: transparent;
+    padding: 40px 20px;
+    margin-top: 50px;
+    box-shadow: 0 0 15px blue;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    color: #000000;
+    text-decoration: none;
+}
+#form label {
+    font-family: 'Roboto Condesed', sans-serif;
+    display: block;
+    color: #000000;
+    font-size: 1.2em;
+}
+#form h1 {
+    color: #000000;
+    font-family: 'Roboto Condesed', sans-serif;
+    font-weight: bold;
+}
+#form input, #form select {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(204, 219, 230);
+    border-radius: 30px;
+    box-shadow: 0 0 10 px 0 rgb(0, 0, 0) 45%;
+    backdrop-filter: blur(4px);
+}
+#form [class*= "col-"] {
+    padding: 10px;
+}
+.col-6{
+    width: 50%;
+}
