@@ -43,4 +43,43 @@
     //    idUsuario: 1 
     //}});
     
+    const novoTarefas = await Tarefas.create({
+        tipo: 'avaliativo',
+        dataEntreg: '2023-06-17',
+        descr: 'nao entregou na data certa'
+    })
+    console.log(novoTarefas);
+
+    const novoTarefas1 = await Tarefas1.create({
+        tipo: 'exercicio',
+        dataEntreg: '2023-08-10',
+        descr: 'etregue com antecedencia'
+    })
+    console.log(novoTarefas1);
+
+    const novoTarefas2 = await Tarefas2.create({
+        tipo: 'trabalho',
+        dataEntreg: '2023-07-21',
+        descr: 'faltou mais abordagem'
+    })
+    console.log(novoTarefas2);
+
+    const novoCaracteristicas = await Caracteristicas.create({
+        tipo: 'if',
+        descriCarac: 'use mais de duas'
+    })
+    console.log(novoCaracteristicas);
+
+    const novoCaracteristicas1 = await Caracteristicas1.create({
+        tipo: 'string',
+        descriCarac: 'escrever de tras para frente'
+    })
+    console.log(novoCaracteristicas1);
+
+    const novoCaracteristicas2 = await Caracteristicas2.create({
+        tipo: 'double',
+        descriCarac: 'use mais de tres'
+    })
+    console.log(novoCaracteristicas2);
+
 })();
