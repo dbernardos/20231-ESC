@@ -7,7 +7,7 @@ const Usuario = database.define('usuario', {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true       
+        primaryKey: true
     },
     nome: {
         type: Sequelize.STRING,
@@ -21,17 +21,17 @@ const Usuario = database.define('usuario', {
             isEmail: {
                 msg: 'O campo deve ser um endereço de e-mail válido.'
             }
-        } 
+        }
     },
-    
+
     senha: {
         type: Sequelize.STRING,
         allowNull: false
     }
-    });
+});
 
 
-const Caracteristicas = database.define('caracteristicas',{
+const Caracteristicas = database.define('caracteristicas', {
     idCarac: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -47,45 +47,50 @@ const Caracteristicas = database.define('caracteristicas',{
         allowNull: false
     },
 });
-    Caracteristicas.belongsTo(Tarefas,{
-        constarint:true,
-        foreignKey: 'idTarefas'
-    })
 
-    Tarefas,hasMany(Tarefas,{
-        foreignKey: 'idTarefas'
-    })
+const Tarefas = database.define('tarefas', {
+    idTarefas: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    tipo: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    dataEntreg: {
+        type: Sequelize.DATE,
+        allowNull: false
+    },
+    descr: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+});
 
-    const Tarefas = database.define('tarefas',{
-        idTarefas:{
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true
-        
-        },
-        tipo:{
-            type: Sequelize.STRING,
-            allowNull: false
-        },
-        dataEntreg:{
-            type: Sequelize.DATE,
-            allowNull: false
-        },
-        descr:{
-            type: Sequelize.STRING,
-            allowNull: false
-        }
-    });
-    Tarefas.belongsTo(Usuario,{
-        constarint:true,
-        foreignKey:'idUsuario'
-    })
+Tarefas.belongsTo(Usuario, {
+    constarint: true,
+    foreignKey: 'idUsuario'
+})
 
-    Usuario.hasMany(Tarefas,{
-        foreignKey: 'idUsuario'
-    })
+Usuario.hasMany(Tarefas, {
+    foreignKey: 'idUsuario'
+})
 
-    module.exports = Tarefas;
-    module.exports = Usuario;
-    module.exports = Caracteristicas;
+// ZECA, 
+// CONFERIR ISSO AQUI, MAS ACHO QUE NÃO PRECISA
+// DÁ ERRO AO COMPILAR
+// APAGAR, SE NÃO PRECISAR
+//Tarefas, hasMany(Tarefas, {
+//    foreignKey: 'idTarefas'
+//})
+
+Caracteristicas.belongsTo(Tarefas, {
+    constarint: true,
+    foreignKey: 'idTarefas'
+})
+
+module.exports = Tarefas;
+module.exports = Usuario;
+module.exports = Caracteristicas;

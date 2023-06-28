@@ -1,14 +1,15 @@
 (async () => {
-    const express = require ('express');
-    const routes = require ('./rotas')
-    const app = express ()
+    // MELHOR ESCREVER ESSES CÓDIGOS DAS ROTAS EM UMA BRANCH
+    //const express = require ('express');
+    //const routes = require ('./rotas')
+    //const app = express ()
     const database = require('./connection-db');
     const Usuario = require('./create-db'); 
     await database.sync();
 
-    app.use(express.json())
-    app.use(routes)
-    app.listen(300)
+    //app.use(express.json())
+    //app.use(routes)
+    //app.listen(300)
 
 
     const novoUsuario = await Usuario.create({
