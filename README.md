@@ -103,7 +103,7 @@ Se for o caso, liste tarefas/funcionalidades que ainda precisam ser implementada
 
 Equipe responsável pelo desenvolvimento do projeto
 
-| [<img src="./ESC-doc/img/caioIgor.jpeg" width=115><br><sub>Caio Igor</sub>](https://github.com/costinha32) |  [<img src="./ESC-doc/img/gabi.jpg" width=100 height=100 ><br><sub>Gabriel Sousa</sub>](https://github.com/Gabrielsc19) |  [<img src="./ESC-doc/img/igor.jpeg" width=115><br><sub>Igor Simon</sub>](https://github.com/ZimbasTurbo) | [<img src="./ESC-doc/img/zeca.jpg" width=115><br><sub>José Carlos</sub>](https://github.com/zecamoura) | [<img src="./ESC-doc/img/davi.jpeg" width=115><br><sub>Davi Bernardo</sub>](https://github.com/davibernardos) |
+| [<img src="./ESC-doc/img/caioIgor.jpeg" width=115><br><sub>Caio Igor</sub>](https://github.com/costinha32) |  [<img src="./ESC-doc/img/gabi.jpg" width=300 height=100 ><br><sub>Gabriel Sousa</sub>](https://github.com/Gabrielsc19) |  [<img src="./ESC-doc/img/igor.jpeg" width=115><br><sub>Igor Simon</sub>](https://github.com/ZimbasTurbo) | [<img src="./ESC-doc/img/zeca.jpg" width=115><br><sub>José Carlos</sub>](https://github.com/zecamoura) | [<img src="./ESC-doc/img/davi.jpeg" width=115><br><sub>Davi Bernardo</sub>](https://github.com/davibernardos) |
 | :---: | :---: | :---: | :---:| :---:
 
 ## Licença 
