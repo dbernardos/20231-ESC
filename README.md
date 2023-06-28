@@ -103,7 +103,7 @@ Se for o caso, liste tarefas/funcionalidades que ainda precisam ser implementada
 
 Equipe responsável pelo desenvolvimento do projeto
 
-| [<img src="./img/caioIgor.jpeg" width=115><br><sub>Caio Igor</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Gabriel Sousa</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Igor Simon</sub>](https://github.com/Diana-ops) | [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>José Carlos</sub>](https://github.com/Diana-ops) | [<img src="./ESC-doc/img/davi.jpeg" width=115><br><sub>Davi Bernardo</sub>](https://github.com/davibernardos) |
+| [<img src="./img/caioIgor.jpeg" width=115><br><sub>Caio Igor</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Gabriel Sousa</sub>](https://github.com/Diana-ops) |  [<img src="https://avatars2.githubusercontent.com/u/46378210?s=400&u=071f7791bb03f8e102d835bdb9c2f0d3d24e8a34&v=4" width=115><br><sub>Igor Simon</sub>](https://github.com/Diana-ops) | [<img src="./ESC-doc/img/zeca.jpg" width=115><br><sub>José Carlos</sub>](https://github.com/Diana-ops) | [<img src="./ESC-doc/img/davi.jpeg" width=115><br><sub>Davi Bernardo</sub>](https://github.com/davibernardos) |
 | :---: | :---: | :---: | :---:| :---:
 
 ## Licença 
