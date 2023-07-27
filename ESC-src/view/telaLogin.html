@@ -1,45 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="./css/layoutLogin.css">
+    <script src="https://kit.fontawesome.com/5c7c6d79df.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
+
 </head>
-<body>
-    <section>
-        <div class="form-box">
-            <div class="form-value">
+
+<body class="bg-body-secondary">
+    <section class="bg-body-secondary">
+        <div class="form-box bg-body-tertiary">
+            <div>
                 <form action="">
-                    <h2>Login</h2>
-                    <div class="inputbox">
-                        <i class="fa-regular fa-envelope"></i>
-                        <input type="email" required>
-                        <label for="">Email</label>
+                    <h2 class="col-12">Login</h2>
+                    <div class="col-12">
+                        <label for="" class="form-label">Email</label>
+                        <div class="input-group mb-3">
+                            <input type="email" name="email" id="email" placeholder="Digite seu email" class="form-control"
+                                required>
+                            <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                        </div>
                     </div>
-                    <div class="inputbox">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" required>
-                        <label for="">Senha</label>
+                    <label for="" class="">Senha</label>
+                    <div class="col-12">
+                        <div class="input-group mb-3 ">
+                            <input type="password" name="senha" id="senha" placeholder="Digite sua senha" class="form-control"
+                                required>
+                            <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                        </div>
                     </div>
-                    <div class="forget">
-                        <label for=""><input type="checkbox">Lembrar-me </label> 
-                        <button>Entrar</button>
-                                             
+                    <div class="form-check py-3">
+                        <label for="" class="form-check-label"><input type="checkbox"
+                                class="form-check-input">Lembrar-me </label>
                     </div>
-                    <a href="">Esqueci minha senha</a>
+                    <div class=" col-12 text-center btn-group  text-center">
+                        <button class="btn btn-outline-primary">Entrar</button>
+                    </div>
+                    <div class="col-12 text-center">
+                        <p><a href="" class="link-opacity-90 link-opacity-100-hover">Esqueci minha senha</a></p>
+                    </div>
                     <div class="register">
-                        <p>Não possui uma conta <a href="telaCadastro.html">Registre-se</a></p>
+                        <p>Não possui uma conta <a href="telaCadastro.html"
+                                class="link-opacity-100 link-underline-primary link-opacity-100-hover">Registre-se</a>
+                        </p>
                     </div>
                 </form>
             </div>
         </div>
     </section>
-    
+
 </body>
+
 </html>
