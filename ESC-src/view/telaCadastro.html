@@ -1,45 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
     <link rel="stylesheet" href="css/layoutCadastro.css">
     <script src="https://kit.fontawesome.com/5c7c6d79df.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-      </svg>
 </head>
+
 <body>
     <div class="container">
-        <form id="form"class="row">
+        <form id="form" class="row">
             <h1 class="col-12">Registre-se</h1>
             <div class="col-6">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
-                <i class="bi bi-person-circle"></i>
-            </div>
-            <div class="col-6"> 
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Digite seu email">
-                <i class="fa-regular fa-envelope"></i>
+                <div class="input-group">
+                    <input type="text" name="nome" id="nome" placeholder="Digite seu nome" class="form-control " oninput=" nameValidate()">
+                    <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                </div>
+                <span class="span-required">O nome deve conter no mínimo 3 caracteres</span>
             </div>
             <div class="col-6">
-                <label for="senha">Senha</label>
-                <input type="text" name="senha" id="senha" placeholder="Digite sua senha">
-                <i class="fa-regular fa-lock"></i>
+                <label for="email" class="form-label">Email</label>
+                <div class="input-group">
+                    <input type="email" name="email" id="email" placeholder="Digite seu email" class="form-control" oninput="emailValidate()">
+                    <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                </div>
+                <span class="span-required">Digite um email valido</span>
             </div>
             <div class="col-6">
-                <label for="confirmar">Confirmar Senha</label>
-                <input type="text" name="confirmar" id="confirmar" placeholder="Digite sua senha novamente">
-                <i class="fa-regular fa-lock"></i>
+                <label for="senha" class="form-label">Senha</label>
+                <div class="input-group">
+                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha" class="form-control" oninput="passwordValidate()">
+                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                </div>
+                <span class="span-required">A senha deve conter no mínimo 8 caracteres</span>
+            </div>
+            <div class="col-6">
+                <label for="confirmar" class="form-label">Confirmar Senha</label>
+                <div class="input-group">
+                    <input type="password" name="confirmar" id="confirmar" placeholder="Digite sua senha novamente" class="form-control" oninput="confirmPasswordValidate()">
+                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                </div>
+                <span class="span-required">As senhas devem se coincidir</span>
             </div>
             <div class="col-12">
-                    <button><a href="telaLogin.html"><input type="submit" value="Continuar"></button></a>
+                <button class="btn btn-primary"><a href="telaLogin.html"></a>Continuar</button>
             </div>
         </form>
     </div>
+    <script>
+        const form   = document.getElementById('form');
+        const campos = document.querySelectorAll('.form-control');
+        const spans  = document.querySelectorAll('.span-required');
+        const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]w+)*\.\w+([-.]\+)*$/;
+
+        function setError(index) {
+            campos[index].style.border = '2px solid #e63636';
+            spans[index].style.display = 'block';
+        }
+        function removeError(index) {
+            campos[index].style.border = '';
+            spans[index].style.display = 'none';
+        }
+
+        function nameValidate(){
+            if (campos[0].value.length < 3) {
+               setError(0);
+            }else {
+                removeError(0);
+            }
+        }
+        function emailValidate() {
+            if(emailRegex.test(campos[1].value)){
+                removeError(1);
+            }else{
+                setError(1);
+                
+            }
+
+        }
+        function passwordValidate(){
+            if(campos[2].value.length < 8) {
+                setError(2);
+            }else{
+                removeError(2);
+                confirmPasswordValidate()
+            }
+        }
+        function confirmPasswordValidate(){
+            if(campos[3].value != campos[2].value) {
+                setError(3);
+            }else{
+                removeError(3);
+            }
+        }
+    </script>
 </body>
+
 </html>
