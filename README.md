@@ -81,13 +81,14 @@ Caso a sua aplicação tenha alguma funcionalidade de login apresente neste tóp
 | -------- |-------- |-------- |-------- |
 |Caio Igor Costa Silva|caio.ic12@aluno.ifsc.edu.br|costinha32|true|
 
-|name|email|password|token|
-| -------- |-------- |-------- |-------- |
-|Igor Simon Santos |igor.ss@aluno.ifsc.edu.br|zimbasturbo|true|
 
 |name|email|password|token|
 | -------- |-------- |-------- |-------- |
 |Gabriel Souza da Costa |gabriel.sc19@aluno.ifsc.edu.br|zimbasturbo|true|
+
+|name|email|password|token|
+| -------- |-------- |-------- |-------- |
+|Igor Simon Santos |igor.ss@aluno.ifsc.edu.br|zimbasturbo|true|
 
 |name|email|password|token|
 | -------- |-------- |-------- |-------- |
