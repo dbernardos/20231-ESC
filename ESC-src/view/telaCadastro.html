@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -16,13 +16,14 @@
 </head>
 
 <body>
-    <div class="container">
-        <form id="form" class="row">
+    <div class="container py-5">
+        <form id="form" class="row rounded ">
             <h1 class="col-12">Registre-se</h1>
             <div class="col-6">
                 <label for="nome">Nome</label>
                 <div class="input-group">
-                    <input type="text" name="nome" id="nome" placeholder="Digite seu nome" class="form-control " oninput=" nameValidate()">
+                    <input type="text" name="nome" id="nome" placeholder="Digite seu nome" class="form-control "
+                        oninput=" nameValidate()">
                     <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
                 </div>
                 <span class="span-required">O nome deve conter no mínimo 3 caracteres</span>
@@ -30,7 +31,8 @@
             <div class="col-6">
                 <label for="email" class="form-label">Email</label>
                 <div class="input-group">
-                    <input type="email" name="email" id="email" placeholder="Digite seu email" class="form-control" oninput="emailValidate()">
+                    <input type="email" name="email" id="email" placeholder="Digite seu email" class="form-control"
+                        oninput="emailValidate()">
                     <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
                 </div>
                 <span class="span-required">Digite um email valido</span>
@@ -38,7 +40,8 @@
             <div class="col-6">
                 <label for="senha" class="form-label">Senha</label>
                 <div class="input-group">
-                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha" class="form-control" oninput="passwordValidate()">
+                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha" class="form-control"
+                        oninput="passwordValidate()">
                     <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                 </div>
                 <span class="span-required">A senha deve conter no mínimo 8 caracteres</span>
@@ -46,7 +49,8 @@
             <div class="col-6">
                 <label for="confirmar" class="form-label">Confirmar Senha</label>
                 <div class="input-group">
-                    <input type="password" name="confirmar" id="confirmar" placeholder="Digite sua senha novamente" class="form-control" oninput="confirmPasswordValidate()">
+                    <input type="password" name="confirmar" id="confirmar" placeholder="Digite sua senha novamente"
+                        class="form-control" oninput="confirmPasswordValidate()">
                     <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                 </div>
                 <span class="span-required">As senhas devem se coincidir</span>
@@ -57,10 +61,18 @@
         </form>
     </div>
     <script>
-        const form   = document.getElementById('form');
+        const form = document.getElementById('form');
         const campos = document.querySelectorAll('.form-control');
-        const spans  = document.querySelectorAll('.span-required');
+        const spans = document.querySelectorAll('.span-required');
         const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]w+)*\.\w+([-.]\+)*$/;
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            nameValidate();
+            emailValidate();
+            passwordValidate();
+            confirmPasswordValidate();
+        });
 
         function setError(index) {
             campos[index].style.border = '2px solid #e63636';
@@ -71,34 +83,34 @@
             spans[index].style.display = 'none';
         }
 
-        function nameValidate(){
+        function nameValidate() {
             if (campos[0].value.length < 3) {
-               setError(0);
-            }else {
+                setError(0);
+            } else {
                 removeError(0);
             }
         }
         function emailValidate() {
-            if(emailRegex.test(campos[1].value)){
+            if (emailRegex.test(campos[1].value)) {
                 removeError(1);
-            }else{
+            } else {
                 setError(1);
-                
+
             }
 
         }
-        function passwordValidate(){
-            if(campos[2].value.length < 8) {
+        function passwordValidate() {
+            if (campos[2].value.length < 8) {
                 setError(2);
-            }else{
+            } else {
                 removeError(2);
                 confirmPasswordValidate()
             }
         }
-        function confirmPasswordValidate(){
-            if(campos[3].value != campos[2].value) {
+        function confirmPasswordValidate() {
+            if (campos[3].value != campos[2].value) {
                 setError(3);
-            }else{
+            } else {
                 removeError(3);
             }
         }

@@ -42,4 +42,7 @@ button:hover {
 }
 .span-required {
     display: none;
+    color: #e63636;
+    font-size: 10px;
+    
 }
