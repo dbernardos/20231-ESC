@@ -80,6 +80,7 @@ section {
 .forget a {
     color: rgb(48, 125, 250);
     text-decoration: none;
+    align-items: center;
 }
 .forget label a:hover {
     text-decoration: underline;
