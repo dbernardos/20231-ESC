@@ -84,7 +84,7 @@ Caso a sua aplicação tenha alguma funcionalidade de login apresente neste tóp
 
 |name|email|password|token|
 | -------- |-------- |-------- |--------|
-|Gabriel Souza da Costa |gabriel.sc19@aluno.ifsc.edu.br|zimbasturbo|true|
+|Gabriel Souza da Costa |gabriel.sc19@aluno.ifsc.edu.br|Gabrielsc19|true|
 
 |name|email|password|token|
 | -------- |-------- |-------- |--------|
