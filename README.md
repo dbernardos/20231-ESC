@@ -77,22 +77,6 @@ Explique com mais detalhes como a sua aplicação poderia ser utilizada. O uso d
 
 Caso a sua aplicação tenha alguma funcionalidade de login apresente neste tópico os dados necessários para acessá-la.
 
-|name|email|password|token|
-| -------- |-------- |-------- |-------- |
-|José Carlos Moura|jose.c2001@aluno.ifsc.edu.br|zecamoura|true|
-
-|name|email|password|token|
-| -------- |-------- |-------- |-------- |
-|Caio Igor Costa Silva|caio.ic12@aluno.ifsc.edu.br|costinha32|true|
-
-|name|email|password|token|
-| -------- |-------- |-------- |-------- |
-|Igor Simon Santos |igor.ss@aluno.ifsc.edu.br|zimbasturbo|true|
-
-|name|email|password|token|
-| -------- |-------- |-------- |-------- |
-|Gabriel Souza da Costa |gabriel.sc19@aluno.ifsc.edu.br|zimbasturbo|true|
-
 ## Como rodar os testes
 
 Coloque um passo a passo para executar os testes
