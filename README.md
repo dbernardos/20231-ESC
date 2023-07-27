@@ -78,8 +78,21 @@ Explique com mais detalhes como a sua aplicação poderia ser utilizada. O uso d
 Caso a sua aplicação tenha alguma funcionalidade de login apresente neste tópico os dados necessários para acessá-la.
 
 |name|email|password|token|
-| -------- |-------- |-------- |-------- |
-|Lais Lima|laislima98@hotmail.com|lais123|true|
+| -------- |-------- |-------- |--------|
+|Caio Igor Costa Silva|caio.ic12@aluno.ifsc.edu.br|costinha32|true|
+
+
+|name|email|password|token|
+| -------- |-------- |-------- |--------|
+|Gabriel Souza da Costa |gabriel.sc19@aluno.ifsc.edu.br|Gabrielsc19|true|
+
+|name|email|password|token|
+| -------- |-------- |-------- |--------|
+|Igor Simon Santos |igor.ss@aluno.ifsc.edu.br|zimbasturbo|true|
+
+|name|email|password|token|
+| -------- |-------- |-------- |--------|
+|José Carlos Moura|jose.c2001@aluno.ifsc.edu.br|zecamoura|true|
 
 ## Como rodar os testes
 
@@ -103,7 +116,7 @@ Se for o caso, liste tarefas/funcionalidades que ainda precisam ser implementada
 
 Equipe responsável pelo desenvolvimento do projeto
 
-| [<img src="./ESC-doc/img/caioIgor.jpeg" width=115><br><sub>Caio Igor</sub>](https://github.com/costinha32) |  [<img src="./ESC-doc/img/gabi.jpg" width=145 height=160 ><br><sub>Gabriel Sousa</sub>](https://github.com/Gabrielsc19) |  [<img src="./ESC-doc/img/igor.jpeg" width=115><br><sub>Igor Simon</sub>](https://github.com/ZimbasTurbo) | [<img src="./ESC-doc/img/zeca.jpg" width=115><br><sub>José Carlos</sub>](https://github.com/zecamoura) | [<img src="./ESC-doc/img/davi.jpeg" width=130 height=150><br><sub>Davi Bernardo</sub>](https://github.com/davibernardos) |
+| [<img src="./ESC-doc/img/caioIgor.jpeg" width=115><br><sub>Caio Igor</sub>](https://github.com/costinha32) |  [<img src="./ESC-doc/img/gabi.jpg" width=100 height=135 ><br><sub>Gabriel Sousa</sub>](https://github.com/Gabrielsc19) |  [<img src="./ESC-doc/img/igor.jpeg" width=115><br><sub>Igor Simon</sub>](https://github.com/ZimbasTurbo) | [<img src="./ESC-doc/img/zeca.jpg" width=115><br><sub>José Carlos</sub>](https://github.com/zecamoura) | [<img src="./ESC-doc/img/davi.jpeg" width=130 height=150><br><sub>Davi Bernardo</sub>](https://github.com/davibernardos) |
 | :---: | :---: | :---: | :---:| :---:
 
 ## Licença 
