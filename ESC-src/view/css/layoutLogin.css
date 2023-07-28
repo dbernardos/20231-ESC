@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&family=Source+Sans+Pro:ital@1&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;;
-}
+
 section {
     display: flex;
     justify-content: center;
@@ -24,6 +20,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: auto;
  }
  .form-control {
    width: 100%;
@@ -32,6 +29,10 @@ section {
    padding: 5px;
 
 }
+#form input {
+    background-color: rgba(168, 168, 224, 0.496);
+}
+
 button {
     width: 80%;
     height: 40px;
@@ -69,5 +70,12 @@ button {
 .form-check-input {
    cursor: pointer;
 }
+.span-required {
+    display: none;
+    color: #e63636;
+    font-size: 12px;
+    width: 100%;
+}
+
 
  
