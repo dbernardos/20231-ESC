@@ -118,11 +118,11 @@
         function confirmPasswordValidate() {
             if (campos[3].value != campos[2].value) {
                 setError(3);
-                return false;
+                return true;
 
             } else {
                 removeError(3);
-                return true;
+                return false;
 
             }
         }
