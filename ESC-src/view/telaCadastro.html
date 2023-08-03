@@ -71,7 +71,8 @@
                 !nameValidate() ||
                 !emailValidate() ||
                 !passwordValidate() ||
-                !confirmPasswordValidate()) { event.preventDefault(); }
+                !confirmPasswordValidate())
+                 { event.preventDefault(); }
         });
         function setError(index) {
             campos[index].style.border = '2px solid #e63636';
@@ -99,8 +100,6 @@
             } else {
                 setError(1);
                 return false;
-
-
             }
 
         }
@@ -112,7 +111,6 @@
             } else {
                 removeError(2);
                 return true;
-
 
                 confirmPasswordValidate()
             }
