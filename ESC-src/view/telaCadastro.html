@@ -16,6 +16,12 @@
 </head>
 
 <body class="bg-body-secondary">
+
+
+
+
+
+    
     <div class="container py-5">
         <form id="form" class="row rounded bg-body-tertiary " action="telaLogin.html" method="POST">
             <h1 class="col-12">Registre-se</h1>
@@ -28,7 +34,13 @@
                 </div>
                 <span class="span-required">O nome deve conter no mínimo 3 caracteres</span>
             </div>
-            <div class="col-6">
+
+
+
+
+
+
+            <div class="col-md-6">
                 <label for="email" class="form-label">Email</label>
                 <div class="input-group mb-3">
                     <input type="email" name="email" id="email" placeholder="Digite seu email" class="form-control"
@@ -37,7 +49,12 @@
                 </div>
                 <span class="span-required">Digite um email valido</span>
             </div>
-            <div class="col-6">
+
+
+
+
+
+            <div class="col-md-6">
                 <label for="senha" class="form-label">Senha</label>
                 <div class="input-group mb-3">
                     <input type="password" name="senha" id="senha" placeholder="Digite sua senha" class="form-control"
@@ -46,6 +63,12 @@
                 </div>
                 <span class="span-required">A senha deve conter no mínimo 8 caracteres</span>
             </div>
+
+
+
+
+
+
             <div class="col-6">
                 <label for="confirmar" class="form-label">Confirmar Senha</label>
                 <div class="input-group mb-3">
@@ -60,7 +83,25 @@
             </div>
         </form>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
     <script>
+
+
+
+
+
+
         const form = document.getElementById('form');
         const campos = document.querySelectorAll('.form-control');
         const spans = document.querySelectorAll('.span-required');
@@ -71,9 +112,13 @@
                 !nameValidate() ||
                 !emailValidate() ||
                 !passwordValidate() ||
-                !confirmPasswordValidate())
-                 { event.preventDefault(); }
+                !confirmPasswordValidate()) { event.preventDefault(); }
         });
+
+
+
+
+
         function setError(index) {
             campos[index].style.border = '2px solid #e63636';
             spans[index].style.display = 'block';
@@ -82,6 +127,12 @@
             campos[index].style.border = '';
             spans[index].style.display = 'none';
         }
+
+
+
+
+
+
 
         function nameValidate() {
             if (campos[0].value.length < 3) {

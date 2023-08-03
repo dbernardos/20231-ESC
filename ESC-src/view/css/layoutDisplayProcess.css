@@ -1,5 +1,12 @@
 .span-required {
     display: block;
     color: #e63636;
-    font-size: 15px;
+    font-size: 10px;
+}
+.span-required-view {
+    color: #e63636;
+    display: none;
+}
+.bg-info {
+    background-color: rgb(113, 124, 238) !important;
 }
