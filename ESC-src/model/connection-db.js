@@ -1,30 +1,48 @@
-const database = 'db_esc';
-const user = 'root';
-const hostname = 'localhost';
-const password = '';
-const sgbd = 'mysql';
-const portbd = 3306;
+const express = require('express');
+const bodyParser = require('body-parser');
+const mysql = require('mysql2');
+const path = require('path');
+const port = 8081;
+const { appendFile } = require('fs');
 
-const Sequelize = require('sequelize');
+const connection = mysql.createConnection({
+    host:'localhost',
+    user: 'root',
+    password:'',
+    database:'db_esc'
+  });
 
-const sequelize = new Sequelize(database, user, password, {
-    host: hostname,
-    dialect: sgbd,
-    port: portbd
+connection.connect((err) => { 
+if(err){
+  console.error('Erro ao conectar ao banco de dados:',err);
+  return;
+}
+  console.log('Conexão com o banco efetuada com sucesso');
+});
+  app.use(bodyParser.urlencoded({extend:true}));
+
+  app.get('/Login', (req,res)=> {
+    res.render('Login');
+  });
+
+  app.post('/Login', (req, res)=>{
+  const { email, senha } = req.body;
+
+  // Verificando se o usuário e senha existem no banco de dados
+  const query = 'SELECT * FROM usuario WHERE email = ? AND senha = ?';
+  connection.query(query, [email, senha], (err, results) => {
+    if (err) {
+      console.error('Esse usuário: não existe', err);
+      res.status(500).send('Erro ao verificar o usuário. Por favor, tente novamente mais tarde.');
+    } else if (results.length > 0) {
+      res.send('Login bem-sucedido!');
+    } else {
+      res.send('Problemas detectados. Tente novamente.');
+    }
+  });
 });
 
-module.exports = sequelize;
-
-//const sequelize = new Sequelize(`mysql://${user}:${password}@localhost:3306/${nomeDoBanco}`);
-/*async function criarDatabase() {
-  try {
-    await sequelize.query(`CREATE DATABASE IF NOT EXISTS ${database}`);
-    console.log('Banco de dados criado com sucesso!');
-  } catch (error) {
-    console.error('Erro ao criar o banco de dados:', error);
-  } finally {
-    sequelize.close();
-  }
-}
-
-criarDatabase();*/
+// Iniciando o servidor
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:8081}`);
+});

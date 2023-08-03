@@ -10,3 +10,6 @@
 .bg-info {
     background-color: rgb(113, 124, 238) !important;
 }
+#fileUpload {
+    color: white;
+}
