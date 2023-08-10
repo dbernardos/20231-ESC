@@ -29,6 +29,8 @@ if(err){
   const { email, senha } = req.body;
 
   // Verificando se o usuário e senha existem no banco de dados
+  const sql = 'SELECT * from usuario';
+  
   const query = 'SELECT * FROM usuario WHERE email = ? AND senha = ?';
   connection.query(query, [email, senha], (err, results) => {
     if (err) {
