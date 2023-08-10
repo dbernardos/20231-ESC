@@ -179,22 +179,7 @@
         }
 
 
-        app.post('/cadastro', (req, res) => {
-            const { nome, email, senha } = req.body;
-
-            // Insira os dados no banco de dados
-            const query = 'INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)';
-            connection.query(query, [nome, email, senha], (err, result) => {
-                if (err) {
-                    console.error('Erro ao cadastrar:', err);
-                    res.status(500).send('Erro ao cadastrar. Por favor, tente novamente mais tarde.');
-                } else {
-                    res.send('Cadastro realizado com sucesso!');
-                }
-            });
-        });
-
-
+        
 
     </script>
 </body>
