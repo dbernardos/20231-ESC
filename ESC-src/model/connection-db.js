@@ -19,7 +19,7 @@ if(err){
 }
   console.log('Conexão com o banco efetuada com sucesso');
 });
-  app.use(bodyParser.urlencoded({extend:true}));
+  app.use(bodyParser.urlencoded({extended:true}));
 
   app.get('/Login', (req,res)=> {
     res.render('Login');
@@ -46,5 +46,5 @@ if(err){
 
 // Iniciando o servidor
 app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:8081}`);
+  console.log(`Servidor rodando em http://localhost:${port}`);
 });
