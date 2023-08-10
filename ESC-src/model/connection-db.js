@@ -19,7 +19,7 @@ if(err){
 }
   console.log('Conexão com o banco efetuada com sucesso');
 });
-  app.use(bodyParser.urlencoded({extended:true}));
+  app.use(bodyParser.urlencoded({extend:true}));
 
   app.get('/Login', (req,res)=> {
     res.render('Login');
@@ -29,7 +29,10 @@ if(err){
   const { email, senha } = req.body;
 
   // Verificando se o usuário e senha existem no banco de dados
+  const sql = 'SELECT * from usuario';
+
   const query = 'SELECT * FROM usuario WHERE email = ? AND senha = ?';
+  
   connection.query(query, [email, senha], (err, results) => {
     if (err) {
       console.error('Esse usuário: não existe', err);
@@ -44,5 +47,5 @@ if(err){
 
 // Iniciando o servidor
 app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
+  console.log(`Servidor rodando em http://localhost:8081}`);
 });
