@@ -84,3 +84,25 @@
     console.log(novoCaracteristicas2);
 
 })();
+
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+
+// Configurações e middlewares
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Configuração de visualização, etc.
+
+// Importe e use as rotas de cadastro
+const cadastroRotas = require('./rotas');
+app.use('/cadastro', cadastroRotas);
+
+// Outras configurações e código do servidor
+
+// Inicie o servidor
+const PORT = process.env.PORT || 443;
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});
