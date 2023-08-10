@@ -4,6 +4,7 @@ const mysql = require('mysql2');
 const path = require('path');
 const port = 8081;
 const { appendFile } = require('fs');
+const { getMaxListeners } = require('events');
 
 const connection = mysql.createConnection({
     host:'localhost',
@@ -11,6 +12,15 @@ const connection = mysql.createConnection({
     password:'',
     database:'db_esc'
   });
+app.get("/", (req,res) =>{
+db.query("INSERT INTO usuario (nome, email, senha) VALUES ('zeca','zeca@gmail.com', '12345678')",(err, result)=>{
+  if(err){
+    console.log(err)
+  }
+}
+
+);
+});
 
 connection.connect((err) => { 
 if(err){
@@ -32,7 +42,7 @@ if(err){
   const sql = 'SELECT * from usuario';
 
   const query = 'SELECT * FROM usuario WHERE email = ? AND senha = ?';
-  
+
   connection.query(query, [email, senha], (err, results) => {
     if (err) {
       console.error('Esse usuário: não existe', err);
@@ -46,6 +56,6 @@ if(err){
 });
 
 // Iniciando o servidor
-app.listen(port, () => {
+app.listen(8081, () => {
   console.log(`Servidor rodando em http://localhost:8081}`);
 });
