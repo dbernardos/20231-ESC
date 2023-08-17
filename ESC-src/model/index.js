@@ -21,6 +21,7 @@ const sequelize = require('sequelize');
     app.get('/cadastroRotas', function(req,res){
         res.render('telaCadastro', {nome, email, senha});
     });    
+    app.post('')
     
     app.listen(8081, function(){
         console.log("Servidor rodadando na url http://localhost:8081");
