@@ -48,6 +48,7 @@ if(err){
       console.error('Esse usuário: não existe', err);
       res.status(500).send('Erro ao verificar o usuário. Por favor, tente novamente mais tarde.');
     } else if (results.length > 0) {
+      alert("Login bem-sucedido!")
       res.send('Login bem-sucedido!');
     } else {
       res.send('Problemas detectados. Tente novamente.');
