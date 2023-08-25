@@ -1,3 +1,4 @@
+console.log("Arquivo de conexao!");
 const mysql = require('mysql2');
 
 // Configurações de conexão com o banco de dados
@@ -7,6 +8,8 @@ const connection = mysql.createConnection({
   password: '', // Senha do usuário
   database: 'db_esc' // Nome do banco de dados
 });
+
+console.log('Arquivo de conexao PARTE 2!');
 
 // Realiza a conexão
 connection.connect((err) => {

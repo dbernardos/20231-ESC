@@ -7,8 +7,6 @@
     <title>Login</title>
     <link rel="stylesheet" href="./css/layoutLogin.css">
 
-    <script src="../control/ctrLogin.js"></script>
-
     <script src="https://kit.fontawesome.com/5c7c6d79df.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -61,61 +59,7 @@
             </div>
         </div>
     </section>
-
-
-    <script>
-        const form   = document.getElementById('form');
-        const campos = document.querySelectorAll('.form-control');
-        const spans  = document.querySelectorAll('.span-required');
-        const butao  = document.querySelector('.fa-solid');
-        const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]w+)*\.\w+([-.]\+)*$/;
-
-        form.addEventListener('submit', (event) => {
-            if (
-                !emailValidate() ||
-                !passwordValidate()
-                ) 
-                { event.preventDefault(); }
-        });
-
-
-        function setError(index) {
-            campos[index].style.border = '2px solid #e63636';
-            spans[index].style.display = 'block';
-        }
-        function removeError(index) {
-            campos[index].style.border = '';
-            spans[index].style.display = 'none';
-        }
-        function emailValidate() {
-            if (emailRegex.test(campos[0].value)) {
-                removeError(0);
-                return true;
-
-            } else {
-                setError(0);
-                return false;
-            }
-
-        }
-
-        function passwordValidate() {
-            if (campos[1].value.length < 8) {
-                setError(1);
-                return false;
-
-            } else {
-                removeError(1);
-                return true;
-            }
-        }
-
-        butao.addEventListener('click', function() {
-            butao.classList.add()
-        })
-
-    </script>
-
+    <script src="../control/vldLogin.js"></script>
+    <script src="../control/ctrLogin.js"></script>
 </body>
-
 </html>
