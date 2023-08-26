@@ -15,14 +15,16 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-body-secondary">
+<body class="bg-body-secondary d-flex justify-content-center align-items-center">
     <section class="bg-body-secondary">
-        <div class="form-box bg-body-tertiary">
-            <div>
-                <form id="formLogin">
-                    <h2 class="col-12">Login</h2>
-                    <div class="col-12">
-                        <label for="" class="form-label">Email</label>
+        <div class="form-box bg-body-tertiary px-4 py-4">
+                <form id="formLogin" method="POST">
+                    <h2 class="col-12 text-center mb-4" style="font-size: 24px; font-weight: bold; color: #333; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); margin: 10px 0;">
+                        CodeXtract Master
+                    </h2>
+                    
+                    <div class="col-12 mb-3">
+                        <label for="" class="form-label">Usuário</label>
                         <div class="input-group mb-3">
                             <input size="10px" type="email" name="email" id="email" placeholder="Digite seu email"
                                 class="form-control" required oninput="emailValidate()">
@@ -30,6 +32,7 @@
                         </div>
                         <span class="span-required">Digite um email válido</span>
                     </div>
+                    
                     <label for="" class="">Senha</label>
                     <div class="col-12">
                         <div class="input-group mb-3 ">
@@ -39,27 +42,21 @@
                         </div>
                         <span class="span-required">A senha deve conter no mínimo 8 dígitos</span>
                     </div>
-                    <div class="form-check py-3">
-                        <label for="" class="form-check-label"><input type="checkbox"
-                                class="form-check-input">Lembrar-me </label>
-                    </div>
-                    <div class=" col-12 text-center btn-group  text-center">
-                        <button id="btnEntrar" class="btn btn-outline-primary">Entrar</button>
+                    
+                    <div class=" col-12 text-center btn-group">
+                        <button id="btnEntrar" class="btn btn-primary">Entrar</button>
                     </div>
                     <div class="col-12 text-center">
                         <p><a href="" class="link-opacity-90 link-opacity-100-hover">Esqueci minha senha</a></p>
                     </div>
 
                     <div class="register">
-                        <p>Não possui uma conta <a href="telaCadastro.html"
+                        <p>Não possui uma conta <a href="cadastro"
                                 class="link-opacity-100 link-underline-primary link-opacity-100-hover">Registre-se</a>
                         </p>
                     </div>
                 </form>
-            </div>
         </div>
     </section>
-    <script src="../control/vldLogin.js"></script>
-    <script src="../control/ctrLogin.js"></script>
 </body>
 </html>
