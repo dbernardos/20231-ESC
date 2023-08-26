@@ -67,7 +67,9 @@ npm i sequelize
 
 npm install mysql2
 npm install expess
+npm install express-session
 npm install ejs
+nom install md5
 ```
 
 ### Configuração do banco de dados
