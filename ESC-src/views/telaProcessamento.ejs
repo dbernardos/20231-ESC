@@ -18,64 +18,8 @@
 </head>
 
 <body class="bg-body-secondary">
-
-
-
-<!--Menu principal-->
-
-    <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
-        <div class="container-fluid">
-            <a href="" class="navbar-brand navbar-dark col-6 align-content-center">ESC</a>
-            <button class="navbar-toggler">
-                <i class="navbar-toggler-icon"></i>
-            </button>
-            <div class="navbar-collapse collapse col-6">
-                <ul class="navbar-nav me-auto">
-                    <li>
-                        <div class="dropdown mx-3">
-                            <a href="#" class="dropdown-toggle text-light text-decoration-none"
-                                data-bs-toggle="dropdown">
-                                Turmas cadastradas
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-md-end dropdown-menu-secondary">
-                                <li><a href="#" class="dropdown-item ">Turma1</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Turma2</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="dropdown mx-3   ">
-                            <a href="#" class="dropdown-toggle text-light text-decoration-none"
-                                data-bs-toggle="dropdown">
-                                Tarefas 
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-md-end dropdown-menu-secondary">
-                                <li><a href="#" class="dropdown-item">Tarefa 1</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Tarefa 2</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link text-light text-decoration-none px-3">Carregar Tarefas</a>
-                    </li>
-                </ul>
-               
-            </div>
-        </div>
-
-    </nav>
-
-
-
-
-
+    
+    <%- include('menu') %> <!-- Inclui o menu -->
 
     <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
     <div class="container">

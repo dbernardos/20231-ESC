@@ -24,55 +24,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
-        <div class="container-fluid">
-            <a href="" class="navbar-brand navbar-dark col-6 align-content-center" style="font-size: 24px; font-weight: bold; color: #333; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); margin: 10px 0;">CodeXtract Master</a>
+    <%- include('menu') %> <!-- Inclui o menu -->
 
-            <button class="navbar-toggler">
-                <i class="navbar-toggler-icon"></i>
-            </button>
-            <div class="navbar-collapse collapse col-6">
-                <ul class="navbar-nav me-auto">
-                    <li>
-                        <div class="dropdown mx-3">
-                            <a href="#" class="dropdown-toggle text-light text-decoration-none"
-                                data-bs-toggle="dropdown">
-                                Turmas cadastradas
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-md-end dropdown-menu-secondary">
-                                <li><a href="#" class="dropdown-item ">Turma1</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Turma2</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="dropdown mx-3   ">
-                            <a href="#" class="dropdown-toggle text-light text-decoration-none"
-                                data-bs-toggle="dropdown">
-                                Tarefas 
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-md-end dropdown-menu-secondary">
-                                <li><a href="#" class="dropdown-item">Tarefa 1</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Tarefa 2</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="processamento" class="nav-link text-light text-decoration-none px-3">Carregar Tarefas</a>
-                    </li>
-                </ul>
-               
-            </div>
-        </div>
-
-    </nav>
     <footer class="text-center text-lg-start bg-white text-muted">
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
             <div class="me-5 d-none d-lg-block">

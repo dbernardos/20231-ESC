@@ -13,6 +13,14 @@ app.use(session({
   saveUninitialized: true // Salvar sessões não modificadas (útil para rastreamento, por exemplo)
 }));
 
+function verificarAutenticacao(req, res, next) {
+  if (req.session.user) { // Ou use a lógica de verificação de token
+      next(); // O usuário está autenticado, continue
+  } else {
+      res.redirect('/login'); // O usuário não está autenticado, redirecione para a página de login
+  }
+}
+
 const loginCtrl = require('./control/loginCtrl');
 app.get('/login', loginCtrl.loginPagina);
 app.post('/login', loginCtrl.loginPost);
@@ -21,11 +29,11 @@ app.get('/cadastro', (req, res) => {
   res.render('telaCadastro', { errorMessage: '' });
 });
 
-app.get('/principal', (req, res) => {
+app.get('/principal', verificarAutenticacao, (req, res) => {
   res.render('telaPrincipal', { errorMessage: '' });
 });
 
-app.get('/processamento', (req, res) => {
+app.get('/processamento', verificarAutenticacao, (req, res) => {
   res.render('telaProcessamento', { errorMessage: '' });
 });
 
