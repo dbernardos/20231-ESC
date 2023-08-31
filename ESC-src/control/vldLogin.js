@@ -27,6 +27,7 @@ function emailValidate() {
     if (emailRegex.test(campos[0].value)) {
         removeError(0);
         return true;
+        
 
     } else {
         setError(0);

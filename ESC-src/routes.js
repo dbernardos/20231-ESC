@@ -22,8 +22,14 @@ function verificarAutenticacao(req, res, next) {
 }
 
 const loginCtrl = require('./control/loginCtrl');
+
 app.get('/login', loginCtrl.loginPagina);
 app.post('/login', loginCtrl.loginPost);
+
+
+//método post do login
+app.post('/login', function (req, res){
+});
 
 app.get('/cadastro', (req, res) => {
   res.render('telaCadastro', { errorMessage: '' });
@@ -31,8 +37,12 @@ app.get('/cadastro', (req, res) => {
 
 app.get('/principal', verificarAutenticacao, (req, res) => {
   res.render('telaPrincipal', { errorMessage: '' });
-});
 
+  const{ email, senha} = req.session.user;
+  
+  console.log('Conexão efetuada:', email, senha);
+
+});
 app.get('/processamento', verificarAutenticacao, (req, res) => {
   res.render('telaProcessamento', { errorMessage: '' });
 });
@@ -42,3 +52,4 @@ app.listen(port, () => {
 });
 
 module.exports = app;
+
