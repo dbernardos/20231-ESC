@@ -2,7 +2,9 @@ const form   = document.getElementById('form');
 const campos = document.querySelectorAll('.form-control');
 const spans  = document.querySelectorAll('.span-required');
 const butao  = document.querySelector('.fa-solid');
-const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]w+)*\.\w+([-.]\+)*$/;
+const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+
+//const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]w+)*\.\w+([-.]\+)*$/;
 
 form.addEventListener('submit', (event) => {
     if (
