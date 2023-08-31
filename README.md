@@ -69,7 +69,9 @@ npm install mysql2
 npm install expess
 npm install express-session
 npm install ejs
-nom install md5
+npm install md5
+
+npm install mysql2 expess express-session ejs md5
 ```
 
 ### Configuração do banco de dados
