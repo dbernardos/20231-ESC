@@ -24,4 +24,4 @@ foreign key (fk_idTarefas)
 references Tarefas(idTarefas)
 );
 
-INSERT INTO `usuario`(`idUsuario`, `nome`, `email`, `senha`) VALUES (NULL,'admin2','admin2@gmail.com','12345678')(NULL,'admin2','admin2@gmail.com','12345678');
+INSERT INTO `usuario`(`idUsuario`, `nome`, `email`, `senha`) VALUES (NULL,'admin2','admin2@gmail.com','12345678');
