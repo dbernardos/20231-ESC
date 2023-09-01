@@ -35,7 +35,7 @@ app.get('/cadastro', (req, res) => {
   res.render('telaCadastro', { errorMessage: '' });
 });
 
-app.get('/principal', verificarAutenticacao, (req, res) => {
+app.get('/principal', /* verificarAutenticacao, */(req, res) => {
   res.render('telaPrincipal', { errorMessage: '' });
 
   const{ email, senha} = req.session.user;
@@ -43,7 +43,7 @@ app.get('/principal', verificarAutenticacao, (req, res) => {
   console.log('Conexão efetuada:', email, senha);
 
 });
-app.get('/processamento', verificarAutenticacao, (req, res) => {
+app.get('/processamento', /* verificarAutenticacao, */ (req, res) => {
   res.render('telaProcessamento', { errorMessage: '' });
 });
 
