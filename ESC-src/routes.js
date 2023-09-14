@@ -22,9 +22,12 @@ function verificarAutenticacao(req, res, next) {
 }
 
 const loginCtrl = require('./control/loginCtrl');
+const processaCtrl = require('./control/processaCtrl');
 
 app.get('/login', loginCtrl.loginPagina);
 app.post('/login', loginCtrl.loginPost);
+
+app.post('/processa', processaCtrl.processaPost);
 
 
 //método post do login

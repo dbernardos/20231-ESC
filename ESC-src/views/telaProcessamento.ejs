@@ -20,15 +20,15 @@
 <body class="bg-body-secondary">
     
     <%- include('menu') %> <!-- Inclui o menu -->
-
+<form action="/processa" method="post">
     <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
     <div class="container">
         <div class="row">
             <div class="col-md-6 py-5">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Caracaterísticas do código-fonte" id="inputCaracteristicas" oninput="caracteresValidate()"
+                    <input type="text" class="form-control" placeholder="Caracaterísticas do código-fonte" id="inputCaracteristicas" name="inputCaracteristicas" oninput="caracteresValidate()"
                         aria-label="Caracaterísticas do código-fonte" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-success  " type="button" id="button-addon2">Procurar</button>
+                    <button class="btn btn-outline-success  " type="submit" id="button-addon2">Procurar</button>
                 </div>
                 <span class="span-required" id="spanCarac"><b>*</b>Use vírgulas para separar os termos</span>
                 <span class="span-required-view">Digite pelo menos uma característica</span>
@@ -63,6 +63,7 @@
             </div>
         </div>
     </div>
+</form>
     <!--Rodapé que contém os botões de voltar ao main Menu e um botão que irá fazer todo o processamento de extração de caracerísticas  -->
     <footer>
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
