@@ -47,6 +47,7 @@ app.get('/processamento', /* verificarAutenticacao, */ (req, res) => {
   res.render('telaProcessamento', { errorMessage: '' });
 });
 
+
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
