@@ -20,7 +20,7 @@
 <body class="bg-body-secondary">
     
     <%- include('menu') %> <!-- Inclui o menu -->
-<form action="/processa" method="post">
+<form action="/processamento" method="post" id="frmProcessa">
     <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
     <div class="container">
         <div class="row">
@@ -28,7 +28,7 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Caracaterísticas do código-fonte" id="inputCaracteristicas" name="inputCaracteristicas" oninput="caracteresValidate()"
                         aria-label="Caracaterísticas do código-fonte" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-success  " type="submit" id="button-addon2">Procurar</button>
+                    <button class="btn btn-outline-success  " type="submit" id="btnProcurar">Procurar</button>
                 </div>
                 <span class="span-required" id="spanCarac"><b>*</b>Use vírgulas para separar os termos</span>
                 <span class="span-required-view">Digite pelo menos uma característica</span>
@@ -37,7 +37,7 @@
                 <div class="input-group">
                     <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon04"
                         aria-label="Upload">
-                    <button class="btn btn-outline-success" type="button" id="inputGroupFileAddon">Inserir</button>
+                    <button class="btn btn-outline-success" type="submit" id="inputGroupFileAddon">Inserir</button>
                 </div>
                 <span class="span-required"><b>*</b>Você pode adicionar mais de um arquivo</span>
             </div>

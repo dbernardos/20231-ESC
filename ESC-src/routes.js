@@ -21,13 +21,18 @@ function verificarAutenticacao(req, res, next) {
   }
 }
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Algo deu errado!');
+});
+
 const loginCtrl = require('./control/loginCtrl');
 const processaCtrl = require('./control/processaCtrl');
 
 app.get('/login', loginCtrl.loginPagina);
 app.post('/login', loginCtrl.loginPost);
 
-app.post('/processa', processaCtrl.processaPost);
+app.post('/processamento', processaCtrl.processaPost);
 
 
 //método post do login
@@ -38,15 +43,16 @@ app.get('/cadastro', (req, res) => {
   res.render('telaCadastro', { errorMessage: '' });
 });
 
-app.get('/principal', /* verificarAutenticacao, */(req, res) => {
-  res.render('telaPrincipal', { errorMessage: '' });
-
-  const{ email, senha} = req.session.user;
+app.get('/principal',  verificarAutenticacao, (req, res) => {
   
+  const{ email, senha} = req.session.user;
+
   console.log('Conexão efetuada:', email, senha);
 
+  res.render('telaPrincipal', { errorMessage: '' });  
+
 });
-app.get('/processamento', /* verificarAutenticacao, */ (req, res) => {
+app.get('/processamento',  verificarAutenticacao ,(req, res) => {
   res.render('telaProcessamento', { errorMessage: '' });
 });
 
