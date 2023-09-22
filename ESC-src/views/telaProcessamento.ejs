@@ -165,6 +165,7 @@
                     const resultado = extrair(lista_codigo, carac);
                     console.log(resultado); // Exibirá o resultado no console
 
+                    document.getElementById('fileShow').value = conteudo;
                     document.getElementById('inputCaracteristicas').value = JSON.stringify(resultado);
                     document.getElementById('spanCarac').textContent = 'Valores que deseja enviar para o servidor';
                 }
