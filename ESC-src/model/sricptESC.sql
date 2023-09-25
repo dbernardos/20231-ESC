@@ -33,3 +33,6 @@ INSERT INTO `usuario`(`idUsuario`, `nome`, `email`, `senha`) VALUES (NULL,'admin
 INSERT INTO `usuario`(`idUsuario`, `nome`, `email`, `senha`) VALUES (NULL,'admin8','admin8@gmail.com','34567891');
 INSERT INTO `usuario`(`idUsuario`, `nome`, `email`, `senha`) VALUES (NULL,'admin9','admin9@gmail.com','45678910');
 INSERT INTO `usuario`(`idUsuario`, `nome`, `email`, `senha`) VALUES (NULL,'admin10','admin10@gmail.com','56789123');
+
+/** comando para rodar o node **/
+/** npm install mysql2 expess express-session ejs md5 **/
