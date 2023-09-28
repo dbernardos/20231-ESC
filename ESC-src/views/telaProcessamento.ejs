@@ -45,9 +45,9 @@
         <div class="row">
             <div class="col-md-6">
                 <h6>Lista de Arquivos carregados</h6>
-                <div class="input-group">
-                    <textarea name="fileUpload" id="fileUpload" cols="30" rows="10"  class="form-control bg-secondary" readonly
-                        class="form-control bg-secondary" oninput="fileUpdateValidate()"></textarea>
+                <div class="input-group" id="showListFile">
+                    <!-- <textarea name="fileUpload" id="fileUpload" cols="30" rows="10"  class="form-control bg-secondary" readonly
+                        class="form-control bg-secondary" oninput="fileUpdateValidate()"></textarea> -->
                 </div>
             </div>
             <div class="col-md-6">
@@ -131,7 +131,7 @@ function verificarCaracteristicas() {
 
         // Atualize o conteúdo do fileShow com o conteúdo do arquivo
         const fileShow = document.getElementById('fileShow');
-        fileShow.value = resultado;
+        //fileShow.value = resultado;
     };
 
     leitor.onerror = function (event) {
@@ -168,6 +168,7 @@ function verificarCaracteristicas() {
 
     const input = document.getElementById('inputGroupFile');
 
+    var conteudonovo = '';
     input.addEventListener('change', function (event) {
         const arquivo = input.files[0];
         if (arquivo) {
@@ -189,8 +190,10 @@ function verificarCaracteristicas() {
                     const resultado = extrair(lista_codigo, carac);
                     console.log(resultado); // Exibirá o resultado no console
 
-                    document.getElementById('fileShow').value = conteudo;
-                    document.getElementById('spanCarac').textContent = 'Valores que deseja enviar para o servidor';
+                    //document.getElementById('fileShow').value = conteudo;
+                    //document.getElementById('spanCarac').textContent = 'Valores que deseja enviar para o servidor';
+
+                    conteudonovo = conteudo;
                 }
             })
         }
@@ -204,46 +207,26 @@ function verificarCaracteristicas() {
         if (selectedFile) {
             // Obtendo o nome do arquivo
             const fileName = selectedFile.name;
-            
-            // tentando riar um link
-    const link = document.createElement('a');
-    link.href =fileName; // Defina aqui o URL que deseja vincular (pode ser uma página ou recurso)
-    link.textContent = `${fileName}`; // Define o texto do link como o nome do arquivo
-    link.onclick = function () {
-      exibirConteudo(fileName); // Quando clicado, chama a função exibirConteudo
-    };
+
+    var showListFileAtual = document.querySelector('#showListFile').innerHTML;
+    
+    document.querySelector('#showListFile').innerHTML = showListFileAtual + '<br>' + '<p id="'+`${fileName}`+'">' + '<br>'+ `${fileName}` + '</p>';
+
+
+document.getElementById(`${fileName}`).addEventListener('click', function() {
+    document.getElementById('fileShow').value = conteudonovo;
+}, false);
+//fim div
 
             // Adicionando o link ao fileUpload como um novo elemento
             if (fileUpload.value === '') {
-                fileUpload.value = `${fileName}`;
+                fileUpload.value =  +`${fileName}`;
             } else {
-                fileUpload.value += '\n' + `${fileName}`;
+                fileUpload.value += '\n' +   + `${fileName}`;
             }
         }
     });
-});
-
-function exibirConteudo(fileName) {
-    // Recupere o elemento fileShow
-    const fileShow = document.getElementById('fileShow');
-
-    // Verifique se o elemento fileShow existe
-    if (fileShow) {
-        // Crie um novo elemento de texto para exibir o conteúdo
-        const textNode = document.createTextNode(`Exibindo conteúdo do arquivo: ${fileName}`);
-
-        // Verifique se já há algum conteúdo em fileShow
-        if (fileShow.value.length === 0) {
-            // Se não houver conteúdo, defina o texto diretamente
-            fileShow.value = textNode.textContent;
-        } else {
-            // Se já houver conteúdo, adicione uma quebra de linha e o novo texto
-            fileShow.value += '\n' + textNode.textContent;
-        }
-    }
-}
-
-
+});    
 </script>
 
 <footer class="fixed-bottom" >
