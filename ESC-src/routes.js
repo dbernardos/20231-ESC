@@ -38,7 +38,7 @@ app.post('/login', loginCtrl.loginPost);
 
 app.post('/processamento', processaCtrl.processaPost);
 
-app.post('/relatorio', processaCtrl.processaPost);
+//app.post('/relatorio', processaCtrl.processaPost);
 
 
 //método post do login
@@ -82,7 +82,7 @@ app.get('/processamento',  verificarAutenticacao ,(req, res) => {
   res.render('telaProcessamento', { errorMessage: '' });
 });
 
-app.get('/relatorio',  verificarAutenticacao ,(req, res) => {
+app.post('/relatorio',  verificarAutenticacao ,(req, res) => {
 
   res.render('telaRelatorio', { errorMessage: '' });
 });
