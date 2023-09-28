@@ -18,224 +18,229 @@
 </head>
 
 <body class="bg-body-secondary">
-    
+
     <%- include('menu') %> <!-- Inclui o menu -->
-<form id="frmProcessa" method="post" action="/processa">
-    <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 py-5">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Características do código-fonte" id="inputCaracteristicas" name="inputCaracteristicas" oninput="caracteresValidate()" 
-                    aria-label="Características do código-fonte" aria-describedby="button-addon2">
- <!--                   <button class="btn btn-outline-success  " type="submit" id="btnProcurar">Procurar</button>      -->
-                </div>
-                <span class="span-required" id="spanCarac"><b>*</b>Use vírgulas para separar os termos</span>
-                <span class="span-required-view">Digite pelo menos uma característica</span>      
-            </div>
-            <div class="col-md-6 py-5">
-                <div class="input-group">
-                    <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                    <button class="btn btn-outline-success" type="button" id="btnInserir">Inserir</button>
-                </div>
-                <span class="span-required"><b>*</b>Você pode adicionar mais de um arquivo</span>
-            </div>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h6>Lista de Arquivos carregados</h6>
-                <div class="input-group" id="showListFile">
-                    <!-- <textarea name="fileUpload" id="fileUpload" cols="30" rows="10"  class="form-control bg-secondary" readonly
+        <form id="frmProcessa" method="post" action="/processa">
+            <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 py-5">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Características do código-fonte"
+                                id="inputCaracteristicas" name="inputCaracteristicas" oninput="caracteresValidate()"
+                                aria-label="Características do código-fonte" aria-describedby="button-addon2">
+                            <!--                   <button class="btn btn-outline-success  " type="submit" id="btnProcurar">Procurar</button>      -->
+                        </div>
+                        <span class="span-required" id="spanCarac"><b>*</b>Use vírgulas para separar os termos</span>
+                        <span class="span-required-view">Digite pelo menos uma característica</span>
+                    </div>
+                    <div class="col-md-6 py-5">
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="inputGroupFile"
+                                aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                            <button class="btn btn-outline-success" type="button" id="btnInserir">Inserir</button>
+                        </div>
+                        <span class="span-required"><b>*</b>Você pode adicionar mais de um arquivo</span>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Lista de Arquivos carregados</h6>
+                                <div class="input-group" id="showListFile">
+                                    <!-- <textarea name="fileUpload" id="fileUpload" cols="30" rows="10"  class="form-control bg-secondary" readonly
                         class="form-control bg-secondary" oninput="fileUpdateValidate()"></textarea> -->
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Tarefa de código-fonte selecionada</h6>
+                                <div class="input-group">
+                                    <textarea name="fileShow" id="fileShow" cols="30" rows="10" class="form-control"
+                                        class="form-control bg-secondary" readonly></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </form>
+
+
+        <!--Rodapé que contém os botões de voltar ao main Menu e um botão que irá fazer todo o processamento de extração de caracerísticas  -->
+        <footer>
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
+                <div class="me-5 d-none d-lg-block px-5">
+
+                    <span><a href="/principal">Voltar</a></span>
+
                 </div>
-            </div>
-            <div class="col-md-6">
-                <h6>Tarefa de código-fonte selecionada</h6>
-                <div class="input-group">
-                    <textarea name="fileShow" id="fileShow" cols="30" rows="10" class="form-control" class="form-control bg-secondary" readonly></textarea>
+
+                <div class="px-5">
+                    <button class="btn btn-success">Processar</button>
                 </div>
-            </div>
-        </div>
-    </div>
-</form>
 
-    
-    <!--Rodapé que contém os botões de voltar ao main Menu e um botão que irá fazer todo o processamento de extração de caracerísticas  -->
-    <footer>
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
-            <div class="me-5 d-none d-lg-block px-5">
+            </section>
+        </footer>
 
-                <span><a href="/principal">Voltar</a></span>
+        <script>
+            const inputCaracteristicas = document.getElementById('inputCaracteristicas');
+            const caracteristicas = [
+                "if", "for", "while", "case", "else", "fgets", "getch", "getchar", "getche",
+                "putchar", "puts", "switch", "gets", "break", "return", "exit", "do", "strcpy",
+                "strcmp", "strncpy", "strlen", "strupr", "strlwr", "strrev", "tolower", "toupper",
+                "isalpha", "fopen", "fclose", "feof", "remove", "fflush", "sizeof", "typedef",
+                "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
+                "argc", "argv"
+            ];
 
-            </div>
+            function verificarCaracteristicas() {
+                const inputCaracteristicas = document.getElementById('inputCaracteristicas');
+                const valorDigitado = inputCaracteristicas.value.toLowerCase();
 
-            <div class="px-5">
-                <button class="btn btn-success">Processar</button>
-            </div>          
+                const correspondencias = caracteristicas.filter(caracteristica => valorDigitado.includes(caracteristica.toLowerCase()));
 
-        </section>
-    </footer>
+                console.log('Características correspondentes:', correspondencias);
 
-    <script>
-      const inputCaracteristicas = document.getElementById('inputCaracteristicas');
-      const caracteristicas = [
-    "if", "for", "while", "case", "else", "fgets", "getch", "getchar", "getche",
-    "putchar", "puts", "switch", "gets", "break", "return", "exit", "do", "strcpy",
-    "strcmp", "strncpy", "strlen", "strupr", "strlwr", "strrev", "tolower", "toupper",
-    "isalpha", "fopen", "fclose", "feof", "remove", "fflush", "sizeof", "typedef",
-    "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
-    "argc", "argv"
-];
-
-function verificarCaracteristicas() {
-    const inputCaracteristicas = document.getElementById('inputCaracteristicas');
-    const valorDigitado = inputCaracteristicas.value.toLowerCase();
-    
-    const correspondencias = caracteristicas.filter(caracteristica => valorDigitado.includes(caracteristica.toLowerCase()));
-
-    console.log('Características correspondentes:', correspondencias);
-
-    // Exibir as características correspondentes no elemento fileShow
-    const fileShow = document.getElementById('fileShow');
-    fileShow.value = correspondencias.join(', ');
-}
-
-    const campos = document.querySelectorAll('.form-control');
-    const areas = document.getElementById('fileUpload');
-    const spans = document.querySelectorAll('span-required-view');
-    
-
-    function caracteresValidate() {
-        if (campos[0].value.length == 0) {
-            console.log('NAO VALIDADO');
-        } else {
-            console.log('VALIDADO');
-        }
-    }
-
-    function fileUpdateValidate() {
-        if (areas.value.length == 0) {
-            console.log('NÃO VALIDADO');
-        } else {
-            console.log('VALIDADO');
-        }
-    }
-    
-    function lerArquivoComoString(arquivo, callback) {
-    const leitor = new FileReader();
-
-    leitor.onload = function (event) {
-        const resultado = event.target.result;
-        callback(null, resultado);
-
-        // Atualize o conteúdo do fileShow com o conteúdo do arquivo
-        const fileShow = document.getElementById('fileShow');
-        //fileShow.value = resultado;
-    };
-
-    leitor.onerror = function (event) {
-        callback(event.target.error, null);
-    };
-
-    leitor.readAsText(arquivo);
-}
-
-    function extrair(lista_codigo, carac) {
-      const dicionario = {};
-      for (const cmd of carac) {
-        let count = 0;
-
-        for (const frase of lista_codigo) {
-          if (cmd === "if") {
-            if (frase.includes("if(") || frase.includes("if (")) {
-              count += 1;
+                // Exibir as características correspondentes no elemento fileShow
+                const fileShow = document.getElementById('fileShow');
+                fileShow.value = correspondencias.join(', ');
             }
-          } else if (cmd === "for") {
-            if (frase.includes("for(") || frase.includes("for (")) {
-              count += 1;
-            }
-          } else if (frase.includes(cmd)) {
-            count += 1;
-          }
-        }
 
-        dicionario[cmd] = count;
-      }
-      return dicionario;
-    }
+            const campos = document.querySelectorAll('.form-control');
+            const areas = document.getElementById('fileUpload');
+            const spans = document.querySelectorAll('span-required-view');
 
 
-    const input = document.getElementById('inputGroupFile');
-
-    var conteudonovo = '';
-    input.addEventListener('change', function (event) {
-        const arquivo = input.files[0];
-        if (arquivo) {
-            lerArquivoComoString(arquivo, function (erro, conteudo) {
-                if (erro) {
-                    console.error('Erro ao ler o arquivo', erro);
+            function caracteresValidate() {
+                if (campos[0].value.length == 0) {
+                    console.log('NAO VALIDADO');
                 } else {
-                    console.log('Conteúdo do arquivo como String', conteudo);
+                    console.log('VALIDADO');
+                }
+            }
 
-                    const lista_codigo = conteudo.split('\n')
-                    const carac = [
-                        "if", "for", "while", "case", "else", "fgets", "getch", "getchar", "getche",
-                        "putchar", "puts", "switch", "gets", "break", "return", "exit", "do", "strcpy",
-                        "strcmp", "strncpy", "strlen", "strupr", "strlwr", "strrev", "tolower", "toupper",
-                        "isalpha", "fopen", "fclose", "feof", "remove", "fflush", "sizeof", "typedef",
-                        "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
-                        "argc", "argv"
-                    ]
-                    const resultado = extrair(lista_codigo, carac);
-                    console.log(resultado); // Exibirá o resultado no console
+            function fileUpdateValidate() {
+                if (areas.value.length == 0) {
+                    console.log('NÃO VALIDADO');
+                } else {
+                    console.log('VALIDADO');
+                }
+            }
 
-                    //document.getElementById('fileShow').value = conteudo;
-                    //document.getElementById('spanCarac').textContent = 'Valores que deseja enviar para o servidor';
+            function lerArquivoComoString(arquivo, callback) {
+                const leitor = new FileReader();
 
-                    conteudonovo = conteudo;
+                leitor.onload = function (event) {
+                    const resultado = event.target.result;
+                    callback(null, resultado);
+
+                    // Atualize o conteúdo do fileShow com o conteúdo do arquivo
+                    const fileShow = document.getElementById('fileShow');
+                    //fileShow.value = resultado;
+                };
+
+                leitor.onerror = function (event) {
+                    callback(event.target.error, null);
+                };
+
+                leitor.readAsText(arquivo);
+            }
+
+            function extrair(lista_codigo, carac) {
+                const dicionario = {};
+                for (const cmd of carac) {
+                    let count = 0;
+
+                    for (const frase of lista_codigo) {
+                        if (cmd === "if") {
+                            if (frase.includes("if(") || frase.includes("if (")) {
+                                count += 1;
+                            }
+                        } else if (cmd === "for") {
+                            if (frase.includes("for(") || frase.includes("for (")) {
+                                count += 1;
+                            }
+                        } else if (frase.includes(cmd)) {
+                            count += 1;
+                        }
+                    }
+
+                    dicionario[cmd] = count;
+                }
+                return dicionario;
+            }
+
+
+            const input = document.getElementById('inputGroupFile');
+
+            var conteudonovo = '';
+            input.addEventListener('change', function (event) {
+                const arquivo = input.files[0];
+                if (arquivo) {
+                    lerArquivoComoString(arquivo, function (erro, conteudo) {
+                        if (erro) {
+                            console.error('Erro ao ler o arquivo', erro);
+                        } else {
+                            console.log('Conteúdo do arquivo como String', conteudo);
+
+                            const lista_codigo = conteudo.split('\n')
+                            const carac = [
+                                "if", "for", "while", "case", "else", "fgets", "getch", "getchar", "getche",
+                                "putchar", "puts", "switch", "gets", "break", "return", "exit", "do", "strcpy",
+                                "strcmp", "strncpy", "strlen", "strupr", "strlwr", "strrev", "tolower", "toupper",
+                                "isalpha", "fopen", "fclose", "feof", "remove", "fflush", "sizeof", "typedef",
+                                "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
+                                "argc", "argv"
+                            ]
+                            const resultado = extrair(lista_codigo, carac);
+                            console.log(resultado); // Exibirá o resultado no console
+
+                            //document.getElementById('fileShow').value = conteudo;
+                            //document.getElementById('spanCarac').textContent = 'Valores que deseja enviar para o servidor';
+
+                            conteudonovo = conteudo;
+                        }
+                    })
                 }
             })
-        }
-    })
-    document.addEventListener('DOMContentLoaded', function () {
-    const inputGroupFile = document.getElementById('inputGroupFile');
-    const fileUpload = document.getElementById('fileUpload');
+            document.addEventListener('DOMContentLoaded', function () {
+                const inputGroupFile = document.getElementById('inputGroupFile');
+                const fileUpload = document.getElementById('fileUpload');
 
-    inputGroupFile.addEventListener('change', function () {
-        const selectedFile = inputGroupFile.files[0];
-        if (selectedFile) {
-            // Obtendo o nome do arquivo
-            const fileName = selectedFile.name;
+                inputGroupFile.addEventListener('change', function () {
+                    const selectedFile = inputGroupFile.files[0];
+                    if (selectedFile) {
+                        // Obtendo o nome do arquivo
+                        const fileName = selectedFile.name;
 
-    var showListFileAtual = document.querySelector('#showListFile').innerHTML;
-    
-    document.querySelector('#showListFile').innerHTML = showListFileAtual + '<br>' + '<p id="'+`${fileName}`+'">' + '<br>'+ `${fileName}` + '</p>';
+                        var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>';
+
+                        document.querySelector('#showListFile').innerHTML = showListFileAtual + '<br>' + '<span id="' + `${fileName}` + '" style="display: inline;">' + '<br>' + `${fileName}` + '</span>';
 
 
-document.getElementById(`${fileName}`).addEventListener('click', function() {
-    document.getElementById('fileShow').value = conteudonovo;
-}, false);
-//fim div
 
-            // Adicionando o link ao fileUpload como um novo elemento
-            if (fileUpload.value === '') {
-                fileUpload.value =  +`${fileName}`;
-            } else {
-                fileUpload.value += '\n' +   + `${fileName}`;
-            }
-        }
-    });
-});    
-</script>
 
-<footer class="fixed-bottom" >
-        <div class="text-center p-4 fluid" style="background-color: rgba(28, 108, 173, 0.644);" id="divFim">
-        © 2023 Copyright:
-         <a class="text-reset fw-bold" href="#">Grupo ESC</a>
-  </div>
-</footer>
-    
+                        document.getElementById(`${fileName}`).addEventListener('click', function () {
+                            document.getElementById('fileShow').value = conteudonovo;
+                        }, false);
+                        //fim div
+
+                        // Adicionando o link ao fileUpload como um novo elemento
+                        if (fileUpload.value === '') {
+                            fileUpload.value = +`${fileName}`;
+                        } else {
+                            fileUpload.value += '\n' + + `${fileName}`;
+                        }
+                    }
+                });
+            });    
+        </script>
+
+        <footer class="fixed-bottom">
+            <div class="text-center p-4 fluid" style="background-color: rgba(28, 108, 173, 0.644);" id="divFim">
+                © 2023 Copyright:
+                <a class="text-reset fw-bold" href="#">Grupo ESC</a>
+            </div>
+        </footer>
+
 
 </body>
 
