@@ -13,3 +13,8 @@
 #fileUpload {
     color: white;
 }
+#divFim{
+    display: fixed;
+	justify-content: center;
+	align-items: center;
+}
