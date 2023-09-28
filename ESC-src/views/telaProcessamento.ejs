@@ -45,15 +45,15 @@
         <div class="row">
             <div class="col-md-6">
                 <h6>Lista de Arquivos carregados</h6>
-                <div class="input-group ">
-                    <textarea name="fileUpload" id="fileUpload" cols="30" rows="10" 
+                <div class="input-group">
+                    <textarea name="fileUpload" id="fileUpload" cols="30" rows="10"  class="form-control bg-secondary" readonly
                         class="form-control bg-secondary" oninput="fileUpdateValidate()"></textarea>
                 </div>
             </div>
             <div class="col-md-6">
                 <h6>Tarefa de código-fonte selecionada</h6>
                 <div class="input-group">
-                    <textarea name="fileShow" id="fileShow" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea name="fileShow" id="fileShow" cols="30" rows="10" class="form-control" class="form-control bg-secondary" readonly></textarea>
                 </div>
             </div>
         </div>
@@ -206,12 +206,12 @@ function verificarCaracteristicas() {
             const fileName = selectedFile.name;
             
             // tentando riar um link
-            const link = document.createElement('a');
-            link.href = fileName; 
-            link.textContent = `${fileName}`; // Define o texto do link como o nome do arquivo
-            link.onclick = function () {
-                exibirConteudo(fileName); // Quando clicado, chama a função exibirConteudo
-            };
+    const link = document.createElement('a');
+    link.href =fileName; // Defina aqui o URL que deseja vincular (pode ser uma página ou recurso)
+    link.textContent = `${fileName}`; // Define o texto do link como o nome do arquivo
+    link.onclick = function () {
+      exibirConteudo(fileName); // Quando clicado, chama a função exibirConteudo
+    };
 
             // Adicionando o link ao fileUpload como um novo elemento
             if (fileUpload.value === '') {
