@@ -38,6 +38,8 @@ app.post('/login', loginCtrl.loginPost);
 
 app.post('/processamento', processaCtrl.processaPost);
 
+app.post('/relatorio', processaCtrl.processaPost);
+
 
 //método post do login
 app.post('/login', function (req, res){
@@ -79,6 +81,12 @@ app.get('/processamento',  verificarAutenticacao ,(req, res) => {
 
   res.render('telaProcessamento', { errorMessage: '' });
 });
+
+app.get('/relatorio',  verificarAutenticacao ,(req, res) => {
+
+  res.render('telaRelatorio', { errorMessage: '' });
+});
+
 
 app.use(bodyParser.json());
 
