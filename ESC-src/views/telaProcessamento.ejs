@@ -20,7 +20,6 @@
 <body class="bg-body-secondary">
 
     <%- include('menu') %> <!-- Inclui o menu -->
-<<<<<<< Updated upstream
         <form id="frmProcessa" method="post" action="/processa">
             <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
             <div class="container">
@@ -76,43 +75,6 @@
 
                 <div class="px-5">
                     <button class="btn btn-success">Processar</button>
-=======
-<form id="frmProcessa" method="post" action="/processa">
-    <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 py-5">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Características do código-fonte" id="inputCaracteristicas" name="inputCaracteristicas" oninput="caracteresValidate()" 
-                    aria-label="Características do código-fonte" aria-describedby="button-addon2">
-   <!--<button class="btn btn-outline-success  " type="submit" id="btnProcurar">Procurar</button>-->
-                </div>
-                <span class="span-required" id="spanCarac"><b>*</b>Use vírgulas para separar os termos</span>
-                <span class="span-required-view">Digite pelo menos uma característica</span>      
-            </div>
-            <div class="col-md-6 py-5">
-                <div class="input-group">
-                    <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                    <button class="btn btn-outline-success" type="button" id="btnInserir">Inserir</button>
-                </div>
-                <span class="span-required"><b>*</b>Você pode adicionar mais de um arquivo</span>
-            </div>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h6>Lista de Arquivos carregados</h6>
-                <div class="input-group">
-                    <textarea name="fileUpload" id="fileUpload" cols="30" rows="10"  class="form-control bg-secondary" readonly
-                        class="form-control bg-secondary" oninput="fileUpdateValidate()"></textarea>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <h6>Tarefa de código-fonte selecionada</h6>
-                <div class="input-group">
-                    <textarea name="fileShow" id="fileShow" cols="30" rows="10" class="form-control bg-secondary" style="resize: none;" readonly></textarea>
-
->>>>>>> Stashed changes
                 </div>
 
             </section>
@@ -162,7 +124,6 @@
                     console.log('VALIDADO');
                 }
             }
-<<<<<<< Updated upstream
 
             function lerArquivoComoString(arquivo, callback) {
                 const leitor = new FileReader();
@@ -280,42 +241,6 @@
             </div>
         </footer>
 
-=======
-        }
-    });
-});
-
-function exibirConteudo(fileName) {
-    // Recupere o elemento fileShow
-    const fileShow = document.getElementById('fileShow');
-
-    // Verifique se o elemento fileShow existe
-    if (fileShow) {
-        // Crie um novo elemento de texto para exibir o conteúdo
-        const textNode = document.createTextNode(`Exibindo conteúdo do arquivo: ${fileName}`);
-
-        // Verifique se já há algum conteúdo em fileShow
-        if (fileShow.value.length === 0) {
-            // Se não houver conteúdo, defina o texto diretamente
-            fileShow.value = textNode.textContent;
-        } else {
-            // Se já houver conteúdo, adicione uma quebra de linha e o novo texto
-            fileShow.value += '\n' + textNode.textContent;
-        }
-    }
-}
-
-
-</script>
-
-<footer class="fixed-bottom" id="footFIm">
-        <div class="text-center p-4 fluid" style="background-color: rgba(14, 103, 219, 0.644);" id="divFim">
-        © 2023 Copyright:
-         <a class="text-reset fw-bold" href="#">Grupo ESC</a>
-  </div>
-</footer>
-    
->>>>>>> Stashed changes
 
 </body>
 
