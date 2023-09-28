@@ -13,8 +13,28 @@
 #fileUpload {
     color: white;
 }
-#divFim{
-    display: fixed;
-	justify-content: center;
-	align-items: center;
+
+#footFim {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0;
+    background-color:  rgba(28, 108, 173, 0.644);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fileUpload{
+    resize: none;
+    position: fixed;
+
+}
+#fileShow{
+    color: white;
 }

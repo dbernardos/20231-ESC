@@ -19,8 +19,10 @@
 
 <body class="bg-body-secondary">
 
-    <%- include('menu') %> <!-- Inclui o menu -->
+     <!-- Inclui o menu -->
+
         <form id="frmProcessa" method="post" action="/relatorio">
+
             <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
             <div class="container">
                 <div class="row">
@@ -55,8 +57,8 @@
                             <div class="col-md-6">
                                 <h6>Tarefa de código-fonte selecionada</h6>
                                 <div class="input-group">
-                                    <textarea name="fileShow" id="fileShow" cols="30" rows="10" class="form-control"
-                                        class="form-control bg-secondary" readonly></textarea>
+                                    <textarea name="fileShow" id="fileShow" cols="30" rows="10" class="form-control bg-secondary" style="resize: none;" readonly ></textarea>
+
                                 </div>
                             </div>
                         </div>
@@ -211,15 +213,13 @@
                         // Obtendo o nome do arquivo
                         const fileName = selectedFile.name;
 
+                        /** DESCOBRIR COMO PULAR LINHA **/
                         var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>';
 
                         document.querySelector('#showListFile').innerHTML = showListFileAtual + '<br>' + '<span id="' + `${fileName}` + '" style="display: inline;">' + '<br>' + `${fileName}` + '</span>';
 
-
-
-
                         document.getElementById(`${fileName}`).addEventListener('click', function () {
-                            document.getElementById('fileShow').value = conteudonovo;
+                            document.getElementById('fileShow').value = conteudonovo; /**FAZER COM QUE ESSE CONTEUDO NOVO VIRE UM VETOR COM OS ARQUIVOS NA MEMÓRIA*/
                         }, false);
                         //fim div
 
