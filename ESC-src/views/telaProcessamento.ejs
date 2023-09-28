@@ -214,15 +214,13 @@
                         // Obtendo o nome do arquivo
                         const fileName = selectedFile.name;
 
+                        /** DESCOBRIR COMO PULAR LINHA **/
                         var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>';
 
                         document.querySelector('#showListFile').innerHTML = showListFileAtual + '<br>' + '<span id="' + `${fileName}` + '" style="display: inline;">' + '<br>' + `${fileName}` + '</span>';
 
-
-
-
                         document.getElementById(`${fileName}`).addEventListener('click', function () {
-                            document.getElementById('fileShow').value = conteudonovo;
+                            document.getElementById('fileShow').value = conteudonovo; /**FAZER COM QUE ESSE CONTEUDO NOVO VIRE UM VETOR COM OS ARQUIVOS NA MEMÓRIA*/
                         }, false);
                         //fim div
 
