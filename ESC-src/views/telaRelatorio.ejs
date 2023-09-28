@@ -18,16 +18,17 @@
 </head>
 
 <body class="bg-body-secondary">
-    
-<!--    <%- include('menu') %> <!-- Inclui o menu -->        -->
 
-    <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
+    <%- include('menu') %> <!-- Inclui o menu -->
+
+  <!--  <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
         <div class="container-fluid">
-            <a href="principal" class="navbar-brand navbar-dark col-6 align-content-center" style="font-size: 24px; font-weight: bold; color: #333; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); margin: 10px 0;">
+            <a href="principal" class="navbar-brand navbar-dark col-6 align-content-center"
+                style="font-size: 24px; font-weight: bold; color: #333; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); margin: 10px 0;">
                 CodeXtract Master
             </a>
-    
-       <!--     <button class="navbar-toggler">
+
+              <button class="navbar-toggler">
                 <i class="navbar-toggler-icon"></i>
             </button>
             <div class="navbar-collapse collapse col-6">
@@ -63,19 +64,20 @@
                             </ul> 
                         </div> 
                     </li>
+                    </div></ul>
                     <li>-->
-                        <a href="principal" class="nav-link text-light text-decoration-none px-3">Resultados</a>
-                    </li>
-                </ul>
-               
-            </div>
+            <a href="principal" class="nav-link text-light text-decoration-none px-3">Home</a>
+            </li>
+
+
+
         </div>
-    
+
     </nav>
 
 
 
- <!--   --Parte de selecionar os termos de procura e a parte de escolher os arquivos--          
+    <!--   --Parte de selecionar os termos de procura e a parte de escolher os arquivos--          
     <div class="container">
         <div class="row">
             <div class="col-md-6 py-5">
@@ -96,7 +98,7 @@
             </div>
         </div>
     </div>
---> 
+-->
 
 
 
@@ -106,8 +108,8 @@
             <div class="col-md-6">
                 <h6>Resultado esperado</h6>
                 <div class="input-group ">
-                    <textarea name="fileUpload" id="fileUpload" cols="30" rows="10"
-                        class="form-control bg-secondary" oninput="fileUpdateValidate()"></textarea>
+                    <textarea name="fileUpload" id="fileUpload" cols="30" rows="10" class="form-control bg-secondary"
+                        oninput="fileUpdateValidate()"></textarea>
                 </div>
             </div>
             <div class="col-md-6">
@@ -118,6 +120,21 @@
             </div>
         </div>
     </div>
+
+
+
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
+        <div class="me-5 d-none d-lg-block px-5">
+
+            <span><a href="/processamento">Voltar</a></span>
+
+        </div>
+
+        
+
+    </section>
+
+
     <!--Rodapé que contém os botões de voltar ao main Menu e um botão que irá fazer todo o processamento de extração de caracerísticas  -->
     <footer>
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
@@ -128,8 +145,8 @@
             </div>
         -->
             <div class="px-5">
- <!--               <button class="btn btn-success">Processar</button>                 -->
-            </div>          
+                <!--               <button class="btn btn-success">Processar</button>                 -->
+            </div>
 
         </section>
     </footer>
@@ -140,7 +157,7 @@
         const spans = document.querySelectorAll('span-required-view');
 
         function caracteresValidate() {
-            if(campos[0].value.length == 0) {
+            if (campos[0].value.length == 0) {
                 console.log('NAO VALIDADO');
             }
             else {
@@ -148,24 +165,24 @@
             }
         }
         function fileUpdateValidate() {
-            if (areas[0].value.length ==0) {
+            if (areas[0].value.length == 0) {
                 console.log('NÃO VALIDADO');
-            }else {
+            } else {
                 console.log('VALIDADO');
             }
         }
 
     </script>
 
-
-<footer class="fixed-bottom">
+<!----
+    <footer class="fixed-bottom">
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
-        © 2023 Copyright:
-         <a class="text-reset fw-bold" href="#">Grupo ESC</a>
-  </div>
-</footer>
-    
+            © 2023 Copyright:
+            <a class="text-reset fw-bold" href="#">Grupo ESC</a>
+        </div>
+    </footer>     -->
 
+    <%- include('rodape') %>
 </body>
 
 </html>

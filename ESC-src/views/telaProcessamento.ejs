@@ -19,6 +19,9 @@
 
 <body class="bg-body-secondary">
 
+
+    <%- include('menu') %>
+
      <!-- Inclui o menu -->
 
         <form id="frmProcessa" method="post" action="/relatorio">
@@ -234,14 +237,14 @@
             });    
         </script>
 
-        <footer class="fixed-bottom">
+<!--        <footer class="fixed-bottom">
             <div class="text-center p-4 fluid" style="background-color: rgba(28, 108, 173, 0.644);" id="divFim">
                 © 2023 Copyright:
                 <a class="text-reset fw-bold" href="#">Grupo ESC</a>
             </div>
-        </footer>
+        </footer>    -->
 
-
+        <%- include('rodape') %>
 </body>
 
 </html>
