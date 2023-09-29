@@ -22,7 +22,7 @@
 
     <%- include('menu') %>
 
-     <!-- Inclui o menu -->
+        <!-- Inclui o menu -->
 
         <form id="frmProcessa" method="post" action="/relatorio">
 
@@ -60,7 +60,8 @@
                             <div class="col-md-6">
                                 <h6>Tarefa de código-fonte selecionada</h6>
                                 <div class="input-group">
-                                    <textarea name="fileShow" id="fileShow" cols="30" rows="10" class="form-control bg-secondary" style="resize: none;" readonly ></textarea>
+                                    <textarea name="fileShow" id="fileShow" cols="30" rows="10"
+                                        class="form-control bg-secondary" style="resize: none;" readonly></textarea>
 
                                 </div>
                             </div>
@@ -206,38 +207,72 @@
                     })
                 }
             })
+
+            const arquivosSelecionados = [];
             document.addEventListener('DOMContentLoaded', function () {
                 const inputGroupFile = document.getElementById('inputGroupFile');
                 const fileUpload = document.getElementById('fileUpload');
 
-                inputGroupFile.addEventListener('change', function () {
+                // Vetor para armazenar os arquivos selecionados
+                const arquivosSelecionados = [];
+
+                inputGroupFile.addEventListener('change', function (event) {
                     const selectedFile = inputGroupFile.files[0];
                     if (selectedFile) {
                         // Obtendo o nome do arquivo
                         const fileName = selectedFile.name;
 
-                        /** DESCOBRIR COMO PULAR LINHA **/
+                        // Adicionando um elemento `span` novo ao elemento `showListFile`
                         var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>';
+                        document.querySelector('#showListFile').innerHTML =
+                            '<span id="' + `${fileName}` + '" style="display: block;">' +
+                            '<br>' +
+                            `${fileName}` + ' <br>' +
+                            '</span>' +
+                            showListFileAtual;
 
-                        document.querySelector('#showListFile').innerHTML = showListFileAtual + '<br>' + '<span id="' + `${fileName}` + '" style="display: inline;">' + '<br>' + `${fileName}` + '</span>';
+                        // Lendo o conteúdo do arquivo e armazenando no vetor de arquivos selecionados
+                        lerArquivoComoString(selectedFile, function (erro, conteudo) {
+                            if (erro) {
+                                console.error('Erro ao ler o arquivo', erro);
+                            } else {
+                                // Adicione o conteúdo do arquivo ao vetor de arquivos selecionados
+                                arquivosSelecionados.push({ nome: fileName, conteudo: conteudo });
+                                document.querySelector('#showListFile').addEventListener('click', function (event) {
+                                    if (event.target.tagName === 'SPAN') {
+                                        const nomeArquivo = event.target.id;
+                                        const arquivoSelecionado = arquivosSelecionados.find(arquivo => arquivo.nome === nomeArquivo);
+                                        if (arquivoSelecionado) {
+                                            document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
+                                        }
+                                    }
+                                }, false);
 
-                        document.getElementById(`${fileName}`).addEventListener('click', function () {
-                            document.getElementById('fileShow').value = conteudonovo; /**FAZER COM QUE ESSE CONTEUDO NOVO VIRE UM VETOR COM OS ARQUIVOS NA MEMÓRIA*/
-                        }, false);
-                        //fim div
+                                    // Adicionando um evento de clique para exibir o arquivo selecionado
+                                    document.getElementById(`${fileName}`).addEventListener('click', function () {
+                                        const nomeArquivo = this.id;
+                                        const arquivoSelecionado = arquivosSelecionados.find(arquivo => arquivo.nome === nomeArquivo);
+                                        if (arquivoSelecionado) {
+                                            document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
+                                        }
+                                    }, false);
 
-                        // Adicionando o link ao fileUpload como um novo elemento
-                        if (fileUpload.value === '') {
-                            fileUpload.value = +`${fileName}`;
-                        } else {
-                            fileUpload.value += '\n' + + `${fileName}`;
-                        }
+                                    // Agora você pode atualizar o campo fileUpload
+                                    if (fileUpload.value === '') {
+                                        fileUpload.value = `${fileName}`;
+                                    } else {
+                                        fileUpload.value += '\n' + `${fileName}`;
+                                    }
+                                }
+                        });
                     }
                 });
-            });    
+            });
+
+
         </script>
 
-<!--        <footer class="fixed-bottom">
+        <!--        <footer class="fixed-bottom">
             <div class="text-center p-4 fluid" style="background-color: rgba(28, 108, 173, 0.644);" id="divFim">
                 © 2023 Copyright:
                 <a class="text-reset fw-bold" href="#">Grupo ESC</a>
