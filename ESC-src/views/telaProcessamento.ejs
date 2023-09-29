@@ -104,9 +104,66 @@
 
                 console.log('Características correspondentes:', correspondencias);
 
+<<<<<<< Updated upstream
                 // Exibir as características correspondentes no elemento fileShow
                 const fileShow = document.getElementById('fileShow');
                 fileShow.value = correspondencias.join(', ');
+=======
+            <form action="/resultado" method="POST">
+                <div class="px-5">
+                    <button class="btn btn-success">Processar</button>
+                </div>
+            </form>          
+
+        </section>
+    </footer>
+
+    <script>
+    const campos = document.querySelectorAll('.form-control');
+    const areas = document.getElementById('fileUpload');
+    const spans = document.querySelectorAll('span-required-view');
+    
+
+    function caracteresValidate() {
+        if (campos[0].value.length == 0) {
+            console.log('NAO VALIDADO');
+        } else {
+            console.log('VALIDADO');
+        }
+    }
+
+    function fileUpdateValidate() {
+        if (areas.value.length == 0) {
+            console.log('NÃO VALIDADO');
+        } else {
+            console.log('VALIDADO');
+        }
+    }
+    
+    function lerArquivoComoString(arquivo, callback) {
+        const leitor = new FileReader();
+
+        leitor.onload = function (event) {
+            const resultado = event.target.result;
+            callback(null, resultado);
+        };
+
+        leitor.onerror = function (event) {
+            callback(event.target.error, null);
+        };
+
+        leitor.readAsText(arquivo);
+    }
+    function extrair(lista_codigo, carac) {
+      const dicionario = {};
+      for (const cmd of carac) {
+        let count = 0;
+
+        for (const frase of lista_codigo) {
+          if (cmd === "if") {
+            if (frase.includes("if(") || frase.includes("if (")) {
+              count += 1;
+>>>>>>> Stashed changes
             }
 
             const campos = document.querySelectorAll('.form-control');

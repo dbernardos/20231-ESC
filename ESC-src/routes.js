@@ -50,6 +50,11 @@ app.get('/cadastro', (req, res) => {
   res.render('telaCadastro', { errorMessage: '' });
 });
 
+app.post('/resultado', (req, res) => {
+
+  res.render('telaRelatorio', { errorMessage: '' });
+});
+
 app.post('/criar-usuario', (req, res) => {
   const { nome, email, senha } = req.body;
 
@@ -71,14 +76,14 @@ connection.query(sql, [nome, email, senha], (err, result) => { //connection.quer
 app.get('/principal',  verificarAutenticacao, (req, res) => {
   
   const{ email, senha} = req.session.user;
-
+  
   console.log('Conexão efetuada:', email, senha);
 
   res.render('telaPrincipal', { errorMessage: '' });  
 
 });
 app.get('/processamento',  verificarAutenticacao ,(req, res) => {
-
+  
   res.render('telaProcessamento', { errorMessage: '' });
 });
 
