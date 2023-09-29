@@ -1,3 +1,5 @@
+/** comando para rodar o node **/
+/** npm install mysql2 expess express-session ejs md5 **/
 create table  Usuario(
 idUsuario int(100) primary key null auto_increment,
 nome varchar(100) not null,
@@ -34,5 +36,3 @@ INSERT INTO `usuario`(`idUsuario`, `nome`, `email`, `senha`) VALUES (NULL,'admin
 INSERT INTO `usuario`(`idUsuario`, `nome`, `email`, `senha`) VALUES (NULL,'admin9','admin9@gmail.com','45678910');
 INSERT INTO `usuario`(`idUsuario`, `nome`, `email`, `senha`) VALUES (NULL,'admin10','admin10@gmail.com','56789123');
 
-/** comando para rodar o node **/
-/** npm install mysql2 expess express-session ejs md5 **/

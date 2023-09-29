@@ -11,5 +11,14 @@
     "nodemon": "^3.0.1",
     "parser": "^0.1.4",
     "save": "^2.9.0"
-  }
+  },
+  "name": "20231-esc",
+  "description": "<h1>ESC: Extraction Source Code Features</h1>",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }
