@@ -14,175 +14,60 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
-
 </head>
 
 <body class="bg-body-secondary">
+    <%- include('menu') %>
 
-    <%- include('menu') %> <!-- Inclui o menu -->
-
-  <!--  <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
-        <div class="container-fluid">
-            <a href="principal" class="navbar-brand navbar-dark col-6 align-content-center"
-                style="font-size: 24px; font-weight: bold; color: #333; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); margin: 10px 0;">
-                CodeXtract Master
-            </a>
-
-              <button class="navbar-toggler">
-                <i class="navbar-toggler-icon"></i>
-            </button>
-            <div class="navbar-collapse collapse col-6">
-                <ul class="navbar-nav me-auto">
-                    <li>
-                        <div class="dropdown mx-3">
-                            <a href="#" class="dropdown-toggle text-light text-decoration-none"
-                                data-bs-toggle="dropdown">
-                                Turmas cadastradas
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-md-end dropdown-menu-secondary">
-                                <li><a href="#" class="dropdown-item ">Turma1</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Turma2</a></li>
-                            </ul>
-                        </div>
-                    </li>
-              
-                    <li>
-                        <div class="dropdown mx-3   ">
-                            <a href="#" class="dropdown-toggle text-light text-decoration-none"
-                                data-bs-toggle="dropdown">
-                                Tarefas 
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-md-end dropdown-menu-secondary">
-                                <li><a href="#" class="dropdown-item">Tarefa 1</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a href="#" class="dropdown-item">Tarefa 2</a></li>
-                            </ul> 
-                        </div> 
-                    </li>
-                    </div></ul>
-                    <li>-->
-            <a href="principal" class="nav-link text-light text-decoration-none px-3">Home</a>
-            </li>
-
-
-
-        </div>
-
-    </nav>
-
-
-
-    <!--   --Parte de selecionar os termos de procura e a parte de escolher os arquivos--          
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 py-5">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Caracaterísticas do código-fonte" id="inputCaracteristicas" oninput="caracteresValidate()"
-                        aria-label="Caracaterísticas do código-fonte" aria-describedby="button-addon2">
- --                   <button class="btn btn-outline-success  " type="button" id="button-addon2">Procurar</button>                      --
+        <!--Duas áreas de texto, uma que mostra a lista de arquivos adicionadas e outra que ao clicar, mostra breviamente o código-fonte selecionado-->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>Resultado esperado</h6>
+                    <div class="input-group ">
+                        <textarea name="fileUpload" id="fileUpload" cols="30" rows="10"
+                            class="form-control bg-secondary" oninput="fileUpdateValidate()"></textarea>
+                    </div>
                 </div>
---                <span class="span-required" id="spanCarac"><b>*</b>Use vírgulas para separar os termos</span>           
-                <span class="span-required-view">Digite pelo menos uma característica</span>  --
-            </div>
-            <div class="col-md-6 py-5">
-                <div class="input-group">
-                    <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon04"
-                        aria-label="Upload">                  <button class="btn btn-outline-success" type="button" id="inputGroupFileAddon">Inserir</button>
-                </div>
-                <span class="span-required"><b>*</b>Você pode adicionar mais de um arquivo</span>           
-            </div>
-        </div>
-    </div>
--->
-
-
-
-    <!--Duas áreas de texto, uma que mostra a lista de arquivos adicionadas e outra que ao clicar, mostra breviamente o código-fonte selecionado-->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h6>Resultado esperado</h6>
-                <div class="input-group ">
-                    <textarea name="fileUpload" id="fileUpload" cols="30" rows="10" class="form-control bg-secondary"
-                        oninput="fileUpdateValidate()"></textarea>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <h6>Resultado obtido</h6>
-                <div class="input-group">
-                    <textarea name="fileShow" id="fileShow" cols="30" rows="10" class="form-control"></textarea>
+                <div class="col-md-6">
+                    <h6>Resultado obtido</h6>
+                    <div class="input-group">
+                        <textarea name="fileShow" id="fileShow" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-
-
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
-        <div class="me-5 d-none d-lg-block px-5">
-
-            <span><a href="/processamento">Voltar</a></span>
-
-        </div>
-
-        
-
-    </section>
-
-
-    <!--Rodapé que contém os botões de voltar ao main Menu e um botão que irá fazer todo o processamento de extração de caracerísticas  -->
-    <footer>
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
-            <!--<div class="me-5 d-none d-lg-block px-5">
-
-                <span><a href="/principal">Voltar</a></span>
-
+            <div class="me-5 d-none d-lg-block px-5">
+                <span><a href="/processamento">Voltar</a></span>
             </div>
-        -->
-            <div class="px-5">
-                <!--               <button class="btn btn-success">Processar</button>                 -->
-            </div>
-
         </section>
-    </footer>
 
-    <script>
-        const campos = document.querySelectorAll('.form-control');
-        const areas = document.getElementById('fileUpload');
-        const spans = document.querySelectorAll('span-required-view');
+        <script>
+            const campos = document.querySelectorAll('.form-control');
+            const areas = document.getElementById('fileUpload');
+            const spans = document.querySelectorAll('span-required-view');
 
-        function caracteresValidate() {
-            if (campos[0].value.length == 0) {
-                console.log('NAO VALIDADO');
+            function caracteresValidate() {
+                if (campos[0].value.length == 0) {
+                    console.log('NAO VALIDADO');
+                }
+                else {
+                    console.log('VALIDADO');
+                }
             }
-            else {
-                console.log('VALIDADO');
+            function fileUpdateValidate() {
+                if (areas[0].value.length == 0) {
+                    console.log('NÃO VALIDADO');
+                } else {
+                    console.log('VALIDADO');
+                }
             }
-        }
-        function fileUpdateValidate() {
-            if (areas[0].value.length == 0) {
-                console.log('NÃO VALIDADO');
-            } else {
-                console.log('VALIDADO');
-            }
-        }
 
-    </script>
+        </script>
 
-<!----
-    <footer class="fixed-bottom">
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
-            © 2023 Copyright:
-            <a class="text-reset fw-bold" href="#">Grupo ESC</a>
-        </div>
-    </footer>     -->
-
-    <%- include('rodape') %>
+        <%- include('rodape') %>
 </body>
 
 </html>
