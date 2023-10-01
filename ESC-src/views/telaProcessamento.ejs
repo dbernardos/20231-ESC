@@ -18,12 +18,7 @@
 </head>
 
 <body class="bg-body-secondary">
-
-
     <%- include('menu') %>
-
-        <!-- Inclui o menu -->
-
         <form id="frmProcessa" method="post" action="/relatorio">
 
             <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
@@ -53,38 +48,26 @@
                             <div class="col-md-6">
                                 <h6>Lista de Arquivos carregados</h6>
                                 <div class="input-group" id="showListFile">
-                                    <!-- <textarea name="fileUpload" id="fileUpload" cols="30" rows="10"  class="form-control bg-secondary" readonly
-                        class="form-control bg-secondary" oninput="fileUpdateValidate()"></textarea> -->
+                                    <!-- AQUI CARREGA O LINK DAS TAREFAS VIA JAVASCRIPT -->
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <h6>Tarefa de código-fonte selecionada</h6>
                                 <div class="input-group">
                                     <textarea name="fileShow" id="fileShow" cols="30" rows="10"
-                                        class="form-control bg-secondary" style="resize: none;" readonly></textarea>
-
+                                        class="form-control bg-light" style="resize: none;" readonly></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
+                        <div class="px-5">
+                            <button class="btn btn-success">Processar</button>
+                        </div>
+                    </section>
         </form>
-
-
-        <!--Rodapé que contém os botões de voltar ao main Menu e um botão que irá fazer todo o processamento de extração de caracerísticas  -->
-        <footer>
-            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
-                <div class="me-5 d-none d-lg-block px-5">
-
-                    <span><a href="/principal">Voltar</a></span>
-
-                </div>
-
-                <div class="px-5">
-                    <button class="btn btn-success">Processar</button>
-                </div>
-
-            </section>
-        </footer>
 
         <script>
             const inputCaracteristicas = document.getElementById('inputCaracteristicas');
@@ -200,7 +183,7 @@
                             console.log(resultado); // Exibirá o resultado no console
 
                             //document.getElementById('fileShow').value = conteudo;
-                           
+
 
                             conteudonovo = conteudo;
                         }
@@ -248,22 +231,22 @@
                                     }
                                 }, false);
 
-                                    // Adicionando um evento de clique para exibir o arquivo selecionado
-                                    document.getElementById(`${fileName}`).addEventListener('click', function () {
-                                        const nomeArquivo = this.id;
-                                        const arquivoSelecionado = arquivosSelecionados.find(arquivo => arquivo.nome === nomeArquivo);
-                                        if (arquivoSelecionado) {
-                                            document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
-                                        }
-                                    }, false);
-
-                                    // atualizando o campo fileUpload
-                                    if (fileUpload.value === '') {
-                                        fileUpload.value = `${fileName}`;
-                                    } else {
-                                        fileUpload.value += '\n' + `${fileName}`;
+                                // Adicionando um evento de clique para exibir o arquivo selecionado
+                                document.getElementById(`${fileName}`).addEventListener('click', function () {
+                                    const nomeArquivo = this.id;
+                                    const arquivoSelecionado = arquivosSelecionados.find(arquivo => arquivo.nome === nomeArquivo);
+                                    if (arquivoSelecionado) {
+                                        document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
                                     }
+                                }, false);
+
+                                // atualizando o campo fileUpload
+                                if (fileUpload.value === '') {
+                                    fileUpload.value = `${fileName}`;
+                                } else {
+                                    fileUpload.value += '\n' + `${fileName}`;
                                 }
+                            }
                         });
                     }
                 });
