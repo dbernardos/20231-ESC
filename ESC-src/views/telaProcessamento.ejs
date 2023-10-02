@@ -37,7 +37,7 @@
                     <div class="col-md-6 py-5">
                         <div class="input-group">
                             <input type="file" class="form-control" id="inputGroupFile"
-                                aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                aria-describedby="inputGroupFileAddon04" aria-label="Upload" multiple>
                             <button class="btn btn-outline-success" type="button" id="btnInserir">Inserir</button>
                         </div>
                         <span class="span-required"><b>*</b>Você pode adicionar mais de um arquivo</span>
@@ -199,7 +199,7 @@
                 // Vetor para armazenar os arquivos selecionados
                 const arquivosSelecionados = [];
 
-                inputGroupFile.addEventListener('change', function (event) {
+                btnInserir.addEventListener('click', function () {
                     const selectedFile = inputGroupFile.files[0];
                     if (selectedFile) {
                         // Obtendo o nome do arquivo
