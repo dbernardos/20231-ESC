@@ -195,22 +195,26 @@
             document.addEventListener('DOMContentLoaded', function () {
                 const inputGroupFile = document.getElementById('inputGroupFile');
                 const fileUpload = document.getElementById('fileUpload');
-
+                const btnInserir = document.getElementById('btnInserir');
                 // Vetor para armazenar os arquivos selecionados
                 const arquivosSelecionados = [];
 
                 btnInserir.addEventListener('click', function () {
-                    const selectedFile = inputGroupFile.files[0];
-                    if (selectedFile) {
-                        // Obtendo o nome do arquivo
-                        const fileName = selectedFile.name;
+                    const selectedFiles = inputGroupFile.files;
+                    if (selectedFiles.length > 0) {
+                        
+                           for (const selectedFile of selectedFiles){
+                           
+                            const fileName = selectedFile.name;
+                     
+                        
 
                         // Adicionando um elemento `span` novo ao elemento `showListFile`
                         var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
                         document.querySelector('#showListFile').innerHTML =
                             '<span id="' + `${fileName}` + '" style="display: block;">' +
                             '<br>' +
-                            `${fileName}` + ' <br>' +
+                            `${fileName}` + ' <br>' +  '<p>' +
                             '</span>' +
                             showListFileAtual;
 
@@ -246,8 +250,10 @@
                                 } else {
                                     fileUpload.value += '\n' + `${fileName}`;
                                 }
+                            
                             }
                         });
+                    }
                     }
                 });
             });
