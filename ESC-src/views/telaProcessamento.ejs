@@ -22,6 +22,9 @@
         <form id="frmProcessa" method="post" action="/relatorio">
 
             <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
+
+
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 py-5">
@@ -29,7 +32,7 @@
                             <input type="text" class="form-control" placeholder="Características do código-fonte"
                                 id="inputCaracteristicas" name="inputCaracteristicas" oninput="caracteresValidate()"
                                 aria-label="Características do código-fonte" aria-describedby="button-addon2">
-                            <!--                   <button class="btn btn-outline-success  " type="submit" id="btnProcurar">Procurar</button>      -->
+                            <!--   <button class="btn btn-outline-success  " type="submit" id="btnProcurar">Procurar</button>      -->
                         </div>
                         <span class="span-required" id="spanCarac"><b>*</b>Use vírgulas para separar os termos</span>
                         <span class="span-required-view">Digite pelo menos uma característica</span>
@@ -64,12 +67,15 @@
 
                     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
                         <div class="px-5">
-                            <button class="btn btn-success">Processar</button>
+                            <button class="btn btn-success" id="btnProcessar">Processar</button>
                         </div>
                     </section>
         </form>
 
         <script>
+            let nomesCaracteristicas = [];
+            let contagensCaracteristicas = [];
+
             const inputCaracteristicas = document.getElementById('inputCaracteristicas');
             const caracteristicas = [
                 "if", "for", "while", "case", "else", "fgets", "getch", "getchar", "getche",
@@ -200,7 +206,12 @@
                                 "argc", "argv"
                             ]
                             const resultado = extrair(lista_codigo, carac);
+
+                            nomesCaracteristicas = resultado.charsName;
+                            contagensCaracteristicas = resultado.charsCont;
+
                             console.log(resultado); // Exibirá o resultado no console
+
 
                             //document.getElementById('fileShow').value = conteudo;
 
@@ -264,12 +275,18 @@
                                         }
                                     }, false);
 
-                                    // atualizando o campo fileUpload
-                                    if (fileUpload.value === '') {
-                                        fileUpload.value = `${fileName}`;
+                                    const fileUpload = document.getElementById('fileUpload');
+                                    if (fileUpload) {
+                                        // Verifique se o elemento existe antes de acessar sua propriedade 'value'
+                                        if (fileUpload.value === '') {
+                                            fileUpload.value = `${fileName}`;
+                                        } else {
+                                            fileUpload.value += '\n' + `${fileName}`;
+                                        }
                                     } else {
-                                        fileUpload.value += '\n' + `${fileName}`;
+                                        console.error("Elemento 'fileUpload' não foi encontrado.");
                                     }
+
 
                                 }
                             });
@@ -277,7 +294,12 @@
                     }
                 });
             });
-
+            btnProcessar.addEventListener('click', function () {
+                document.getElementById('nomesCaracteristicasInput').value = JSON.stringify(nomesCaracteristicas);
+                document.getElementById('contagensCaracteristicasInput').value = JSON.stringify(contagensCaracteristicas);
+            
+                document.getElementById('frmProcessa').submit();
+            })
 
         </script>
 

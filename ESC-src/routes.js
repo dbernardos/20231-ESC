@@ -17,9 +17,9 @@ app.use(session({
 
 function verificarAutenticacao(req, res, next) {
   if (req.session.user) { // Ou use a lógica de verificação de token
-      next(); // O usuário está autenticado, continue
+    next(); // O usuário está autenticado, continue
   } else {
-      res.redirect('/login'); // O usuário não está autenticado, redirecione para a página de login
+    res.redirect('/login'); // O usuário não está autenticado, redirecione para a página de login
   }
 }
 
@@ -42,7 +42,7 @@ app.post('/processamento', processaCtrl.processaPost);
 
 
 //método post do login
-app.post('/login', function (req, res){
+app.post('/login', function (req, res) {
 });
 
 app.get('/cadastro', (req, res) => {
@@ -60,12 +60,12 @@ app.post('/criar-usuario', (req, res) => {
 
   // Inserir o usuário no banco de dados
   const sql = 'INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)';
-  
-connection.query(sql, [nome, email, senha], (err, result) => { //connection.query
+
+  connection.query(sql, [nome, email, senha], (err, result) => { //connection.query
     if (err) {
       console.error('Erro ao inserir o usuário: ' + err);
       res.status(500).json({ error: 'Erro ao criar o usuário' });
-      console.log('1 if',nome,email,senha)
+      console.log('1 if', nome, email, senha)
     } else {
       console.log('Usuário criado com sucesso');
       res.status(200).json({ message: 'Usuário criado com sucesso' });
@@ -73,21 +73,23 @@ connection.query(sql, [nome, email, senha], (err, result) => { //connection.quer
   });
 });
 
-app.get('/principal',  verificarAutenticacao, (req, res) => {
-  
-  const{ email, senha} = req.session.user;
-  
+app.get('/principal', verificarAutenticacao, (req, res) => {
+
+  const { email, senha } = req.session.user;
+
   console.log('Conexão efetuada:', email, senha);
 
-  res.render('telaPrincipal', { errorMessage: '' });  
+  res.render('telaPrincipal', { errorMessage: '' });
 
 });
-app.get('/processamento',  verificarAutenticacao ,(req, res) => {
-  
+app.get('/processamento', verificarAutenticacao, (req, res) => {
+  const nomesCaracteristicas = JSON.parse(req.body.nomesCaracteristicas);
+  const contagensCaracteristicas = JSON.parse(req.body.contagensCaracteristicas);
+
   res.render('telaProcessamento', { errorMessage: '' });
 });
 
-app.post('/relatorio',  verificarAutenticacao ,(req, res) => {
+app.post('/relatorio', verificarAutenticacao, (req, res) => {
 
   res.render('telaRelatorio', { errorMessage: '' });
 });

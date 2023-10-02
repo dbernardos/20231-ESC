@@ -18,6 +18,8 @@
 
 <body class="bg-body-secondary">
     <%- include('menu') %>
+    <input type="hidden" id="nomesCaracteristicas" name="nomesCaracteristicas">
+    <input type="hidden" id="contagensCaracteristicas" name="contagensCaracteristicas">
 
         <!--Duas áreas de texto, uma que mostra a lista de arquivos adicionadas e outra que ao clicar, mostra breviamente o código-fonte selecionado-->
         <div class="container">
@@ -25,14 +27,14 @@
                 <div class="col-md-6">
                     <h6>Resultado esperado</h6>
                     <div class="input-group ">
-                        <textarea name="fileUpload" id="fileUpload" cols="30" rows="10"
+                        <textarea name="resultExpected" id="resultExpected" cols="30" rows="10"
                             class="form-control bg-secondary" oninput="fileUpdateValidate()"></textarea>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <h6>Resultado obtido</h6>
                     <div class="input-group">
-                        <textarea name="fileShow" id="fileShow" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="result" id="resultObtained" cols="30" rows="10" class="form-control"></textarea>
                     </div>
                 </div>
             </div>
@@ -45,28 +47,9 @@
         </section>
 
         <script>
-            const campos = document.querySelectorAll('.form-control');
-            const areas = document.getElementById('fileUpload');
-            const spans = document.querySelectorAll('span-required-view');
-
-            function caracteresValidate() {
-                if (campos[0].value.length == 0) {
-                    console.log('NAO VALIDADO');
-                }
-                else {
-                    console.log('VALIDADO');
-                }
-            }
-            function fileUpdateValidate() {
-                if (areas[0].value.length == 0) {
-                    console.log('NÃO VALIDADO');
-                } else {
-                    console.log('VALIDADO');
-                }
-            }
-
+           
         </script>
-
+        
         <%- include('rodape') %>
 </body>
 
