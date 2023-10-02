@@ -134,7 +134,11 @@
             }
 
             function extrair(lista_codigo, carac) {
-                const dicionario = {};
+                //vetor para o nome 
+                const charsName = [];
+                //vetor para contar
+                const charsCont = [];
+
                 for (const cmd of carac) {
                     let count = 0;
 
@@ -152,10 +156,26 @@
                         }
                     }
 
-                    dicionario[cmd] = count;
+                    // Adicionando o nome e a contagem da característica nos vetores
+                    charsName.push(cmd);
+                    charsCont.push(count);
                 }
-                return dicionario;
+                //retornando os vetores
+                return { charsName, charsCont };
             }
+
+            /**  QUANDO FOR PRECISO MANIPULAR OS DADOS DOS VETORES
+            
+            const resultado = extrair(lista_codigo, carac);
+            const nomesCaracteristicas = resultado.charsName;
+            const contagensCaracteristicas = resultado.charsCont;
+
+            // Agora você pode usar os arrays nomesCaracteristicas e contagensCaracteristicas como desejar
+            console.log(nomesCaracteristicas);
+            console.log(contagensCaracteristicas);
+
+            *///
+
 
 
             const input = document.getElementById('inputGroupFile');
@@ -202,58 +222,58 @@
                 btnInserir.addEventListener('click', function () {
                     const selectedFiles = inputGroupFile.files;
                     if (selectedFiles.length > 0) {
-                        
-                           for (const selectedFile of selectedFiles){
-                           
+
+                        for (const selectedFile of selectedFiles) {
+
                             const fileName = selectedFile.name;
-                     
-                        
 
-                        // Adicionando um elemento `span` novo ao elemento `showListFile`
-                        var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
-                        document.querySelector('#showListFile').innerHTML =
-                            '<span id="' + `${fileName}` + '" style="display: block;">' +
-                            '<br>' +
-                            `${fileName}` + ' <br>' +  '<p>' +
-                            '</span>' +
-                            showListFileAtual;
 
-                        // Lendo o conteúdo do arquivo e armazenando no vetor de arquivos selecionados
-                        lerArquivoComoString(selectedFile, function (erro, conteudo) {
-                            if (erro) {
-                                console.error('Erro ao ler o arquivo', erro);
-                            } else {
-                                // Adicionando o conteúdo do arquivo no vetor de arquivos selecionados
-                                arquivosSelecionados.push({ nome: fileName, conteudo: conteudo });
-                                document.querySelector('#showListFile').addEventListener('click', function (event) {
-                                    if (event.target.tagName === 'SPAN') {
-                                        const nomeArquivo = event.target.id;
+
+                            // Adicionando um elemento `span` novo ao elemento `showListFile`
+                            var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
+                            document.querySelector('#showListFile').innerHTML =
+                                '<span id="' + `${fileName}` + '" style="display: block;">' +
+                                '<br>' +
+                                `${fileName}` + ' <br>' + '<p>' +
+                                '</span>' +
+                                showListFileAtual;
+
+                            // Lendo o conteúdo do arquivo e armazenando no vetor de arquivos selecionados
+                            lerArquivoComoString(selectedFile, function (erro, conteudo) {
+                                if (erro) {
+                                    console.error('Erro ao ler o arquivo', erro);
+                                } else {
+                                    // Adicionando o conteúdo do arquivo no vetor de arquivos selecionados
+                                    arquivosSelecionados.push({ nome: fileName, conteudo: conteudo });
+                                    document.querySelector('#showListFile').addEventListener('click', function (event) {
+                                        if (event.target.tagName === 'SPAN') {
+                                            const nomeArquivo = event.target.id;
+                                            const arquivoSelecionado = arquivosSelecionados.find(arquivo => arquivo.nome === nomeArquivo);
+                                            if (arquivoSelecionado) {
+                                                document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
+                                            }
+                                        }
+                                    }, false);
+
+                                    // Adicionando um evento de clique para exibir o arquivo selecionado
+                                    document.getElementById(`${fileName}`).addEventListener('click', function () {
+                                        const nomeArquivo = this.id;
                                         const arquivoSelecionado = arquivosSelecionados.find(arquivo => arquivo.nome === nomeArquivo);
                                         if (arquivoSelecionado) {
                                             document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
                                         }
-                                    }
-                                }, false);
+                                    }, false);
 
-                                // Adicionando um evento de clique para exibir o arquivo selecionado
-                                document.getElementById(`${fileName}`).addEventListener('click', function () {
-                                    const nomeArquivo = this.id;
-                                    const arquivoSelecionado = arquivosSelecionados.find(arquivo => arquivo.nome === nomeArquivo);
-                                    if (arquivoSelecionado) {
-                                        document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
+                                    // atualizando o campo fileUpload
+                                    if (fileUpload.value === '') {
+                                        fileUpload.value = `${fileName}`;
+                                    } else {
+                                        fileUpload.value += '\n' + `${fileName}`;
                                     }
-                                }, false);
 
-                                // atualizando o campo fileUpload
-                                if (fileUpload.value === '') {
-                                    fileUpload.value = `${fileName}`;
-                                } else {
-                                    fileUpload.value += '\n' + `${fileName}`;
                                 }
-                            
-                            }
-                        });
-                    }
+                            });
+                        }
                     }
                 });
             });
