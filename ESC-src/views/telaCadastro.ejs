@@ -136,14 +136,9 @@
                 }
             }
 
-            // Exemplo de verificação de email no servidor (simplificado)
-            // Isso deve ser substituído por sua lógica real de verificação de email no servidor
-            // Neste exemplo, vamos assumir que "checkEmailOnServer" é uma função assíncrona que verifica o email no servidor.
-            async function checkEmailOnServer(email) {
-                // Simulando uma verificação de email no servidor
+            async function verificaEmail(email) {
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
-                        // Vamos simular que o email "test@example.com" já está registrado no servidor
                         if (email === 'test@example.com') {
                             resolve(true);
                         } else {
@@ -153,14 +148,14 @@
                 });
             }
 
-            async function isEmailAlreadyRegistered(email) {
+            async function EmailRegistrado(email) {
                 // Verifique o email no servidor
-                const isRegistered = await checkEmailOnServer(email);
-                return isRegistered;
+                const registrado = await verificaEmail(email);
+                return registrado;
             }
 
             async function handleSubmit() {
-                const isRegistered = await isEmailAlreadyRegistered(userData.email);
+                const isRegistered = await EmailRegistrado(userData.email);
 
                 if (isRegistered) {
                     // Se o email já estiver registrado, mostre a mensagem de erro
