@@ -102,7 +102,7 @@ app.get('/processamento', verificarAutenticacao, (req, res) => {
       res.render('telaProcessamento', { errorMessage: '' });
     });
     
-
+*/
 
 app.post('/relatorio', verificarAutenticacao, (req, res) => {
 
