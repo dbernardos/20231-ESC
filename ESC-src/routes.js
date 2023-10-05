@@ -50,12 +50,13 @@ app.get('/cadastro', (req, res) => {
   res.render('telaCadastro', { errorMessage: '' });
 });
 
+
 app.post('/resultado', (req, res) => {
 
   res.render('telaRelatorio', { errorMessage: '' });
 });
 
-app.post('/criar-usuario', (req, res) => {
+app.post('/cadastro', (req, res) => {
   const { nome, email, senha } = req.body;
 
   // Inserir o usuário no banco de dados
@@ -71,6 +72,8 @@ app.post('/criar-usuario', (req, res) => {
       res.status(200).json({ message: 'Usuário criado com sucesso' });
     }
   });
+  res.render('telaLogin', { errorMessage: '' });
+
 });
 
 app.get('/principal', verificarAutenticacao, (req, res) => {
