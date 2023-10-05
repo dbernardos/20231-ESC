@@ -59,7 +59,7 @@ app.post('/criar-usuario', (req, res) => {
   const { nome, email, senha } = req.body;
 
   // Inserir o usuário no banco de dados
-  const sql = 'INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)';
+  const sql = 'INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)';
 
   connection.query(sql, [nome, email, senha], (err, result) => { //connection.query
     if (err) {
@@ -83,11 +83,26 @@ app.get('/principal', verificarAutenticacao, (req, res) => {
 
 });
 app.get('/processamento', verificarAutenticacao, (req, res) => {
-  const nomesCaracteristicas = JSON.parse(req.body.nomesCaracteristicas);
-  const contagensCaracteristicas = JSON.parse(req.body.contagensCaracteristicas);
 
   res.render('telaProcessamento', { errorMessage: '' });
 });
+
+  /**tentando implementar a rota com os vetores */
+    /**app.post('/processamento', verificarAutenticacao, (req, res) => {
+      // Obter os valores de nomesCaracteristicas e contagensCaracteristicas do corpo da solicitação
+      const nomesCaracteristicas = JSON.parse(req.body.nomesCaracteristicasInput);
+      const contagensCaracteristicas = JSON.parse(req.body.contagensCaracteristicasInput);
+
+      // Agora você tem acesso a esses valores e pode usá-los como desejar
+      console.log('Nomes de Características:', nomesCaracteristicas);
+      console.log('Contagens de Características:', contagensCaracteristicas);
+      console.log(contagensCaracteristicas , charsName,charsCont);
+   
+    
+      res.render('telaProcessamento', { errorMessage: '' });
+    });
+    
+
 
 app.post('/relatorio', verificarAutenticacao, (req, res) => {
 
