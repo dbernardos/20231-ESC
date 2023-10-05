@@ -50,31 +50,42 @@ app.get('/cadastro', (req, res) => {
   res.render('telaCadastro', { errorMessage: '' });
 });
 
-
 app.post('/resultado', (req, res) => {
 
   res.render('telaRelatorio', { errorMessage: '' });
 });
-
-app.post('/cadastro', (req, res) => {
+app.post('/criar-usuario', (req, res) => {
   const { nome, email, senha } = req.body;
 
-  // Inserir o usuário no banco de dados
-  const sql = 'INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)';
+  // Verifique se o email já está registrado antes de inserir o usuário
+  const verificarEmail = 'SELECT * FROM usuario WHERE email = ?';
 
-  connection.query(sql, [nome, email, senha], (err, result) => { //connection.query
+  connection.query(verificarEmail, [email], (err, rows) => {
     if (err) {
-      console.error('Erro ao inserir o usuário: ' + err);
+      console.error('Erro ao verificar o email: ' + err);
       res.status(500).json({ error: 'Erro ao criar o usuário' });
-      console.log('1 if', nome, email, senha)
     } else {
-      console.log('Usuário criado com sucesso');
-      res.status(200).json({ message: 'Usuário criado com sucesso' });
+      if (rows.length > 0) {
+        // O email já está registrado
+        res.render('telaCadastro', { errorMessage: 'Este email já está registrado' });
+      } else {
+        // O email não está registrado, então insira o usuário no banco de dados
+        const inseriUsuario = 'INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)';
+        connection.query(inseriUsuario, [nome, email, senha], (err, result) => {
+          if (err) {
+            console.error('Erro ao inserir o usuário: ' + err);
+            res.status(500).json({ error: 'Erro ao criar o usuário' });
+          } else {
+            console.log('Usuário criado com sucesso');
+            res.render('telaLogin', { errorMessage: '' });
+          }
+        });
+      }
     }
   });
-  res.render('telaLogin', { errorMessage: '' });
-
 });
+
+
 
 app.get('/principal', verificarAutenticacao, (req, res) => {
 
@@ -91,7 +102,7 @@ app.get('/processamento', verificarAutenticacao, (req, res) => {
 });
 
   /**tentando implementar a rota com os vetores */
-    app.post('/relatorio', verificarAutenticacao, (req, res) => {
+    /**app.post('/processamento', verificarAutenticacao, (req, res) => {
       // Obter os valores de nomesCaracteristicas e contagensCaracteristicas do corpo da solicitação
       const nomesCaracteristicas = JSON.parse(req.body.nomesCaracteristicasInput);
       const contagensCaracteristicas = JSON.parse(req.body.contagensCaracteristicasInput);
@@ -99,18 +110,19 @@ app.get('/processamento', verificarAutenticacao, (req, res) => {
       // Agora você tem acesso a esses valores e pode usá-los como desejar
       console.log('Nomes de Características:', nomesCaracteristicas);
       console.log('Contagens de Características:', contagensCaracteristicas);
-   
+      console.log(contagensCaracteristicas , charsName,charsCont);
    
     
-      res.render('telaRelatorio', { errorMessage: '' });
+      res.render('telaProcessamento', { errorMessage: '' });
     });
-    
 
-/** 
+    */
+
+
 app.post('/relatorio', verificarAutenticacao, (req, res) => {
 
   res.render('telaRelatorio', { errorMessage: '' });
-});*/
+});
 
 
 app.use(bodyParser.json());

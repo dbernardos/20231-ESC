@@ -14,24 +14,17 @@
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous">
     </script>
-
 </head>
 
 <body class="bg-body-secondary">
-
-
-
-
-
-    
     <div class="container py-5">
-        <form id="frmCadastro" class="row rounded bg-body-tertiary " action="/login" method="POST">
+        <form id="frmCadastro" class="row rounded bg-body-tertiary " action="/criar-usuario" method="POST">
             <h1 class="col-12">Registre-se</h1>
             <div class="col-6">
                 <label for="nome" class="form-label">Nome</label>
                 <div class="input-group mb-3">
                     <input type="text" name="nome" id="nome" placeholder="Digite seu nome" class="form-control "
-                        oninput=" nameValidate()">
+                        oninput="nameValidate()">
                     <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
                 </div>
                 <span class="span-required">O nome deve conter no mínimo 3 caracteres</span>
@@ -44,7 +37,7 @@
                         oninput="emailValidate()">
                     <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
                 </div>
-                <span class="span-required">Digite um email valido</span>
+                <span class="span-required" id="email-error" style="display: none; color: red;">Este email já está registrado</span>
             </div>
             <div class="col-md-6">
                 <label for="senha" class="form-label">Senha</label>
@@ -65,105 +58,127 @@
                 <span class="span-required">As senhas devem se coincidir</span>
             </div>
             <div class="col-12">
-              <button type="submit" class="btn btn-primary" id="btnContinuar" >Continuar </button> 
-                    
-                </button>
-                 </a>
+                <button type="submit" class="btn btn-primary" id="btnContinuar">Continuar</button>
             </div>
         </form>
-               
-
     </div>
-        <script>
-        /*
+
+    <footer class="fixed-bottom">
+        <div class="text-center p-4" style="background-color: rgba(28, 108, 173, 0.644);">
+            © 2023 Copyright:
+            <a class="text-reset fw-bold" href="#">Grupo ESC</a>
+        </div>
+    </footer>
+
+    <script>
         const form = document.getElementById('frmCadastro');
-        const campos = document.querySelectorAll('.form-control');
-        const spans = document.querySelectorAll('.span-required');
         const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]w+)*\.\w+([-.]\+)*$/;
 
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
-            if (
-                !nameValidate() ||
-                !emailValidate() ||
-                !passwordValidate() ||
-                !confirmPasswordValidate()) { event.preventDefault(); }
+
+            const campos = document.querySelectorAll('.form-control');
+            const spans = document.querySelectorAll('.span-required');
+
+            const userData = {
+                nome: campos[0].value,
+                email: campos[1].value,
+                senha: campos[2].value,
+            };
+
+            function setError(index) {
+                campos[index].style.border = '2px solid #e63636';
+                spans[index].style.display = 'block';
+            }
+
+            function removeError(index) {
+                campos[index].style.border = '';
+                spans[index].style.display = 'none';
+            }
+
+            function nameValidate() {
+                if (userData.nome.length < 3) {
+                    setError(0);
+                    return false;
+                } else {
+                    removeError(0);
+                    return true;
+                }
+            }
+
+            function emailValidate() {
+                if (emailRegex.test(userData.email)) {
+                    removeError(1);
+                    return true;
+                } else {
+                    setError(1);
+                    return false;
+                }
+            }
+
+            function passwordValidate() {
+                if (userData.senha.length < 8) {
+                    setError(2);
+                    return false;
+                } else {
+                    removeError(2);
+                    return true;
+                }
+            }
+
+            function confirmPasswordValidate() {
+                if (campos[3].value != userData.senha) {
+                    setError(3);
+                    return false;
+                } else {
+                    removeError(3);
+                    return true;
+                }
+            }
+
+            // Exemplo de verificação de email no servidor (simplificado)
+            // Isso deve ser substituído por sua lógica real de verificação de email no servidor
+            // Neste exemplo, vamos assumir que "checkEmailOnServer" é uma função assíncrona que verifica o email no servidor.
+            async function checkEmailOnServer(email) {
+                // Simulando uma verificação de email no servidor
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        // Vamos simular que o email "test@example.com" já está registrado no servidor
+                        if (email === 'test@example.com') {
+                            resolve(true);
+                        } else {
+                            resolve(false);
+                        }
+                    }, 1000); // Simula um atraso de 1 segundo (você deve remover isso na implementação real)
+                });
+            }
+
+            async function isEmailAlreadyRegistered(email) {
+                // Verifique o email no servidor
+                const isRegistered = await checkEmailOnServer(email);
+                return isRegistered;
+            }
+
+            async function handleSubmit() {
+                const isRegistered = await isEmailAlreadyRegistered(userData.email);
+
+                if (isRegistered) {
+                    // Se o email já estiver registrado, mostre a mensagem de erro
+                    setError(1); // Índice 1 corresponde ao campo de email
+                    document.getElementById('email-error').style.display = 'block';
+                } else {
+                    // Continue com o envio do formulário se o email não estiver registrado
+                    form.submit();
+                }
+            }
+
+            if (!nameValidate() || !emailValidate() || !passwordValidate() || !confirmPasswordValidate()) {
+                event.preventDefault();
+            } else {
+                handleSubmit();
+            }
         });
-
-        const userData = {
-            nome: campos[0].value,
-            email: campos[1].value,
-            senha: campos[2].value,
-        };        
-
-        function setError(index) {
-            campos[index].style.border = '2px solid #e63636';
-            spans[index].style.display = 'block';
-        }
-        function removeError(index) {
-            campos[index].style.border = '';
-            spans[index].style.display = 'none';
-        }
-
-        function nameValidate() {
-            if (campos[0].value.length < 3) {
-                setError(0);
-                return false;
-            } else {
-                removeError(0);
-                return true;
-            }
-        }
-        function emailValidate() {
-            if (emailRegex.test(campos[1].value)) {
-                removeError(1);
-                return true;
-
-            } else {
-                setError(1);
-                return false;
-            }
-
-        }
-        function passwordValidate() {
-            if (campos[2].value.length < 8) {
-                setError(2);
-                return false;
-
-            } else {
-                removeError(2);
-                return true;
-
-                confirmPasswordValidate()
-            }
-        }
-        function confirmPasswordValidate() {
-            if (campos[3].value != campos[2].value) {
-                setError(3);
-                return true;
-
-            } else {
-                removeError(3);
-                return false;
-
-            }
-        }
-
-        */
-
     </script>
-
-
-<footer class="fixed-bottom">
-    <div class="text-center p-4" style="background-color: rgba(28, 108, 173, 0.644);">
-    © 2023 Copyright:
-     <a class="text-reset fw-bold" href="#">Grupo ESC</a>
-</div>
-</footer>
-
-
-
-
 </body>
 
 </html>
