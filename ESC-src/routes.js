@@ -68,7 +68,7 @@ app.post('/criar-usuario', (req, res) => {
       console.log('1 if', nome, email, senha)
     } else {
       console.log('Usuário criado com sucesso');
-      res.status(200).json({ message: 'Usuário criado com sucesso'});
+      res.status(200).json({ message: 'Usuário criado com sucesso' });
     }
   });
 });
@@ -99,17 +99,16 @@ app.get('/processamento', verificarAutenticacao, (req, res) => {
    
    
     
-      res.render('telaProcessamento', { errorMessage: '' });
+      res.render('telaRelatorio', { errorMessage: '' });
     });
-
     
 
-
-/** *
+/** 
 app.post('/relatorio', verificarAutenticacao, (req, res) => {
 
   res.render('telaRelatorio', { errorMessage: '' });
 });*/
+
 
 app.use(bodyParser.json());
 
