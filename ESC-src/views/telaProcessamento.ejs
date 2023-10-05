@@ -19,6 +19,7 @@
 
 <body class="bg-body-secondary">
     <%- include('menu') %>
+
         <form id="frmProcessa" method="post" action="/relatorio">
 
             <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
@@ -29,10 +30,16 @@
                 <div class="row">
                     <div class="col-md-6 py-5">
                         <div class="input-group mb-3">
+                            <!-- -adicionando campos ocultos para enviar os veotres nomesCaracteristicas e contagensCaracteristicas-->
+                            <input type="hidden" name="nomesCaracteristicasInput" id="nomesCaracteristicasInput">
+                            <input type="hidden" name="contagensCaracteristicasInput"
+                                id="contagensCaracteristicasInput">
+
                             <input type="text" class="form-control" placeholder="Características do código-fonte"
                                 id="inputCaracteristicas" name="inputCaracteristicas" oninput="caracteresValidate()"
                                 aria-label="Características do código-fonte" aria-describedby="button-addon2">
-                            <!--   <button class="btn btn-outline-success  " type="submit" id="btnProcurar">Procurar</button>      -->
+                            <button class="btn btn-outline-success  " type="submit" id="btnProcurar">Procurar</button>
+                            -->
                         </div>
                         <span class="span-required" id="spanCarac"><b>*</b>Use vírgulas para separar os termos</span>
                         <span class="span-required-view">Digite pelo menos uma característica</span>
@@ -294,12 +301,14 @@
                     }
                 });
             });
-            btnProcessar.addEventListener('click', function () {
+            document.getElementById('btnProcessar').addEventListener('click', function () {
+                // Defina os valores dos campos ocultos com os arrays JSON convertidos em strings
                 document.getElementById('nomesCaracteristicasInput').value = JSON.stringify(nomesCaracteristicas);
                 document.getElementById('contagensCaracteristicasInput').value = JSON.stringify(contagensCaracteristicas);
-            
+
+                // Envie o formulário
                 document.getElementById('frmProcessa').submit();
-            })
+            });
 
         </script>
 

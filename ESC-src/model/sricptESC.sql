@@ -1,5 +1,5 @@
 /** comando para rodar o node **/
-/** npm install mysql2 expess express-session ejs md5 **/
+/** npm install mysql2 expess express-session ejs md5   **/
 create table  Usuario(
 idUsuario int(100) primary key null auto_increment,
 nome varchar(100) not null,
