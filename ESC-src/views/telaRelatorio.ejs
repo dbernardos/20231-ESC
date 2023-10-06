@@ -56,7 +56,6 @@
         </section>
 
         <script>
-            /**<!-- Adicione este trecho de código ao final da sua seção <script> na tela de relatório -->**/
             document.addEventListener('DOMContentLoaded', function () {
                 // Recupere os dados JSON dos campos ocultos
                 const nomesCaracteristicasInput = document.getElementById('nomesCaracteristicas');
@@ -68,7 +67,6 @@
                     const nomesCaracteristicas = JSON.parse(nomesCaracteristicasInput.value);
                     const contagensCaracteristicas = JSON.parse(contagensCaracteristicasInput.value);
 
-                    // Resto do código para exibir os dados...
                 } else {
                     // Trate o caso em que os campos estão vazios ou não contêm JSON válido
                     console.error('Campos de entrada vazios ou não contêm JSON válido.');
