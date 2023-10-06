@@ -62,16 +62,9 @@ Posteriormente execute os comandos para iniciar o node, instalar o framework de 
 
 ```
 npm init
-npm install --save express
 npm i sequelize
 
-npm install mysql2
-npm install expess
-npm install express-session
-npm install ejs
-npm install md5
-
-npm install mysql2 expess express-session ejs md5
+npm install mysql2 expess express-session ejs md5 body-parser node-kmeans
 ```
 
 ### Configuração do banco de dados
