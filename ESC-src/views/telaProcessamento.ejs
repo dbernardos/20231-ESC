@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de processamento</title>
-    <link rel="stylesheet" href="./css/layoutDisplayProcess.css">
+    <link rel="stylesheet" href="css/layoutDisplayProcess.css">
 
 
     <script src="https://kit.fontawesome.com/5c7c6d79df.js" crossorigin="anonymous"></script>
@@ -229,7 +229,7 @@
                     const selectedFiles = inputGroupFile.files;
                     if (selectedFiles.length > 0) {
 
-                        // Objeto para armazenar contagens de características de todos os arquivos
+                        const todosArquivos = []; // Vetor para armazenar os dados de todos os arquivos
                        
                         for (const selectedFile of selectedFiles) {
 
@@ -249,19 +249,24 @@
                                         "argc", "argv"
                                     ];
                                     const resultado = extrair(lista_codigo, carac);
-                                    const nomesCaracteristicasArquivo = resultado.charsName;
-                                    const contagensCaracteristicasArquivo = resultado.charsCont;
+                                  
+                                    const dadosArquivo = {
+    nome: fileName,
+    conteudo: conteudo,
+    caracteristicas: {
+        charsName: resultado.charsName,
+        charsCont: resultado.charsCont
+    }
+};
 
-                                    for (let i = 0; i < nomesCaracteristicasArquivo.length; i++) {
-                                        const caracteristica = nomesCaracteristicasArquivo[i];
-                                        const contagem = contagensCaracteristicasArquivo[i];
-                                        if (contagensTotais[caracteristica] === undefined) {
-                                            contagensTotais[caracteristica] = contagem;
-                                        } else {
-                                            contagensTotais[caracteristica] += contagem;
-                                        }
+// Formatando os dados do arquivo como uma lista de pares
+const dadosFormatados = dadosArquivo.caracteristicas.charsName.map((nome, index) => {
+    return `${nome}: ${dadosArquivo.caracteristicas.charsCont[index]}`;
+}).join(', ');
 
-                                    }
+console.log(`${dadosArquivo.nome}: [${dadosFormatados}]`);
+
+
                                     var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
                                     document.querySelector('#showListFile').innerHTML =
                                         '<span id="' + `${fileName}` + '" style="display: block;">' +
@@ -296,21 +301,21 @@
                             });
                         }
                     }
-                       
-            document.getElementById('btnProcessar').addEventListener('click', function () {
-                // Defina os valores dos campos ocultos com os arrays JSON convertidos em strings
-                document.getElementById('nomesCaracteristicasInput').value = JSON.stringify(nomesCaracteristicas);
-                document.getElementById('contagensCaracteristicasInput').value = JSON.stringify(contagensCaracteristicas);
 
-                // Envie o formulário
-                document.getElementById('frmProcessa').submit();
-                const nomesCaracteristicas = Object.keys(contagensTotais);
+                    document.getElementById('btnProcessar').addEventListener('click', function () {
+                        // Defina os valores dos campos ocultos com os arrays JSON convertidos em strings
+                        document.getElementById('nomesCaracteristicasInput').value = JSON.stringify(nomesCaracteristicas);
+                        document.getElementById('contagensCaracteristicasInput').value = JSON.stringify(contagensCaracteristicas);
+
+                        // Envie o formulário
+                        document.getElementById('frmProcessa').submit();
+                        const nomesCaracteristicas = Object.keys(contagensTotais);
                         const contagensCaracteristicas = Object.keys(contagensTotais);
 
                         console.log(nomesCaracteristicas)
                         console.log(contagensCaracteristicas);
+                    });
                 });
-            });
             });
 
         </script>
