@@ -101,30 +101,35 @@ app.get('/processamento', verificarAutenticacao, (req, res) => {
   res.render('telaProcessamento', { errorMessage: '' });
 });
 
-  /**tentando implementar a rota com os vetores */
-    /**app.post('/processamento', verificarAutenticacao, (req, res) => {
-      // Obter os valores de nomesCaracteristicas e contagensCaracteristicas do corpo da solicitação
-      const nomesCaracteristicas = JSON.parse(req.body.nomesCaracteristicasInput);
-      const contagensCaracteristicas = JSON.parse(req.body.contagensCaracteristicasInput);
+/**tentando implementar a rota com os vetores */
+/**app.post('/processamento', verificarAutenticacao, (req, res) => {
+  // Obter os valores de nomesCaracteristicas e contagensCaracteristicas do corpo da solicitação
+  const nomesCaracteristicas = JSON.parse(req.body.nomesCaracteristicasInput);
+  const contagensCaracteristicas = JSON.parse(req.body.contagensCaracteristicasInput);
 
-      // Agora você tem acesso a esses valores e pode usá-los como desejar
-      console.log('Nomes de Características:', nomesCaracteristicas);
-      console.log('Contagens de Características:', contagensCaracteristicas);
-      console.log(contagensCaracteristicas , charsName,charsCont);
-   
-    
-      res.render('telaProcessamento', { errorMessage: '' });
-    });
-
-    */
-
-
-app.post('/relatorio', verificarAutenticacao, (req, res) => {
-
-  res.render('telaRelatorio', { errorMessage: '' });
+  // Agora você tem acesso a esses valores e pode usá-los como desejar
+  console.log('Nomes de Características:', nomesCaracteristicas);
+  console.log('Contagens de Características:', contagensCaracteristicas);
+  console.log(contagensCaracteristicas , charsName,charsCont);
+ 
+ 
+  res.render('telaProcessamento', { errorMessage: '' });
 });
 
+*/
 
+// Rota para a página de relatório
+app.post('/relatorio', (req, res) => {
+  // Recupere os dados enviados da página de processamento
+  const nomesCaracteristicas = req.body.nomesCaracteristicasInput;
+  const contagensCaracteristicas = req.body.contagensCaracteristicasInput;
+
+  // Renderize a página de relatório com os dados
+  res.render('telaRelatorio', {
+    nomesCaracteristicas: nomesCaracteristicas,
+    contagensCaracteristicas: contagensCaracteristicas,
+  });
+})
 app.use(bodyParser.json());
 
 

@@ -230,7 +230,7 @@
                     if (selectedFiles.length > 0) {
 
                         const todosArquivos = []; // Vetor para armazenar os dados de todos os arquivos
-                       
+
                         for (const selectedFile of selectedFiles) {
 
                             const fileName = selectedFile.name;
@@ -249,22 +249,21 @@
                                         "argc", "argv"
                                     ];
                                     const resultado = extrair(lista_codigo, carac);
-                                  
+
                                     const dadosArquivo = {
-    nome: fileName,
-    conteudo: conteudo,
-    caracteristicas: {
-        charsName: resultado.charsName,
-        charsCont: resultado.charsCont
-    }
-};
+                                        nome: fileName,
+                                        conteudo: conteudo,
+                                        caracteristicas: {
+                                            charsName: resultado.charsName,
+                                            charsCont: resultado.charsCont
+                                        }
+                                    };
 
-// Formatando os dados do arquivo como uma lista de pares
-const dadosFormatados = dadosArquivo.caracteristicas.charsName.map((nome, index) => {
-    return `${nome}: ${dadosArquivo.caracteristicas.charsCont[index]}`;
-}).join(', ');
-
-console.log(`${dadosArquivo.nome}: [${dadosFormatados}]`);
+                                    // Formatando os dados do arquivo como uma lista de pares
+                                    const dadosFormatados = dadosArquivo.caracteristicas.charsName.map((nome, index) => {
+                                        return `${nome}: ${dadosArquivo.caracteristicas.charsCont[index]}`;
+                                    }).join(', ')
+                                    console.log(`${dadosArquivo.nome}: [${dadosFormatados}]`);
 
 
                                     var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
