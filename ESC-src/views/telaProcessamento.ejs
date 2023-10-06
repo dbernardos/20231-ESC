@@ -25,7 +25,6 @@
             <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
 
 
-
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 py-5">
@@ -39,7 +38,7 @@
                                 id="inputCaracteristicas" name="inputCaracteristicas" oninput="caracteresValidate()"
                                 aria-label="Características do código-fonte" aria-describedby="button-addon2">
                             <button class="btn btn-outline-success  " type="submit" id="btnProcurar">Procurar</button>
-                            
+
                         </div>
                         <span class="span-required" id="spanCarac"><b>*</b>Use vírgulas para separar os termos</span>
                         <span class="span-required-view">Digite pelo menos uma característica</span>
@@ -58,33 +57,6 @@
                             <div class="col-md-6">
                                 <h6>Lista de Arquivos carregados</h6>
                                 <div class="input-group" id="showListFile">
-
-                                    <div class="container text-center">
-                                        <div class="row row-cols-2">
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                          <div class="col">Column</div>
-                                        </div>
-                                      </div>
 
                                     <!-- AQUI CARREGA O LINK DAS TAREFAS VIA JAVASCRIPT -->
                                 </div>
@@ -205,19 +177,6 @@
                 return { charsName, charsCont };
             }
 
-            /**  QUANDO FOR PRECISO MANIPULAR OS DADOS DOS VETORES
-            
-            const resultado = extrair(lista_codigo, carac);
-            const nomesCaracteristicas = resultado.charsName;
-            const contagensCaracteristicas = resultado.charsCont;
-
-            // Agora você pode usar os arrays nomesCaracteristicas e contagensCaracteristicas como desejar
-            console.log(nomesCaracteristicas);
-            console.log(contagensCaracteristicas);
-
-            *///
-
-
 
             const input = document.getElementById('inputGroupFile');
 
@@ -264,31 +223,53 @@
                 const btnInserir = document.getElementById('btnInserir');
                 // Vetor para armazenar os arquivos selecionados
                 const arquivosSelecionados = [];
+                const contagensTotais = {};
 
                 btnInserir.addEventListener('click', function () {
                     const selectedFiles = inputGroupFile.files;
                     if (selectedFiles.length > 0) {
 
+                        // Objeto para armazenar contagens de características de todos os arquivos
+                       
                         for (const selectedFile of selectedFiles) {
 
                             const fileName = selectedFile.name;
 
-
-
-                            // Adicionando um elemento `span` novo ao elemento `showListFile`
-                            var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
-                            document.querySelector('#showListFile').innerHTML =
-                                '<span id="' + `${fileName}` + '" style="display: block;">' +
-                                '<br>' +
-                                `${fileName}` + ' <br>' + '<p>' +
-                                '</span>' +
-                                showListFileAtual;
-
-                            // Lendo o conteúdo do arquivo e armazenando no vetor de arquivos selecionados
                             lerArquivoComoString(selectedFile, function (erro, conteudo) {
                                 if (erro) {
                                     console.error('Erro ao ler o arquivo', erro);
                                 } else {
+                                    const lista_codigo = conteudo.split('\n');
+                                    const carac = [
+                                        "if", "for", "while", "case", "else", "fgets", "getch", "getchar", "getche",
+                                        "putchar", "puts", "switch", "gets", "break", "return", "exit", "do", "strcpy",
+                                        "strcmp", "strncpy", "strlen", "strupr", "strlwr", "strrev", "tolower", "toupper",
+                                        "isalpha", "fopen", "fclose", "feof", "remove", "fflush", "sizeof", "typedef",
+                                        "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
+                                        "argc", "argv"
+                                    ];
+                                    const resultado = extrair(lista_codigo, carac);
+                                    const nomesCaracteristicasArquivo = resultado.charsName;
+                                    const contagensCaracteristicasArquivo = resultado.charsCont;
+
+                                    for (let i = 0; i < nomesCaracteristicasArquivo.length; i++) {
+                                        const caracteristica = nomesCaracteristicasArquivo[i];
+                                        const contagem = contagensCaracteristicasArquivo[i];
+                                        if (contagensTotais[caracteristica] === undefined) {
+                                            contagensTotais[caracteristica] = contagem;
+                                        } else {
+                                            contagensTotais[caracteristica] += contagem;
+                                        }
+
+                                    }
+                                    var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
+                                    document.querySelector('#showListFile').innerHTML =
+                                        '<span id="' + `${fileName}` + '" style="display: block;">' +
+                                        '<br>' +
+                                        `${fileName}` + ' <br>' + '<p>' +
+                                        '</span>' +
+                                        showListFileAtual;
+
                                     // Adicionando o conteúdo do arquivo no vetor de arquivos selecionados
                                     arquivosSelecionados.push({ nome: fileName, conteudo: conteudo });
                                     document.querySelector('#showListFile').addEventListener('click', function (event) {
@@ -300,8 +281,6 @@
                                             }
                                         }
                                     }, false);
-
-                                    // Adicionando um evento de clique para exibir o arquivo selecionado
                                     document.getElementById(`${fileName}`).addEventListener('click', function () {
                                         const nomeArquivo = this.id;
                                         const arquivoSelecionado = arquivosSelecionados.find(arquivo => arquivo.nome === nomeArquivo);
@@ -310,25 +289,14 @@
                                         }
                                     }, false);
 
-                                    const fileUpload = document.getElementById('fileUpload');
-                                    if (fileUpload) {
-                                        // Verifique se o elemento existe antes de acessar sua propriedade 'value'
-                                        if (fileUpload.value === '') {
-                                            fileUpload.value = `${fileName}`;
-                                        } else {
-                                            fileUpload.value += '\n' + `${fileName}`;
-                                        }
-                                    } else {
-                                        console.error("Elemento 'fileUpload' não foi encontrado.");
-                                    }
+
 
 
                                 }
                             });
                         }
                     }
-                });
-            });
+                       
             document.getElementById('btnProcessar').addEventListener('click', function () {
                 // Defina os valores dos campos ocultos com os arrays JSON convertidos em strings
                 document.getElementById('nomesCaracteristicasInput').value = JSON.stringify(nomesCaracteristicas);
@@ -336,11 +304,18 @@
 
                 // Envie o formulário
                 document.getElementById('frmProcessa').submit();
+                const nomesCaracteristicas = Object.keys(contagensTotais);
+                        const contagensCaracteristicas = Object.keys(contagensTotais);
+
+                        console.log(nomesCaracteristicas)
+                        console.log(contagensCaracteristicas);
+                });
+            });
             });
 
         </script>
 
-        <%- include('rodape') %>            
+        <%- include('rodape') %>
 </body>
 
 </html>
