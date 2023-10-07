@@ -20,7 +20,7 @@
 <body class="bg-body-secondary">
     <%- include('menu') %>
 
-        <form id="frmProcessa" method="post" action="/relatorio">
+        <form id="frmProcessa" method="POST" action="/relatorio">
 
             <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
 
@@ -292,10 +292,6 @@
                                             document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
                                         }
                                     }, false);
-
-
-
-
                                 }
                             });
                         }
