@@ -24,16 +24,72 @@
         <!--Duas áreas de texto, uma que mostra a lista de arquivos adicionadas e outra que ao clicar, mostra breviamente o código-fonte selecionado-->
         <div class="container">
             <h1>Relatório de Características</h1>
-            <span><%= contChars %></span>
-            <span><%= chars %></span>
-            <ul>
-                <script>
+            <span>
+                <%= contChars %>
+            </span>
+            <span>
+                <%= chars %>
+            </span>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>IF</th>
+                        <th>FOR</th>
+                        <th>WHILE</th>
+                        <th>CASE</th>
+                        <th>ELSE</th>
+                        <th>FGETS</th>
+                        <th>GETCH</th>
+                        <th>GETCHAR</th>
+                        <th>GETCHE</th>
+                        <th>PUTCHAR</th>
+                        <th>PUTS</th>
+                        <th>SWITCH</th>
+                        <th>GETS</th>
+                        <th>BREAK</th>
+                        <th>RETURN</th>
+                        <th>EXIT</th>
+                        <th>DO</th>
+                        <th>STRCPY</th>
+                        <th>STRCMP</th>
+                        <th>STRLEN</th>
+                        <th>STRUPR</th>
+                        <th>STRLWR</th>
+                        <th>STRREV</th>
+                        <th>TOLOWER</th>
+                        <th>TOUPPER</th>
+                        <th>ISALPHA</th>
+                        <th>FOPEN</th>
+                        <th>FCLOSE</th>
+                        <th>FEOF</th>
+                        <th>REMOVE</th>
+                        <th>FFLUSH</th>
+                        <th>SIZEOF</th>
+                        <th>TYPEDEOF</th>
+                        <th>STRUCT</th>
+                        <th>MALLOC</th>
+                        <th>FREE</th>
+                        <th>#INCLUDE</th>
+                        <th>SYSTEM</th>
+                        <th>DEFAULT</th>
+                        <th>MAIN</th>
+                        <th>FUNCTIONS</th>
+                        <th>ARGC</th>
+                        <th>ARGV</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaCaracteristicas">
+
+                </tbody>
+            </table>
+               <!-- <script>
                     for (let i = 0; i < nomesCaracteristicas.length; i++) {
                         document.write(`<li>${nomesCaracteristicas[i]}: ${contagensCaracteristicas[i]}</li>`);
                     }
-                </script>
-            </ul>
+                </script>-->
             
+
             <div class="row">
                 <div class="col-md-6">
                     <h6>Resultado esperado</h6>
@@ -62,13 +118,29 @@
                 // Recupere os dados JSON dos campos ocultos
                 const nomesCaracteristicasInput = document.getElementById('nomesCaracteristicas');
                 const contagensCaracteristicasInput = document.getElementById('contagensCaracteristicas');
-
                 // Verifique se os campos não estão vazios
                 if (nomesCaracteristicasInput.value && contagensCaracteristicasInput.value) {
                     // Parse dos dados JSON
-                    const nomesCaracteristicas = nomesCaracteristicasInput.value;
-                    const contagensCaracteristicas = contagensCaracteristicasInput.value;
+                    const nomesCaracteristicas = JSON.parse(nomesCaracteristicasInput.value);
+                    const contagensCaracteristicas = JSON.parse(contagensCaracteristicasInput.value);
+                    const tabelaCaracteristicas = document.getElementById('tabelaCaracteristicas')
 
+                    for (let i = 0; i < nomesCaracteristicas.length; i++) {
+                        const id = i + 1;
+                        const nomesCaracteristica = nomesCaracteristicas[i];
+                        const contagemCaracteristica = contagensCaracteristicasInput[i];
+
+                        const novaLinha = tabelaCaracteristicas.insertRow();
+
+                        const celId = novaLinha.insertCell(0);
+                        const celNome = novaLinha.insertCell(1);
+                        const celContagem = novaLinha.insertCell(2);
+
+                        celId.innerText = id;
+                        celNome.innerText = nomesCaracteristica;
+                        celContagem.innerText = contagemCaracteristica;
+                    }   
+                    
                 } else {
                     // Trate o caso em que os campos estão vazios ou não contêm JSON válido
                     console.error('Campos de entrada vazios ou não contêm JSON válido.');
