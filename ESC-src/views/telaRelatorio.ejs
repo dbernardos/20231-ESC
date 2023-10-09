@@ -114,38 +114,38 @@
         </section>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Recupere os dados JSON dos campos ocultos
-                const nomesCaracteristicasInput = document.getElementById('nomesCaracteristicas');
-                const contagensCaracteristicasInput = document.getElementById('contagensCaracteristicas');
-                // Verifique se os campos não estão vazios
-                if (nomesCaracteristicasInput.value && contagensCaracteristicasInput.value) {
-                    // Parse dos dados JSON
-                    const nomesCaracteristicas = JSON.parse(nomesCaracteristicasInput.value);
-                    const contagensCaracteristicas = JSON.parse(contagensCaracteristicasInput.value);
-                    const tabelaCaracteristicas = document.getElementById('tabelaCaracteristicas')
+           document.addEventListener('DOMContentLoaded', function () {
+    // Recupere os dados JSON dos campos ocultos
+    const nomesCaracteristicasInput = document.getElementById('nomesCaracteristicas');
+    const contagensCaracteristicasInput = document.getElementById('contagensCaracteristicas');
+    // Verifique se os campos não estão vazios
+    if (nomesCaracteristicasInput.value && contagensCaracteristicasInput.value) {
+        // Parse dos dados JSON
+        const nomesCaracteristicas = JSON.parse(nomesCaracteristicasInput.value);
+        const contagensCaracteristicas = JSON.parse(contagensCaracteristicasInput.value);
+        const tabelaCaracteristicas = document.getElementById('tabelaCaracteristicas')
 
-                    for (let i = 0; i < nomesCaracteristicas.length; i++) {
-                        const id = i + 1;
-                        const nomesCaracteristica = nomesCaracteristicas[i];
-                        const contagemCaracteristica = contagensCaracteristicasInput[i];
+        for (let i = 0; i < nomesCaracteristicas.length; i++) {
+            const id = i + 1;
+            const nomesCaracteristica = nomesCaracteristicas[i];
+            const contagemCaracteristica = contagensCaracteristicas[i];
 
-                        const novaLinha = tabelaCaracteristicas.insertRow();
+            const novaLinha = tabelaCaracteristicas.insertRow();
 
-                        const celId = novaLinha.insertCell(0);
-                        const celNome = novaLinha.insertCell(1);
-                        const celContagem = novaLinha.insertCell(2);
+            const celId = novaLinha.insertCell(0);
+            const celNome = novaLinha.insertCell(1);
+            const celContagem = novaLinha.insertCell(2);
 
-                        celId.innerText = id;
-                        celNome.innerText = nomesCaracteristica;
-                        celContagem.innerText = contagemCaracteristica;
-                    }   
-                    
-                } else {
-                    // Trate o caso em que os campos estão vazios ou não contêm JSON válido
-                    console.error('Campos de entrada vazios ou não contêm JSON válido.');
-                }
-            });
+            celId.innerText = id;
+            celNome.innerText = nomesCaracteristica;
+            celContagem.innerText = contagemCaracteristica;
+        }   
+    } else {
+        // Trate o caso em que os campos estão vazios ou não contêm JSON válido
+        console.error('Campos de entrada vazios ou não contêm JSON válido.');
+    }
+});
+
         </script>
 
         <%- include('rodape') %>
