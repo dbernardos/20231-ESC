@@ -32,10 +32,9 @@
                                 id="contagensCaracteristicasInput">
 
                             <input type="text" class="form-control" placeholder="Características do código-fonte"
-                                id="inputCaracteristicas" name="inputCaracteristicas" oninput="caracteresValidate()"
+                                id="inputCaracteristicas" name="inputCaracteristicas"
                                 aria-label="Características do código-fonte" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-success  " type="submit" id="btnProcurar">Procurar</button>
-
+                            <button class="btn btn-outline-success" type="submit" id="btnProcurar">Procurar</button>
                         </div>
                         <span class="span-required" id="spanCarac"><b>*</b>Use vírgulas para separar os termos</span>
                         <span class="span-required-view">Digite pelo menos uma característica</span>
@@ -76,18 +75,7 @@
         </form>
 
         <script>
-            let nomesCaracteristicas = [];
             let contagensCaracteristicas = [];
-
-            const inputCaracteristicas = document.getElementById('inputCaracteristicas');
-            const caracteristicas = [
-                "if", "for", "while", "case", "else", "fgets", "getch", "getchar", "getche",
-                "putchar", "puts", "switch", "gets", "break", "return", "exit", "do", "strcpy",
-                "strcmp", "strncpy", "strlen", "strupr", "strlwr", "strrev", "tolower", "toupper",
-                "isalpha", "fopen", "fclose", "feof", "remove", "fflush", "sizeof", "typedef",
-                "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
-                "argc", "argv"
-            ];
 
             function verificarCaracteristicas() {
                 const inputCaracteristicas = document.getElementById('inputCaracteristicas');
@@ -100,27 +88,6 @@
                 // Exibir as características correspondentes no elemento fileShow
                 const fileShow = document.getElementById('fileShow');
                 fileShow.value = correspondencias.join(', ');
-            }
-
-            const campos = document.querySelectorAll('.form-control');
-            const areas = document.getElementById('fileUpload');
-            const spans = document.querySelectorAll('span-required-view');
-
-
-            function caracteresValidate() {
-                if (campos[0].value.length == 0) {
-                    console.log('NAO VALIDADO');
-                } else {
-                    console.log('VALIDADO');
-                }
-            }
-
-            function fileUpdateValidate() {
-                if (areas.value.length == 0) {
-                    console.log('NÃO VALIDADO');
-                } else {
-                    console.log('VALIDADO');
-                }
             }
 
             function lerArquivoComoString(arquivo, callback) {
@@ -173,45 +140,6 @@
                 return { charsName, charsCont };
             }
 
-
-            const input = document.getElementById('inputGroupFile');
-
-            var conteudonovo = '';
-            input.addEventListener('change', function (event) {
-                const arquivo = input.files[0];
-                if (arquivo) {
-                    lerArquivoComoString(arquivo, function (erro, conteudo) {
-                        if (erro) {
-                            console.error('Erro ao ler o arquivo', erro);
-                        } else {
-                            console.log('Conteúdo do arquivo como String', conteudo);
-
-                            const lista_codigo = conteudo.split('\n')
-                            const carac = [
-                                "if", "for", "while", "case", "else", "fgets", "getch", "getchar", "getche",
-                                "putchar", "puts", "switch", "gets", "break", "return", "exit", "do", "strcpy",
-                                "strcmp", "strncpy", "strlen", "strupr", "strlwr", "strrev", "tolower", "toupper",
-                                "isalpha", "fopen", "fclose", "feof", "remove", "fflush", "sizeof", "typedef",
-                                "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
-                                "argc", "argv"
-                            ]
-                            const resultado = extrair(lista_codigo, carac);
-
-                            nomesCaracteristicas = resultado.charsName;
-                            contagensCaracteristicas = resultado.charsCont;
-
-                            console.log(resultado); // Exibirá o resultado no console
-
-
-                            //document.getElementById('fileShow').value = conteudo;
-
-
-                            conteudonovo = conteudo;
-                        }
-                    })
-                }
-            })
-
             const arquivosSelecionados = [];
 
             document.addEventListener('DOMContentLoaded', function () {
@@ -222,6 +150,7 @@
                 const arquivosSelecionados = [];
                 const contagensTotais = {};
 
+                // BOTAO INSERIR CODIGOS-FONTE SELECIONADOS
                 btnInserir.addEventListener('click', function () {
                     const selectedFiles = inputGroupFile.files;
                     if (selectedFiles.length > 0) {
@@ -245,8 +174,13 @@
                                         "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
                                         "argc", "argv"
                                     ];
+
+                                    console.log('LER ARQUIVO COMO STRING');
                                     const resultado = extrair(lista_codigo, carac);
 
+                                    nomesCaracteristicas = resultado.charsName;
+                                    contagensCaracteristicas = resultado.charsCont;
+                                    
                                     const dadosArquivo = {
                                         nome: fileName,
                                         conteudo: conteudo,
@@ -260,7 +194,7 @@
                                     const dadosFormatados = dadosArquivo.caracteristicas.charsName.map((nome, index) => {
                                         return `${nome}: ${dadosArquivo.caracteristicas.charsCont[index]}`;
                                     }).join(', ')
-                                    console.log(`${dadosArquivo.nome}: [${dadosFormatados}]`);
+                                    console.log(`aqui aqui aqui aqui${dadosArquivo.nome}: [${dadosFormatados}]`);
 
 
                                     var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
@@ -293,22 +227,16 @@
                             });
                         }
                     }
-
-                    document.getElementById('btnProcessar').addEventListener('click', function () {
-                        document.getElementById('nomesCaracteristicasInput').value = JSON.stringify(nomesCaracteristicas);
-                        document.getElementById('contagensCaracteristicasInput').value = JSON.stringify(contagensCaracteristicas);
-
-                        // Envie o formulário
-                        document.getElementById('frmProcessa').submit();
-                        const nomesCaracteristicas = Object.keys(contagensTotais);
-                        const contagensCaracteristicas = Object.keys(contagensTotais);
-                    });
-                    console.log('CHARS NAMES: ', nomesCaracteristicas)
-                    console.log(contagensCaracteristicas);
                 });
             });
 
+            document.getElementById('btnProcessar').addEventListener('click', function () {
+                document.getElementById('nomesCaracteristicasInput').value = nomesCaracteristicas;
+                document.getElementById('contagensCaracteristicasInput').value = contagensCaracteristicas;
 
+                // Envie o formulário
+                document.getElementById('frmProcessa').submit();
+            });
         </script>
 
         <%- include('rodape') %>

@@ -24,6 +24,8 @@
         <!--Duas áreas de texto, uma que mostra a lista de arquivos adicionadas e outra que ao clicar, mostra breviamente o código-fonte selecionado-->
         <div class="container">
             <h1>Relatório de Características</h1>
+            <span><%= contChars %></span>
+            <span><%= chars %></span>
             <ul>
                 <script>
                     for (let i = 0; i < nomesCaracteristicas.length; i++) {
@@ -64,8 +66,8 @@
                 // Verifique se os campos não estão vazios
                 if (nomesCaracteristicasInput.value && contagensCaracteristicasInput.value) {
                     // Parse dos dados JSON
-                    const nomesCaracteristicas = JSON.parse(nomesCaracteristicasInput.value);
-                    const contagensCaracteristicas = JSON.parse(contagensCaracteristicasInput.value);
+                    const nomesCaracteristicas = nomesCaracteristicasInput.value;
+                    const contagensCaracteristicas = contagensCaracteristicasInput.value;
 
                 } else {
                     // Trate o caso em que os campos estão vazios ou não contêm JSON válido
