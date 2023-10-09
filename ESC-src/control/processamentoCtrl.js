@@ -1,14 +1,8 @@
 const connection = require('../model/conexao');     
 
 exports.processamentoPagina = (req, res) => {
-    console.log('ESTOU NO PROCESSAMENTO GET');
-    const nomesCaracteristicas = req.body.nomesCaracteristicasInput;
-    const contagensCaracteristicas = req.body.contagensCaracteristicasInput;
-    console.log('Nomes de Características:', nomesCaracteristicas);
-
     res.render('telaProcessamento', {errado: false});
 }
-
 
 /**tentando implementar a rota com os vetores */
 exports.processamentoPost = (req, res) => {
