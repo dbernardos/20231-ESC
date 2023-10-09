@@ -182,6 +182,7 @@
                                     nomesCaracteristicas = resultado.charsName;
                                     contagensCaracteristicas = resultado.charsCont;
                                     
+                                    // PARA QUE SERVE ISSO? SE NÃO SERVIR, APAGAR PARA NÃO DEIXAR O CÓDIGO CONFUSO
                                     const dadosArquivo = {
                                         nome: fileName,
                                         conteudo: conteudo,
@@ -196,7 +197,7 @@
                                         return `${nome}: ${dadosArquivo.caracteristicas.charsCont[index]}`;
                                     }).join(', ')
                                     console.log(`aqui aqui aqui aqui${dadosArquivo.nome}: [${dadosFormatados}]`);
-
+                                    // (ATÉ AQUI) PARA QUE SERVE ISSO? SE NÃO SERVIR, APAGAR PARA NÃO DEIXAR O CÓDIGO CONFUSO
 
                                     var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
                                     document.querySelector('#showListFile').innerHTML =
