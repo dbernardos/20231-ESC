@@ -9,7 +9,7 @@ exports.relatorioPost = async (req, res) => {
   // Recupere os dados enviados da página de processamento
   const nomesCaracteristicas = req.body.nomesCaracteristicasInput;
   const contagensCaracteristicas = req.body.contagensCaracteristicasInput;
-  console.log('ESTOU NO RELATORIO POST: ', nomesCaracteristicas);
+  console.log('ESTOU NO RELATORIO POST: ', contagensCaracteristicas);
 
   // Renderize a página de relatório com os dados
   res.render('telaRelatorio', {

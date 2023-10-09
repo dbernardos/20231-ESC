@@ -21,10 +21,7 @@
     <%- include('menu') %>
 
         <form id="frmProcessa" method="POST" action="/relatorio">
-
             <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
-
-
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 py-5">
@@ -57,7 +54,6 @@
                             <div class="col-md-6">
                                 <h6>Lista de Arquivos carregados</h6>
                                 <div class="input-group" id="showListFile">
-
                                     <!-- AQUI CARREGA O LINK DAS TAREFAS VIA JAVASCRIPT -->
                                 </div>
                             </div>
@@ -217,7 +213,7 @@
             })
 
             const arquivosSelecionados = [];
-            
+
             document.addEventListener('DOMContentLoaded', function () {
                 const inputGroupFile = document.getElementById('inputGroupFile');
                 const fileUpload = document.getElementById('fileUpload');
@@ -306,12 +302,12 @@
                         document.getElementById('frmProcessa').submit();
                         const nomesCaracteristicas = Object.keys(contagensTotais);
                         const contagensCaracteristicas = Object.keys(contagensTotais);
-
-                        console.log(nomesCaracteristicas)
-                        console.log(contagensCaracteristicas);
                     });
+                    console.log('CHARS NAMES: ', nomesCaracteristicas)
+                    console.log(contagensCaracteristicas);
                 });
             });
+
 
         </script>
 
