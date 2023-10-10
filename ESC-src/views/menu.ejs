@@ -39,8 +39,9 @@
             <section class="d-grid justify-content-md-end ml-auto">
                 <div class="px-2">
                     <input type="text" class="form-control" style="max-width: 200px;" placeholder="Usuário" id="inputUsuario" name="inputUsuario" aria-label="Usuário"
-                    aria-describedby="user" value="Nome do Usuário" readonly>
+                    aria-describedby="user" value="<%= usuario ? usuario[0].nome : 'Nome do Usuário' %>" readonly>
                 </div>
+                
 
 
             </section>
@@ -50,7 +51,6 @@
                 </a>
             </section>
         </div>
-        
 
         <!--<input type="text" name="nome" id="nome" value="%= nomeDoServidor %"> -->
 
