@@ -28,7 +28,7 @@
                         <div class="input-group mb-3">
                             <!-- -adicionando campos ocultos para enviar os veotres nomesCaracteristicas e contagensCaracteristicas-->
                             <input type="hidden" name="nomesCaracteristicas" id="nomesCaracteristicasInput">
-                            <input type="hidden" name="contagensCaracteristicas"id="contagensCaracteristicasInput">
+                            <input type="hidden" name="contagensCaracteristicas" id="contagensCaracteristicasInput">
 
                             <input type="text" class="form-control" placeholder="Características do código-fonte"
                                 id="inputCaracteristicas" name="inputCaracteristicas"
@@ -180,23 +180,8 @@
 
                                     nomesCaracteristicas = resultado.charsName;
                                     contagensCaracteristicas = resultado.charsCont;
+                                    console.log('resultado', resultado)
 
-                                    // PARA QUE SERVE ISSO? SE NÃO SERVIR, APAGAR PARA NÃO DEIXAR O CÓDIGO CONFUSO
-                                    const dadosArquivo = {
-                                        nome: fileName,
-                                        conteudo: conteudo,
-                                        caracteristicas: {
-                                            charsName: resultado.charsName,
-                                            charsCont: resultado.charsCont
-                                        }
-                                    };
-
-                                    // Formatando os dados do arquivo como uma lista de pares
-                                    const dadosFormatados = dadosArquivo.caracteristicas.charsName.map((nome, index) => {
-                                        return `${nome}: ${dadosArquivo.caracteristicas.charsCont[index]}`;
-                                    }).join(', ')
-                                    console.log(`aqui aqui aqui aqui${dadosArquivo.nome}: [${dadosFormatados}]`);
-                                    // (ATÉ AQUI) PARA QUE SERVE ISSO? SE NÃO SERVIR, APAGAR PARA NÃO DEIXAR O CÓDIGO CONFUSO
 
                                     var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
                                     document.querySelector('#showListFile').innerHTML =
@@ -231,13 +216,31 @@
                 });
             });
 
+            salvarLocalStorage();
+
+            function salvarLocalStorage(){
+
+                localStorage.setItem("usuario", "zeca");
+                localStorage.setItem("email", "zeca@gmail.com")
+                console.log('contagem: ', contagensCaracteristicas)
+                console.log('nomes: ', nomesCaracteristicas)
+
+                //recuperando informaçoes 
+                    var usuario_local = localStorage.getItem("usuario")
+                    var email_local = localStorage.getItem("email")
+                    console.log(usuario_local);
+                    console.log(email_local);
+
+
             document.getElementById('btnProcessar').addEventListener('click', function () {
                 document.getElementById('nomesCaracteristicasInput').value = nomesCaracteristicas;
                 document.getElementById('contagensCaracteristicasInput').value = contagensCaracteristicas;
 
+               
                 // Envie o formulário
                 document.getElementById('frmProcessa').submit();
             });
+        }
         </script>
 
         <%- include('rodape') %>
