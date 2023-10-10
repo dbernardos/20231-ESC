@@ -30,9 +30,6 @@
                             <input type="hidden" name="nomesCaracteristicas" id="nomesCaracteristicasInput">
                             <input type="hidden" name="contagensCaracteristicas" id="contagensCaracteristicasInput">
 
-                            <input type="hidden" name="usuario" id="usuarioInput">
-                            <input type="hidden" name="email" id="emailInput">
-
                             <input type="text" class="form-control" placeholder="Características do código-fonte"
                                 id="inputCaracteristicas" name="inputCaracteristicas"
                                 aria-label="Características do código-fonte" aria-describedby="button-addon2">
@@ -77,6 +74,7 @@
         </form>
 
         <script>
+            
             let contagensCaracteristicas = [];
             let nomesCaracteristicas = [];
 
@@ -183,7 +181,6 @@
 
                                     nomesCaracteristicas = resultado.charsName;
                                     contagensCaracteristicas = resultado.charsCont;
-                                    console.log('resultado', resultado)
 
 
                                     var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
@@ -212,6 +209,7 @@
                                             document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
                                         }
                                     }, false);
+                                    
                                 }
                             });
                         }
@@ -219,31 +217,18 @@
                 });
             });
 
-            salvarLocalStorage();
+            document.getElementById('btnProcessar').addEventListener('click', function () {
+                document.getElementById('nomesCaracteristicasInput').value = nomesCaracteristicas;
+                document.getElementById('contagensCaracteristicasInput').value = contagensCaracteristicas;
 
-            function salvarLocalStorage() {
+                localStorage.setItem("charsCont", JSON.stringify(charsCont));
+                localStorage.setItem("charsName", JSON.stringify(charsName));
 
-                localStorage.setItem("usuario", "zeca");
-                localStorage.setItem("email", "zeca@gmail.com")
                 console.log('contagem: ', contagensCaracteristicas)
                 console.log('nomes: ', nomesCaracteristicas)
-
-                //recuperando informaçoes 
-                var usuario_local = localStorage.getItem("usuario")
-                var email_local = localStorage.getItem("email")
-
-
-                document.getElementById('btnProcessar').addEventListener('click', function () {
-                    document.getElementById('nomesCaracteristicasInput').value = nomesCaracteristicas;
-                    document.getElementById('contagensCaracteristicasInput').value = contagensCaracteristicas;
-
-                    document.getElementById('usuarioInput').value = usuario_local;
-                    document.getElementById('emailInput').value = email_local;
-
-                    // Envie o formulário
-                    document.getElementById('frmProcessa').submit();
-                });
-            }
+                // Envie o formulário
+                document.getElementById('frmProcessa').submit();
+            });
         </script>
 
         <%- include('rodape') %>
