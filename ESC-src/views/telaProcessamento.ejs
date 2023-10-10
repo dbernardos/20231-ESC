@@ -74,6 +74,7 @@
         </form>
 
         <script>
+            
             let contagensCaracteristicas = [];
             let nomesCaracteristicas = [];
 
@@ -180,7 +181,6 @@
 
                                     nomesCaracteristicas = resultado.charsName;
                                     contagensCaracteristicas = resultado.charsCont;
-                                    console.log('resultado', resultado)
 
 
                                     var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
@@ -209,6 +209,7 @@
                                             document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
                                         }
                                     }, false);
+                                    
                                 }
                             });
                         }
@@ -216,31 +217,18 @@
                 });
             });
 
-            salvarLocalStorage();
-
-            function salvarLocalStorage(){
-
-                localStorage.setItem("usuario", "zeca");
-                localStorage.setItem("email", "zeca@gmail.com")
-                console.log('contagem: ', contagensCaracteristicas)
-                console.log('nomes: ', nomesCaracteristicas)
-
-                //recuperando informaçoes 
-                    var usuario_local = localStorage.getItem("usuario")
-                    var email_local = localStorage.getItem("email")
-                    console.log(usuario_local);
-                    console.log(email_local);
-
-
             document.getElementById('btnProcessar').addEventListener('click', function () {
                 document.getElementById('nomesCaracteristicasInput').value = nomesCaracteristicas;
                 document.getElementById('contagensCaracteristicasInput').value = contagensCaracteristicas;
 
-               
+                localStorage.setItem("charsCont", JSON.stringify(charsCont));
+                localStorage.setItem("charsName", JSON.stringify(charsName));
+
+                console.log('contagem: ', contagensCaracteristicas)
+                console.log('nomes: ', nomesCaracteristicas)
                 // Envie o formulário
                 document.getElementById('frmProcessa').submit();
             });
-        }
         </script>
 
         <%- include('rodape') %>
