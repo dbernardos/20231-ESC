@@ -55,11 +55,3 @@ body {
     overflow: visible;
 }
 
-/* Estilos para telas pequenas */
-@media (max-width: 768px) {
-    .col-md-6 {
-        font-size: 14px;
-        /* Outros estilos específicos para telas pequenas */
-    }
-}
-
