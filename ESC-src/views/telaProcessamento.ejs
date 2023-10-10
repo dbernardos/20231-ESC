@@ -30,6 +30,9 @@
                             <input type="hidden" name="nomesCaracteristicas" id="nomesCaracteristicasInput">
                             <input type="hidden" name="contagensCaracteristicas" id="contagensCaracteristicasInput">
 
+                            <input type="hidden" name="usuario" id="usuarioInput">
+                            <input type="hidden" name="email" id="emailInput">
+
                             <input type="text" class="form-control" placeholder="Características do código-fonte"
                                 id="inputCaracteristicas" name="inputCaracteristicas"
                                 aria-label="Características do código-fonte" aria-describedby="button-addon2">
@@ -218,7 +221,7 @@
 
             salvarLocalStorage();
 
-            function salvarLocalStorage(){
+            function salvarLocalStorage() {
 
                 localStorage.setItem("usuario", "zeca");
                 localStorage.setItem("email", "zeca@gmail.com")
@@ -226,21 +229,21 @@
                 console.log('nomes: ', nomesCaracteristicas)
 
                 //recuperando informaçoes 
-                    var usuario_local = localStorage.getItem("usuario")
-                    var email_local = localStorage.getItem("email")
-                    console.log(usuario_local);
-                    console.log(email_local);
+                var usuario_local = localStorage.getItem("usuario")
+                var email_local = localStorage.getItem("email")
 
 
-            document.getElementById('btnProcessar').addEventListener('click', function () {
-                document.getElementById('nomesCaracteristicasInput').value = nomesCaracteristicas;
-                document.getElementById('contagensCaracteristicasInput').value = contagensCaracteristicas;
+                document.getElementById('btnProcessar').addEventListener('click', function () {
+                    document.getElementById('nomesCaracteristicasInput').value = nomesCaracteristicas;
+                    document.getElementById('contagensCaracteristicasInput').value = contagensCaracteristicas;
 
-               
-                // Envie o formulário
-                document.getElementById('frmProcessa').submit();
-            });
-        }
+                    document.getElementById('usuarioInput').value = usuario_local;
+                    document.getElementById('emailInput').value = email_local;
+
+                    // Envie o formulário
+                    document.getElementById('frmProcessa').submit();
+                });
+            }
         </script>
 
         <%- include('rodape') %>
