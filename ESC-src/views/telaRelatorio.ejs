@@ -18,9 +18,10 @@
 
 <body class="bg-body-secondary">
     <%- include('menu') %>
+    <nav>
         <input type="hidden" id="nomesCaracteristicas" name="nomesCaracteristicas">
         <input type="hidden" id="contagensCaracteristicas" name="contagensCaracteristicas">
-
+    </nav>
         <!--Duas áreas de texto, uma que mostra a lista de arquivos adicionadas e outra que ao clicar, mostra breviamente o código-fonte selecionado-->
         <div class="container">
             <h1>Relatório de Características</h1>
@@ -30,7 +31,7 @@
             <span>
                 <%= chars %>
             </span>
-            <table class="table table-bordered">
+            <table class="table table-bordered tabela-relatorio">
                 
                 <tbody id="tabelaCaracteristicas">
                 </tbody>
