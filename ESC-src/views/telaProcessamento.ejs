@@ -20,7 +20,7 @@
 <body class="bg-body-secondary">
     <%- include('menu') %>
 
-        <form id="frmProcessa" method="POST">
+        <form id="frmProcessa" method="POST" >
             <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
             <div class="container">
                 <div class="row">
@@ -74,9 +74,12 @@
         </form>
 
         <script>
-            
+
+            //variaveis globais
             let contagensCaracteristicas = [];
             let nomesCaracteristicas = [];
+            const arquivosInfo = [];
+
 
             function verificarCaracteristicas() {
                 const inputCaracteristicas = document.getElementById('inputCaracteristicas');
@@ -109,7 +112,8 @@
 
                 leitor.readAsText(arquivo);
             }
-
+           
+            // Função para extrair informações de características do código-fonte
             function extrair(lista_codigo, carac) {
                 //vetor para o nome 
                 const charsName = [];
@@ -162,6 +166,7 @@
 
                             const fileName = selectedFile.name;
 
+                            // Função para ler um arquivo como string
                             lerArquivoComoString(selectedFile, function (erro, conteudo) {
                                 if (erro) {
                                     console.error('Erro ao ler o arquivo', erro);
@@ -179,9 +184,14 @@
                                     console.log('LER ARQUIVO COMO STRING');
                                     const resultado = extrair(lista_codigo, carac);
 
-                                    nomesCaracteristicas = resultado.charsName;
-                                    contagensCaracteristicas = resultado.charsCont;
+                                    //matriz com todas as informaçoes de todos os arquicos seleciondaos
+                                    const infoArquivo = {
+                                        nome: fileName,
+                                        contChars: resultado.charsCont,
+                                        contNames: resultado.charsName
+                                    };
 
+                                    arquivosInfo.push(infoArquivo);
 
                                     var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
                                     document.querySelector('#showListFile').innerHTML =
@@ -209,7 +219,7 @@
                                             document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
                                         }
                                     }, false);
-                                    
+
                                 }
                             });
                         }
@@ -218,7 +228,10 @@
             });
 
             document.getElementById('btnProcessar').addEventListener('click', function () {
-                
+
+                const infoJSON = JSON.stringify(arquivosInfo);
+                localStorage.setItem("arquivosInfo", infoJSON);
+
                 document.getElementById('nomesCaracteristicasInput').value = nomesCaracteristicas;
                 document.getElementById('contagensCaracteristicasInput').value = contagensCaracteristicas;
 

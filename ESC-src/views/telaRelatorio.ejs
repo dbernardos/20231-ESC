@@ -123,38 +123,37 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                // Recupere os dados JSON dos campos ocultos
-                const nomesCaracteristicasInput = document.getElementById('nomesCaracteristicas');
-                const contagensCaracteristicasInput = document.getElementById('contagensCaracteristicas');
-                // Verifique se os campos não estão vazios
-                if (nomesCaracteristicasInput.value && contagensCaracteristicasInput.value) {
-                    // Parse dos dados JSON
-                    const nomesCaracteristicas = JSON.parse(nomesCaracteristicasInput.value);
-                    const contagensCaracteristicas = JSON.parse(contagensCaracteristicasInput.value);
-                    const tabelaCaracteristicas = document.getElementById('tabelaCaracteristicas')
+                // Recupere os dados do localStorage
+                const infoJSON = localStorage.getItem("arquivosInfo");
+                const nomesCaracteristicas = localStorage.getItem("nomesCaracteristicas");
+                const contagensCaracteristicas = localStorage.getItem("contagensCaracteristicas");
+                const charsContJSON = localStorage.getItem("charsCont");
+                const charsNameJSON = localStorage.getItem("charsName");
 
-                    for (let i = 0; i < nomesCaracteristicas.length; i++) {
-                        const id = i + 1;
-                        const nomesCaracteristica = nomesCaracteristicas[i];
-                        const contagemCaracteristica = contagensCaracteristicas[i];
+                // Verifique se os dados existem no localStorage
+                if (infoJSON && nomesCaracteristicas && contagensCaracteristicas && charsContJSON && charsNameJSON) {
+                    // Faça o parsing dos dados de JSON
+                    const arquivosInfo = JSON.parse(infoJSON);
+                    const nomesCaracteristicasArray = nomesCaracteristicas.split(",");
+                    const contagensCaracteristicasArray = contagensCaracteristicas.split(",");
+                    const charsCont = JSON.parse(charsContJSON);
+                    const charsName = JSON.parse(charsNameJSON);
 
-                        const novaLinha = tabelaCaracteristicas.insertRow();
+                    // Agora você tem acesso aos dados e pode usá-los na página de relatório
+                    console.log('Dados de arquivosInfo:', arquivosInfo);
+                    console.log('Nomes de Características:', nomesCaracteristicasArray);
+                    console.log('Contagens de Características:', contagensCaracteristicasArray);
+                    console.log('Dados de charsCont:', charsCont);
+                    console.log('Dados de charsName:', charsName);
 
-                        const celId = novaLinha.insertCell(0);
-                        const celNome = novaLinha.insertCell(1);
-                        const celContagem = novaLinha.insertCell(2);
-
-                        celId.innerText = id;
-                        celNome.innerText = nomesCaracteristica;
-                        celContagem.innerText = contagemCaracteristica;
-                    }
+                    // Faça o processamento ou exibição dos dados conforme necessário
                 } else {
-                    // Trate o caso em que os campos estão vazios ou não contêm JSON válido
-                    console.error('Campos de entrada vazios ou não contêm JSON válido.');
+                    // Os dados não existem no localStorage, faça o tratamento apropriado
+                    console.log('Dados não encontrados no localStorage.');
                 }
             });
-
         </script>
+
 
         <%- include('rodape') %>
 </body>
