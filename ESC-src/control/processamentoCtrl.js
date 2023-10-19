@@ -15,6 +15,7 @@ exports.processamentoPost = (req, res) => {
       console.log('Nomes de Características:', nomesCaracteristicas);
       console.log('Contagens de Características:', contagensCaracteristicas);
       res.render('telaRelatorio', { chars: nomesCaracteristicas, contChars: contagensCaracteristicas });
+      
     } catch (error){
       // Lida com exceções ao analisar JSON
       console.error('Erro ao analisar JSON:', error);

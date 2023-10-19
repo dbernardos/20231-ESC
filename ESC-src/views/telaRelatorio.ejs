@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de relatório</title>
-    <link rel="stylesheet" href="./css/layoutRelatorio.css">
+    <link rel="stylesheet" href="css/layoutRelatorio.css">
 
 
     <script src="https://kit.fontawesome.com/5c7c6d79df.js" crossorigin="anonymous"></script>
@@ -25,18 +25,69 @@
         <!--Duas áreas de texto, uma que mostra a lista de arquivos adicionadas e outra que ao clicar, mostra breviamente o código-fonte selecionado-->
         <div class="container">
             <h1>Relatório de Características</h1>
+
             <span>
                 <%= contChars %>
             </span>
             <span>
                 <%= chars %>
             </span>
-            <table class="table table-bordered tabela-relatorio">
-
-                <tbody id="tabelaCaracteristicas">
-                </tbody>
-
+            <table class="table table-bordered">
                 <thead>
+                    <tr>
+                        <th>if</th>
+                        <th>for</th>
+                        <th>while</th>
+                        <th>case</th>
+                        <th>else</th>
+                        <th>fgets</th>
+                        <th>getch</th>
+                        <th>getchar</th>
+                        <th>getche</th>
+                        <th>putchar</th>
+                        <th>puts</th>
+                        <th>switch</th>
+                        <th>gets</th>
+                        <th>break</th>
+                        <th>return</th>
+                        <th>exit</th>
+                        <th>do</th>
+                        <th>strcpy</th>
+                        <th>strcmp</th>
+                        <th>strncpy</th>
+                        <th>strlen</th>
+                        <th>strupr</th>
+                        <th>strlwr</th>
+                        <th>strrev</th>
+                        <th>tolower</th>
+                        <th>toupper</th>
+                        <th>isalpha</th>
+                        <th>fopen</th>
+                        <th>fclose</th>
+                        <th>feof</th>
+                        <th>remove</th>
+                        <th>fflush</th>
+                        <th>sizeof</th>
+                        <th>typedef</th>
+                        <th>struct</th>
+                        <th>malloc</th>
+                        <th>free</th>
+                        <th>#include</th>
+                        <th>system</th>
+                        <th>default</th>
+                        <th>main</th>
+                        <th>functions</th>
+                        <th>argc</th>
+                        <th>argv</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aqui você pode adicionar os dados da tabela usando JavaScript -->
+                </tbody>
+            </table>
+
+
+            <!--<thead>
                     <tr>
                         <div class="container text-center">
                             <div class="row row-cols-4">
@@ -91,12 +142,13 @@
                 </thead>
 
             </table>
+            -->
             <!-- <script>
                     for (let i = 0; i < nomesCaracteristicas.length; i++) {
                         document.write(`<li>${nomesCaracteristicas[i]}: ${contagensCaracteristicas[i]}</li>`);
                     }
                 </script>-->
-
+            <!--
 
             <div class="row">
                 <div class="col-md-6">
@@ -113,49 +165,42 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
-            <div class="me-5 d-none d-lg-block px-5">
-                <span><a href="/processamento">Voltar</a></span>
-            </div>
-        </section>
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
+                <div class="me-5 d-none d-lg-block px-5">
+                    <span><a href="/processamento">Voltar</a></span>
+                </div>
+            </section>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Recupere os dados do localStorage
-                const infoJSON = localStorage.getItem("arquivosInfo");
-                const nomesCaracteristicas = localStorage.getItem("nomesCaracteristicas");
-                const contagensCaracteristicas = localStorage.getItem("contagensCaracteristicas");
-                const charsContJSON = localStorage.getItem("charsCont");
-                const charsNameJSON = localStorage.getItem("charsName");
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const tabelaCaracteristicas = document.querySelector('.table.table-bordered tbody'); // Selecione o corpo da tabela
 
-                // Verifique se os dados existem no localStorage
-                if (infoJSON && nomesCaracteristicas && contagensCaracteristicas && charsContJSON && charsNameJSON) {
-                    // Faça o parsing dos dados de JSON
-                    const arquivosInfo = JSON.parse(infoJSON);
-                    const nomesCaracteristicasArray = nomesCaracteristicas.split(",");
-                    const contagensCaracteristicasArray = contagensCaracteristicas.split(",");
-                    const charsCont = JSON.parse(charsContJSON);
-                    const charsName = JSON.parse(charsNameJSON);
+                    for (let i = 0; i < nomesCaracteristicas.length; i++) {
+                        const caracteristica = nomesCaracteristicas[i]; // Use o nome da característica a partir de nomesCaracteristicas
+                        const contagem = contagensCaracteristicas[i];
 
-                    // Agora você tem acesso aos dados e pode usá-los na página de relatório
-                    console.log('Dados de arquivosInfo:', arquivosInfo);
-                    console.log('Nomes de Características:', nomesCaracteristicasArray);
-                    console.log('Contagens de Características:', contagensCaracteristicasArray);
-                    console.log('Dados de charsCont:', charsCont);
-                    console.log('Dados de charsName:', charsName);
+                        // Crie uma nova linha na tabela para cada característica
+                        const newRow = tabelaCaracteristicas.insertRow();
 
-                    // Faça o processamento ou exibição dos dados conforme necessário
-                } else {
-                    // Os dados não existem no localStorage, faça o tratamento apropriado
-                    console.log('Dados não encontrados no localStorage.');
-                }
-            });
-        </script>
+                        // Crie uma célula para o nome da característica
+                        const cell1 = newRow.insertCell(0);
+                        cell1.textContent = caracteristica;
+
+                        // Crie uma célula para a contagem
+                        const cell2 = newRow.insertCell(1);
+                        cell2.textContent = contagem;
+                    }
+                });
 
 
-        <%- include('rodape') %>
+
+            </script>
+
+
+
+            <%- include('rodape') %>
 </body>
 
 </html>
