@@ -20,15 +20,16 @@
 <body class="bg-body-secondary">
     <%- include('menu') %>
 
-        <form id="frmProcessa" method="POST" >
+        <form id="frmProcessa" method="POST">
             <!--Parte de selecionar os termos de procura e a parte de escolher os arquivos-->
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 py-5">
                         <div class="input-group mb-3">
                             <!-- -adicionando campos ocultos para enviar os veotres nomesCaracteristicas e contagensCaracteristicas-->
-                            <input type="hidden" name="nomesCaracteristicas" id="nomesCaracteristicasInput">
-                            <input type="hidden" name="contagensCaracteristicas" id="contagensCaracteristicasInput">
+                            <input type="hidden" name="nomesCaracteristicasInput" id="nomesCaracteristicasInput">
+                            <input type="hidden" name="contagensCaracteristicasInput"
+                                id="contagensCaracteristicasInput">
 
                             <input type="text" class="form-control" placeholder="Características do código-fonte"
                                 id="inputCaracteristicas" name="inputCaracteristicas"
@@ -73,179 +74,157 @@
                     </section>
         </form>
 
-        <script>
-
-            //variaveis globais
-            let contagensCaracteristicas = [];
-            let nomesCaracteristicas = [];
-            const arquivosInfo = [];
-
-
-            function verificarCaracteristicas() {
-                const inputCaracteristicas = document.getElementById('inputCaracteristicas');
-                const valorDigitado = inputCaracteristicas.value.toLowerCase();
-
-                const correspondencias = caracteristicas.filter(caracteristica => valorDigitado.includes(caracteristica.toLowerCase()));
-
-                console.log('Características correspondentes:', correspondencias);
-
-                // Exibir as características correspondentes no elemento fileShow
-                const fileShow = document.getElementById('fileShow');
-                fileShow.value = correspondencias.join(', ');
-            }
-
-            function lerArquivoComoString(arquivo, callback) {
-                const leitor = new FileReader();
-
-                leitor.onload = function (event) {
-                    const resultado = event.target.result;
-                    callback(null, resultado);
-
-                    // Atualize o conteúdo do fileShow com o conteúdo do arquivo
-                    const fileShow = document.getElementById('fileShow');
-                    //fileShow.value = resultado;
-                };
-
-                leitor.onerror = function (event) {
-                    callback(event.target.error, null);
-                };
-
-                leitor.readAsText(arquivo);
-            }
-           
-            // Função para extrair informações de características do código-fonte
-            function extrair(lista_codigo, carac) {
-                //vetor para o nome 
-                const charsName = [];
-                //vetor para contar
-                const charsCont = [];
-
-                for (const cmd of carac) {
-                    let count = 0;
-
-                    for (const frase of lista_codigo) {
-                        if (cmd === "if") {
-                            if (frase.includes("if(") || frase.includes("if (")) {
-                                count += 1;
-                            }
-                        } else if (cmd === "for") {
-                            if (frase.includes("for(") || frase.includes("for (")) {
-                                count += 1;
-                            }
-                        } else if (frase.includes(cmd)) {
-                            count += 1;
-                        }
-                    }
-
-                    // Adicionando o nome e a contagem da característica nos vetores
-                    charsName.push(cmd);
-                    charsCont.push(count);
-                }
-                //retornando os vetores
-                return { charsName, charsCont };
-            }
-
-            const arquivosSelecionados = [];
-
-            document.addEventListener('DOMContentLoaded', function () {
-                const inputGroupFile = document.getElementById('inputGroupFile');
-                const fileUpload = document.getElementById('fileUpload');
-                const btnInserir = document.getElementById('btnInserir');
-                // Vetor para armazenar os arquivos selecionados
-                const arquivosSelecionados = [];
-                const contagensTotais = {};
-
-                // BOTAO INSERIR CODIGOS-FONTE SELECIONADOS
-                btnInserir.addEventListener('click', function () {
-                    const selectedFiles = inputGroupFile.files;
-                    if (selectedFiles.length > 0) {
-
-                        const todosArquivos = []; // Vetor para armazenar os dados de todos os arquivos
-
-                        for (const selectedFile of selectedFiles) {
-
-                            const fileName = selectedFile.name;
-
-                            // Função para ler um arquivo como string
-                            lerArquivoComoString(selectedFile, function (erro, conteudo) {
-                                if (erro) {
-                                    console.error('Erro ao ler o arquivo', erro);
-                                } else {
-                                    const lista_codigo = conteudo.split('\n');
-                                    const carac = [
-                                        "if", "for", "while", "case", "else", "fgets", "getch", "getchar", "getche",
-                                        "putchar", "puts", "switch", "gets", "break", "return", "exit", "do", "strcpy",
-                                        "strcmp", "strncpy", "strlen", "strupr", "strlwr", "strrev", "tolower", "toupper",
-                                        "isalpha", "fopen", "fclose", "feof", "remove", "fflush", "sizeof", "typedef",
-                                        "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
-                                        "argc", "argv"
-                                    ];
-
-                                    console.log('LER ARQUIVO COMO STRING');
-                                    const resultado = extrair(lista_codigo, carac);
-
-                                    //matriz com todas as informaçoes de todos os arquicos seleciondaos
-                                    const infoArquivo = {
-                                        nome: fileName,
-                                        contChars: resultado.charsCont,
-                                        contNames: resultado.charsName
-                                    };
-
-                                    arquivosInfo.push(infoArquivo);
-
-                                    var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
-                                    document.querySelector('#showListFile').innerHTML =
-                                        '<span id="' + `${fileName}` + '" style="display: block;">' +
-                                        '<br>' +
-                                        `${fileName}` + ' <br>' + '<p>' +
-                                        '</span>' +
-                                        showListFileAtual;
-
-                                    // Adicionando o conteúdo do arquivo no vetor de arquivos selecionados
-                                    arquivosSelecionados.push({ nome: fileName, conteudo: conteudo });
-                                    document.querySelector('#showListFile').addEventListener('click', function (event) {
-                                        if (event.target.tagName === 'SPAN') {
-                                            const nomeArquivo = event.target.id;
-                                            const arquivoSelecionado = arquivosSelecionados.find(arquivo => arquivo.nome === nomeArquivo);
-                                            if (arquivoSelecionado) {
-                                                document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
-                                            }
-                                        }
-                                    }, false);
-                                    document.getElementById(`${fileName}`).addEventListener('click', function () {
-                                        const nomeArquivo = this.id;
-                                        const arquivoSelecionado = arquivosSelecionados.find(arquivo => arquivo.nome === nomeArquivo);
-                                        if (arquivoSelecionado) {
-                                            document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
-                                        }
-                                    }, false);
-
-                                }
-                            });
-                        }
-                    }
-                });
-            });
-
-            document.getElementById('btnProcessar').addEventListener('click', function () {
-
-                const infoJSON = JSON.stringify(arquivosInfo);
-                localStorage.setItem("arquivosInfo", infoJSON);
-
-                document.getElementById('nomesCaracteristicasInput').value = nomesCaracteristicas;
-                document.getElementById('contagensCaracteristicasInput').value = contagensCaracteristicas;
-
-                localStorage.setItem("charsCont", JSON.stringify(charsCont));
-                localStorage.setItem("charsName", JSON.stringify(charsName));
-
-                console.log('contagem: ', contagensCaracteristicas)
-                console.log('nomes: ', nomesCaracteristicas)
-                // Envie o formulário
-                document.getElementById('frmProcessa').submit();
-            });
-        </script>
-
         <%- include('rodape') %>
 </body>
 
 </html>
+
+<script>
+    let contagensCaracteristicas = [];
+    let nomesCaracteristicas = [];
+    let todosArquivos = [[]];
+
+    function verificarCaracteristicas() {
+        const inputCaracteristicas = document.getElementById('inputCaracteristicas');
+        const valorDigitado = inputCaracteristicas.value.toLowerCase();
+
+        const correspondencias = caracteristicas.filter(caracteristica => valorDigitado.includes(caracteristica.toLowerCase()));
+
+        console.log('Características correspondentes:', correspondencias);
+
+        // Exibir as características correspondentes no elemento fileShow
+        const fileShow = document.getElementById('fileShow');
+        fileShow.value = correspondencias.join(', ');
+    }
+
+    function lerArquivoComoString(arquivo, callback) {
+        const leitor = new FileReader();
+
+        leitor.onload = function (event) {
+            const resultado = event.target.result;
+            callback(null, resultado);
+
+            // Atualize o conteúdo do fileShow com o conteúdo do arquivo
+            const fileShow = document.getElementById('fileShow');
+            //fileShow.value = resultado;
+        };
+
+        leitor.onerror = function (event) {
+            callback(event.target.error, null);
+        };
+
+        leitor.readAsText(arquivo);
+    }
+
+    function extrair(lista_codigo, carac) {
+        //vetor para o nome 
+        const charsName = [];
+        //vetor para contar
+        const charsCont = [];
+
+        for (const cmd of carac) {
+            let count = 0;
+
+            for (const frase of lista_codigo) {
+                if (cmd === "if") {
+                    if (frase.includes("if(") || frase.includes("if (")) {
+                        count += 1;
+                    }
+                } else if (cmd === "for") {
+                    if (frase.includes("for(") || frase.includes("for (")) {
+                        count += 1;
+                    }
+                } else if (frase.includes(cmd)) {
+                    count += 1;
+                }
+            }
+
+            // Adicionando o nome e a contagem da característica nos vetores
+            charsName.push(cmd);
+            charsCont.push(count);
+        }
+        //retornando os vetores
+        return { charsName, charsCont };
+    }
+
+    const arquivosSelecionados = [];
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const inputGroupFile = document.getElementById('inputGroupFile');
+        const fileUpload = document.getElementById('fileUpload');
+        const btnInserir = document.getElementById('btnInserir');
+        // Vetor para armazenar os arquivos selecionados
+        const arquivosSelecionados = [];
+        const contagensTotais = {};
+
+        // BOTAO INSERIR CODIGOS-FONTE SELECIONADOS
+        btnInserir.addEventListener('click', function () {
+            const selectedFiles = inputGroupFile.files;
+            if (selectedFiles.length > 0) {
+                for (const selectedFile of selectedFiles) {
+                    const fileName = selectedFile.name;
+
+                    lerArquivoComoString(selectedFile, function (erro, conteudo) {
+                        if (erro) {
+                            console.error('Erro ao ler o arquivo', erro);
+                        } else {
+                            const lista_codigo = conteudo.split('\n');
+                            const carac = [
+                                "if", "for", "while", "case", "else", "fgets", "getch", "getchar", "getche",
+                                "putchar", "puts", "switch", "gets", "break", "return", "exit", "do", "strcpy",
+                                "strcmp", "strncpy", "strlen", "strupr", "strlwr", "strrev", "tolower", "toupper",
+                                "isalpha", "fopen", "fclose", "feof", "remove", "fflush", "sizeof", "typedef",
+                                "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
+                                "argc", "argv"
+                            ];
+
+                            console.log('LER ARQUIVO COMO STRING');
+                            const resultado = extrair(lista_codigo, carac);
+
+                            nomesCaracteristicas = resultado.charsName;
+                            contagensCaracteristicas.push(resultado.charsCont);
+                            console.log('chars: ', contagensCaracteristicas);
+
+                            var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
+                            document.querySelector('#showListFile').innerHTML =
+                                '<span id="' + `${fileName}` + '" style="display: block;">' +
+                                '<br>' +
+                                `${fileName}` + ' <br>' + '<p>' +
+                                '</span>' +
+                                showListFileAtual;
+
+                            // Adicionando o conteúdo do arquivo no vetor de arquivos selecionados
+                            arquivosSelecionados.push({ nome: fileName, conteudo: conteudo });
+
+                            document.querySelector('#showListFile').addEventListener('click', function (event) {
+                                if (event.target.tagName === 'SPAN') {
+                                    const nomeArquivo = event.target.id;
+                                    const arquivoSelecionado = arquivosSelecionados.find(arquivo => arquivo.nome === nomeArquivo);
+                                    if (arquivoSelecionado) {
+                                        document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
+                                    }
+                                }
+                            }, false);
+
+                            document.getElementById(`${fileName}`).addEventListener('click', function () {
+                                const nomeArquivo = this.id;
+                                const arquivoSelecionado = arquivosSelecionados.find(arquivo => arquivo.nome === nomeArquivo);
+                                if (arquivoSelecionado) {
+                                    document.getElementById('fileShow').value = arquivoSelecionado.conteudo;
+                                }
+                            }, false);
+                        }
+                    });
+                }
+            }
+        });
+    });
+
+    document.getElementById('btnProcessar').addEventListener('click', function () {
+        document.getElementById('nomesCaracteristicasInput').value = nomesCaracteristicas;
+        document.getElementById('contagensCaracteristicasInput').value = contagensCaracteristicas;
+
+        // Envie o formulário
+        document.getElementById('frmProcessa').submit();
+    });
+</script>
