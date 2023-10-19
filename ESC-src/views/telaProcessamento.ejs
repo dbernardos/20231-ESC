@@ -183,7 +183,7 @@
 
                             nomesCaracteristicas = resultado.charsName;
                             contagensCaracteristicas.push(resultado.charsCont);
-                            console.log('chars: ', contagensCaracteristicas);
+                            console.log('chars: ', fileName, contagensCaracteristicas);
 
                             var showListFileAtual = document.querySelector('#showListFile').innerHTML + '<br>'; (`\n`)
                             document.querySelector('#showListFile').innerHTML =
@@ -205,6 +205,12 @@
                                     }
                                 }
                             }, false);
+
+                            const matriz = {
+                                fileName : fileName ,
+                                contagensCaracteristicas: contagensCaracteristicas,
+                                 
+                            }
 
                             document.getElementById(`${fileName}`).addEventListener('click', function () {
                                 const nomeArquivo = this.id;

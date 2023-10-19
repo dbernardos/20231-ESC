@@ -26,7 +26,7 @@
         <div class="container">
             <h1>Relatório de Características</h1>
 
-            <span>
+            <span id="contChars">
                 <%= contChars %>
             </span>
             <span>
@@ -173,11 +173,14 @@
                 </div>
             </section>
 
+
             <script>
+                
                 document.addEventListener('DOMContentLoaded', function () {
                     const tabelaCaracteristicas = document.querySelector('.table.table-bordered tbody'); // Selecione o corpo da tabela
-
-                    for (let i = 0; i < nomesCaracteristicas.length; i++) {
+                    let text = document.getElementById("contChars").textContent;
+                    console.log('text: ', text);
+                    for (let i = 0; i < contChars.length; i++) {
                         const caracteristica = nomesCaracteristicas[i]; // Use o nome da característica a partir de nomesCaracteristicas
                         const contagem = contagensCaracteristicas[i];
 
