@@ -42,12 +42,13 @@
                 <tbody>
                     <% for (let i = 0; i < contChars.length; i++) { %>
                         <tr>
-                            <td><%= contChars[i] %></td>
+                            <td><%= contChars[i].toString().replace(',', '') %></td>
                             <td><%= chars[i] %></td>
                         </tr>
                     <% } %>
                 </tbody>
             </table>
+            
             
             <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
                 <div class="me-5 d-none d-lg-block px-5">
