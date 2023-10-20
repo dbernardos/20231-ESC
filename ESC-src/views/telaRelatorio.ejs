@@ -35,138 +35,20 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>if</th>
-                        <th>for</th>
-                        <th>while</th>
-                        <th>case</th>
-                        <th>else</th>
-                        <th>fgets</th>
-                        <th>getch</th>
-                        <th>getchar</th>
-                        <th>getche</th>
-                        <th>putchar</th>
-                        <th>puts</th>
-                        <th>switch</th>
-                        <th>gets</th>
-                        <th>break</th>
-                        <th>return</th>
-                        <th>exit</th>
-                        <th>do</th>
-                        <th>strcpy</th>
-                        <th>strcmp</th>
-                        <th>strncpy</th>
-                        <th>strlen</th>
-                        <th>strupr</th>
-                        <th>strlwr</th>
-                        <th>strrev</th>
-                        <th>tolower</th>
-                        <th>toupper</th>
-                        <th>isalpha</th>
-                        <th>fopen</th>
-                        <th>fclose</th>
-                        <th>feof</th>
-                        <th>remove</th>
-                        <th>fflush</th>
-                        <th>sizeof</th>
-                        <th>typedef</th>
-                        <th>struct</th>
-                        <th>malloc</th>
-                        <th>free</th>
-                        <th>#include</th>
-                        <th>system</th>
-                        <th>default</th>
-                        <th>main</th>
-                        <th>functions</th>
-                        <th>argc</th>
-                        <th>argv</th>
+                        <th>ContChars</th>
+                        <th>Chars</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Aqui você pode adicionar os dados da tabela usando JavaScript -->
+                    <% for (let i = 0; i < contChars.length; i++) { %>
+                        <tr>
+                            <td><%= contChars[i] %></td>
+                            <td><%= chars[i] %></td>
+                        </tr>
+                    <% } %>
                 </tbody>
             </table>
-
-
-            <!--<thead>
-                    <tr>
-                        <div class="container text-center">
-                            <div class="row row-cols-4">
-
-                                <div class="col"> IF </div>
-                                <div class="col"> FOR </div>
-                                <div class="col"> WHILE </div>
-                                <div class="col"> CASE </div>
-                                <div class="col"> ELSE </div>
-                                <div class="col"> FGETS </div>
-                                <div class="col"> GETCH </div>
-                                <div class="col"> GETCHAR </div>
-                                <div class="col"> GETCHE </div>
-                                <div class="col"> PUTCHAR </div>
-                                <div class="col"> PUTS </div>
-                                <div class="col"> SWITCH </div>
-                                <div class="col"> GETS </div>
-                                <div class="col"> BREAK </div>
-                                <div class="col"> RETURN </div>
-                                <div class="col"> EXIT </div>
-                                <div class="col"> DO </div>
-                                <div class="col"> STRCPY </div>
-                                <div class="col"> STRCMP </div>
-                                <div class="col"> STRLEN </div>
-                                <div class="col"> STRUPR </div>
-                                <div class="col"> STRLWR </div>
-                                <div class="col"> STRREV </div>
-                                <div class="col"> TOLOWER </div>
-                                <div class="col"> TOUPPER </div>
-                                <div class="col"> ISALPHA </div>
-                                <div class="col"> FOPEN </div>
-                                <div class="col"> FCLOSE </div>
-                                <div class="col"> FEOF </div>
-                                <div class="col"> REMOVE </div>
-                                <div class="col"> FFLUSH </div>
-                                <div class="col"> SIZEOF </div>
-                                <div class="col"> TYPEDEOF </div>
-                                <div class="col"> STRUCT </div>
-                                <div class="col"> MALLOC </div>
-                                <div class="col"> FREE </div>
-                                <div class="col"> #INCLUDE </div>
-                                <div class="col"> SYSTEM </div>
-                                <div class="col"> DEFAULT </div>
-                                <div class="col"> MAIN </div>
-                                <div class="col"> FUNCTIONS </div>
-                                <div class="col"> ARGC </div>
-                                <div class="col"> ARGV </div>
-
-                            </div>
-                        </div>
-                    </tr>
-                </thead>
-
-            </table>
-            -->
-            <!-- <script>
-                    for (let i = 0; i < nomesCaracteristicas.length; i++) {
-                        document.write(`<li>${nomesCaracteristicas[i]}: ${contagensCaracteristicas[i]}</li>`);
-                    }
-                </script>-->
-            <!--
-
-            <div class="row">
-                <div class="col-md-6">
-                    <h6>Resultado esperado</h6>
-                    <div class="input-group ">
-                        <textarea name="resultExpected" id="resultExpected" cols="30" rows="10"
-                            class="form-control bg-secondary" oninput="fileUpdateValidate()"></textarea>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <h6>Resultado obtido</h6>
-                    <div class="input-group">
-                        <textarea name="result" id="resultObtained" cols="30" rows="10" class="form-control"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
+            
             <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
                 <div class="me-5 d-none d-lg-block px-5">
                     <span><a href="/processamento">Voltar</a></span>
@@ -174,36 +56,8 @@
             </section>
 
 
-            <script>
-                
-                document.addEventListener('DOMContentLoaded', function () {
-                    const tabelaCaracteristicas = document.querySelector('.table.table-bordered tbody'); // Selecione o corpo da tabela
-                    let text = document.getElementById("contChars").textContent;
-                    console.log('text: ', text);
-                    for (let i = 0; i < contChars.length; i++) {
-                        const caracteristica = nomesCaracteristicas[i]; // Use o nome da característica a partir de nomesCaracteristicas
-                        const contagem = contagensCaracteristicas[i];
-
-                        // Crie uma nova linha na tabela para cada característica
-                        const newRow = tabelaCaracteristicas.insertRow();
-
-                        // Crie uma célula para o nome da característica
-                        const cell1 = newRow.insertCell(0);
-                        cell1.textContent = caracteristica;
-
-                        // Crie uma célula para a contagem
-                        const cell2 = newRow.insertCell(1);
-                        cell2.textContent = contagem;
-                    }
-                });
-
-
-
-            </script>
-
-
-
             <%- include('rodape') %>
 </body>
 
 </html>
+
