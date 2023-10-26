@@ -26,8 +26,9 @@
         <div class="container">
             <h1>Relatório de Características</h1>
 
-           
-            <table class="table table-bordered">
+            <input id="inputcarac" type="text" placeholder="Filtrar por características...">
+
+            <table id="tabelacarac" class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Contagem de Características</th>
@@ -66,7 +67,18 @@
                     <span><a href="/processamento">Voltar</a></span>
                 </div>
             </section>
-
+            
+            <script>
+                $(document).ready(function(){
+                  $("#inputcarac").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#tabelacarac tr").filter(function() {
+                      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                    });
+                  });
+                });
+                </script>
+                
 
             <%- include('rodape') %>
 </body>
