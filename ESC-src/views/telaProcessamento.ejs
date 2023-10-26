@@ -30,6 +30,7 @@
                             <input type="hidden" name="nomesCaracteristicasInput" id="nomesCaracteristicasInput">
                             <input type="hidden" name="contagensCaracteristicasInput"
                                 id="contagensCaracteristicasInput">
+                                <input type="hidden" name="nomeArquivoInput" id="nomeArquivoInput">
 
                             <input type="text" class="form-control" placeholder="Características do código-fonte"
                                 id="inputCaracteristicas" name="inputCaracteristicas"
@@ -82,6 +83,7 @@
 <script>
     let contagensCaracteristicas = [];
     let nomesCaracteristicas = [];
+    let csvNomesArquivos = [];
     let todosArquivos = [[]];
 
     function verificarCaracteristicas() {
@@ -164,6 +166,8 @@
                 for (const selectedFile of selectedFiles) {
                     const fileName = selectedFile.name;
 
+                    csvNomesArquivos.push(fileName);
+
                     lerArquivoComoString(selectedFile, function (erro, conteudo) {
                         if (erro) {
                             console.error('Erro ao ler o arquivo', erro);
@@ -219,12 +223,17 @@
                     });
                 }
             }
+        
+            alert(csvNomesArquivos);
+            document.getElementById('nomeArquivoInput').value = csvNomesArquivos;
         });
+        
     });
 
     document.getElementById('btnProcessar').addEventListener('click', function () {
         document.getElementById('nomesCaracteristicasInput').value = nomesCaracteristicas;
         document.getElementById('contagensCaracteristicasInput').value = contagensCaracteristicas;
+        document.getElementById('nomeArquivoInput').value = csvNomesArquivos;
         // Envie o formulário
         document.getElementById('frmProcessa').submit();
     });

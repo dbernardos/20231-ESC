@@ -22,16 +22,18 @@
         <nav>
             <input type="hidden" id="nomesCaracteristicas" name="nomesCaracteristicas">
             <input type="hidden" id="contagensCaracteristicas" name="contagensCaracteristicas">
+         
         </nav>
         <!--Duas áreas de texto, uma que mostra a lista de arquivos adicionadas e outra que ao clicar, mostra breviamente o código-fonte selecionado-->
         <div class="container">
             <h1>Relatório de Características</h1>
-
+            <% nomesArquivos %>
             <input id="inputcarac" type="text" placeholder="Filtrar por características...">
 
             <table id="tabelacarac" class="table table-bordered">
                 <thead>
                     <tr>
+                        <th>Nome do Arquivo</th>
                         <th>Contagem de Características</th>
                         <th>Características</th>
                     </tr>
@@ -39,11 +41,13 @@
                 <tbody>
                     <% const teste=contChars.split(','); const teste2=chars.split(','); var contador=0; %>
 
+                 
 
-                        <% for (let i=0; i < teste.length; i++) { %>
+                        <% for (let i = 0; i < teste.length; i++) { %>
                             <tr>
                                 <td>
                                     <%= teste[i] %>
+                                    <%= nomesArquivos %>
                                 </td>
                                 <td>
                                     <%= teste2[contador] %>
