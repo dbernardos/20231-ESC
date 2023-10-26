@@ -206,7 +206,7 @@
                                 }
                             }, false);
 
-                           
+
 
                             document.getElementById(`${fileName}`).addEventListener('click', function () {
                                 const nomeArquivo = this.id;
@@ -225,7 +225,6 @@
     document.getElementById('btnProcessar').addEventListener('click', function () {
         document.getElementById('nomesCaracteristicasInput').value = nomesCaracteristicas;
         document.getElementById('contagensCaracteristicasInput').value = contagensCaracteristicas;
-
         // Envie o formulário
         document.getElementById('frmProcessa').submit();
     });
