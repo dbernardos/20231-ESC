@@ -26,26 +26,36 @@
         <div class="container">
             <h1>Relatório de Características</h1>
 
-            <span id="contChars">
-                <%= contChars %>
-            </span>
-            <span>
-                <%= chars %>
-            </span>
+           
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>ContChars</th>
-                        <th>Chars</th>
+                        <th>Contagem de Características</th>
+                        <th>Características</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% for (let i = 0; i < contChars.length; i++) { %>
+                    <%
+                     const teste = contChars.split(','); 
+                     const teste2 = chars.split(','); 
+
+                     var contador = 0;
+                    %>
+
+
+                    <% for (let i = 0; i < teste.length; i++) { 
+                       
+                        %>
                         <tr>
-                            <td><%= contChars[i] %></td>
-                            <td><%= chars[i] %></td>
+                            <td><%= teste[i] %></td>
+                            <td><%= teste2[contador] %></td>
                         </tr>
-                    <% } %>
+                    <% 
+                    contador = contador + 1;
+                    if(contador >= 44 ){
+                        contador = 0;
+                    }
+                } %>
                 </tbody>
             </table>
             
