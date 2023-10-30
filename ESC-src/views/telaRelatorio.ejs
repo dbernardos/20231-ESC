@@ -22,86 +22,87 @@
         <nav>
             <input type="hidden" id="nomesCaracteristicas" name="nomesCaracteristicas">
             <input type="hidden" id="contagensCaracteristicas" name="contagensCaracteristicas">
-         
+
         </nav>
         <!--Duas áreas de texto, uma que mostra a lista de arquivos adicionadas e outra que ao clicar, mostra breviamente o código-fonte selecionado-->
         <div class="container">
             <h1>Relatório de Características</h1>
             <% nomesArquivos %>
-            <input id="inputcarac" type="text" placeholder="Filtrar por características...">
+                <input id="inputcarac" type="text" placeholder="Filtrar por características...">
 
-            <table id="tabelacarac" class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Nome do Arquivo</th>
-                        <th>Contagem de Características</th>
-                        <th>Características</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% const teste=contChars.split(','); const teste2=chars.split(','); var contador=0; %>
-
-                 
-
-                        <% for (let i = 0; i < teste.length; i++) { %>
-                            <tr>
+                <table id="tabelacarac" class="table table-bordered">
+                    <thead>
+                        <% const ctNomes=chars.split(','); %>
+                        <tr>
+                            <th>Estudante/Arquivo</th>
+                            
+                            <% for (let i=0; i < ctNomes.length; i++) { %>
+                                <th>
+                                    <%= ctNomes[i].toUpperCase(); %>
+                                </th>
+                            <% } %>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% const ctContChars=contChars.split(','); %>
+                         <tr>
+                            <td>
+                                <%= nomesArquivos %>
+                            </td>
+                            <% for (let i=0; i < ctContChars.length; i++) { 
+                                if(i % ctNomes.length == 0 && i != 0){ %>
+                                    </tr><tr>
+                                    <td>
+                                        <%= nomesArquivos %>
+                                    </td>
+                                <% } %>
                                 <td>
-                                    <%= teste[i] %>
-                                    <%= nomesArquivos %>
+                                    <%= ctContChars[i] %>
                                 </td>
-                                <td>
-                                    <%= teste2[contador] %>
-                                </td>
-                            </tr>
-                            <% contador=contador + 1; if(contador>= 44 ){
-                                contador = 0;
+                            <% } %>
+                        </tr>
+                    
+                    </tbody>
+                </table>
+
+                <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
+                    <div class="me-5 d-none d-lg-block px-5">
+                        <span><a href="/processamento">Voltar</a></span>
+                    </div>
+                </section>
+
+                <script>
+
+                    var chars = [
+                        "if", "for", "while", "case", "else", "fgets", "getch", "getchar", "getche",
+                        "putchar", "puts", "switch", "gets", "break", "return", "exit", "do", "strcpy",
+                        "strcmp", "strncpy", "strlen", "strupr", "strlwr", "strrev", "tolower", "toupper",
+                        "isalpha", "fopen", "fclose", "feof", "remove", "fflush", "sizeof", "typedef",
+                        "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
+                        "argc", "argv"
+                    ];
+
+                    $(document).ready(function () {
+                        $("#inputcarac").on("keyup", function () {
+                            var value = $(this).val().toLowerCase();
+                            console.log('input: ', value);
+
+                            $("#tabelacarac tbody tr").each(function () {
+                                var match = false;
+                                var tdText = $(this).find("td:nth-child(2)").text().toLowerCase();
+
+                                // Verifica se o texto em "value" está presente no texto da célula
+                                if (tdText.includes(value)) {
+                                    match = true;
                                 }
-                                } %>
-                </tbody>
-            </table>
 
-
-
-            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom px-5">
-                <div class="me-5 d-none d-lg-block px-5">
-                    <span><a href="/processamento">Voltar</a></span>
-                </div>
-            </section>
-
-            <script>
-                var chars = [
-                    "if", "for", "while", "case", "else", "fgets", "getch", "getchar", "getche",
-                    "putchar", "puts", "switch", "gets", "break", "return", "exit", "do", "strcpy",
-                    "strcmp", "strncpy", "strlen", "strupr", "strlwr", "strrev", "tolower", "toupper",
-                    "isalpha", "fopen", "fclose", "feof", "remove", "fflush", "sizeof", "typedef",
-                    "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
-                    "argc", "argv"
-                ];
-            
-                $(document).ready(function () {
-                    $("#inputcarac").on("keyup", function () {
-                        var value = $(this).val().toLowerCase();
-                        console.log('input: ', value);
-            
-                        $("#tabelacarac tbody tr").each(function () {
-                            var match = false;
-                            var tdText = $(this).find("td:nth-child(2)").text().toLowerCase();
-            
-                            // Verifica se o texto em "value" está presente no texto da célula
-                            if (tdText.includes(value)) {
-                                match = true;
-                            }
-            
-                            $(this).toggle(match);
+                                $(this).toggle(match);
+                            });
                         });
                     });
-                });
-            </script>
-            
+                </script>
 
-
-
-            <%- include('rodape') %>
+                <%- include('rodape') %>
 </body>
 
 </html>
