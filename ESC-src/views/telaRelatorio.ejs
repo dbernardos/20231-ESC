@@ -45,17 +45,19 @@
                     </thead>
                     <tbody>
                         <% const ctContChars=contChars.split(','); %>
+                        <% const nomesArquivosSplitado=nomesArquivos.split(','); let x = 1; %>
                          <tr>
                             <td>
-                                <%= nomesArquivos %>
+                                <%= nomesArquivosSplitado[0] %>
                             </td>
                             <% for (let i=0; i < ctContChars.length; i++) { 
-                                if(i % ctNomes.length == 0 && i != 0){ %>
+                                if(i % ctNomes.length == 0 && i != 0){  %>
                                     </tr><tr>
                                     <td>
-                                        <%= nomesArquivos %>
+                                        
+                                        <%= nomesArquivosSplitado[x] %>
                                     </td>
-                                <% } %>
+                                <% x = x + 1 ;  } %>
                                 <td>
                                     <%= ctContChars[i] %>
                                 </td>
