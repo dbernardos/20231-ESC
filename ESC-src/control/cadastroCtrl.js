@@ -27,7 +27,7 @@ exports.cadastroPost = async (req, res) => {
               res.status(500).json({ error: 'Erro ao criar o usuário' });
             } else {
               console.log('Usuário criado com sucesso');
-              res.render('telaLogin', { errorMessage: '' });
+              res.redirect('/login');
             }
           });
         }

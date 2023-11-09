@@ -5,3 +5,4 @@ exports.principalPagina = (req, res) => {
     console.log('Conexão efetuada (principal):', usuario[0].nome);
     res.render('telaPrincipal', { errorMessage: '' });
 }
+
