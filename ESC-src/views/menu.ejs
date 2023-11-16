@@ -8,10 +8,6 @@
 
         <div class="d-flex align-items-center">
             <section class="d-grid justify-content-md-end ml-auto">
-                <div class="px-2">
-                    <input type="text" class="form-control" style="max-width: 200px;" id="inputUsuario"
-                        name="inputUsuario" aria-label="Usuário" aria-describedby="user" value="admin2" readonly>
-                </div>
             </section>
             <section class="px-2">
                 <a href="login">
@@ -21,3 +17,21 @@
         </div>
     </div>
 </nav>
+
+<script> $(document).ready(function () {
+    $("#btnSair").on("click", function () {
+        $.ajax({
+            url: "/logout",
+            type: "POST",
+            success: function () {
+                // Redireciona para a página de login após o logout
+                window.location.href = "/login";
+            },
+            error: function (error) {
+                console.error("Erro ao fazer logout:", error);
+            }
+        });
+
+        localStorage.clear();
+    });
+}); </script>

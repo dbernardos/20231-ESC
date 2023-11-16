@@ -26,9 +26,9 @@
         </nav>
         <!--Duas áreas de texto, uma que mostra a lista de arquivos adicionadas e outra que ao clicar, mostra breviamente o código-fonte selecionado-->
         <div class="container">
-            <h1>Relatório de Características</h1>
+            <h1 style="text-align: center;">Relatório de Características</h1>
             <% nomesArquivos %>
-                <input id="inputcarac" type="text" placeholder="Filtrar por características...">
+        
 
                 <table id="tabelacarac" class="table table-bordered">
                     <thead>
@@ -84,9 +84,9 @@
                         "argc", "argv"
                     ];
 
-                    $(document).ready(function () {
+                   /* $(document).ready(function () {
                         $("#inputcarac").on("keyup", function () {
-                            var value = $(this).val().toLowerCase();
+                        //    var value = $(this).val().toLowerCase();
                             console.log('input: ', value);
 
                             $("#tabelacarac tbody tr").each(function () {
@@ -101,10 +101,10 @@
                                 $(this).toggle(match);
                             });
                         });
-                    });
+                    });  // */
                 </script>
 
-                <%- include('rodape') %>
+                <%- include('rodape') %> 
 </body>
 
 </html>
