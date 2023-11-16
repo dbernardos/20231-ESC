@@ -26,7 +26,7 @@ exports.loginPost = async (req, res) => {
       req.session.user = results;
       const nome = results[0].nome
       console.log('usuario conectado (login): ', nome);
-      res.redirect('/principal');
+      res.redirect('/processamento');
     }
   });
 }
