@@ -74,7 +74,6 @@
                 </section>
 
                 <script>
-
                     var chars = [
                         "if", "for", "while", "case", "else", "fgets", "getch", "getchar", "getche",
                         "putchar", "puts", "switch", "gets", "break", "return", "exit", "do", "strcpy",
@@ -83,28 +82,27 @@
                         "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
                         "argc", "argv"
                     ];
-
+                
                     $(document).ready(function () {
                         $("#inputcarac").on("keyup", function () {
                             var value = $(this).val().toLowerCase();
-                            console.log('input: ', value);
-
+                
                             $("#tabelacarac tbody tr").each(function () {
                                 var match = false;
-                                var tdText = $(this).find("td:nth-child(2)").text().toLowerCase();
-
-                                // Verifica se o texto em "value" está presente no texto da célula
-                                if (tdText.includes(value)) {
-                                    match = true;
-                                }
-
+                
+                                $(this).find("tr").each(function () {
+                                    // Verifica se o texto em "value" está presente na célula da tabela
+                                    if ($(this).text().toLowerCase().includes(value)) {
+                                        match = true;
+                                    }
+                                });
+                
                                 $(this).toggle(match);
                             });
                         });
                     });
                 </script>
-
+        
                 <%- include('rodape') %>
 </body>
-
 </html>
