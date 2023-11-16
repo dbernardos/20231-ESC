@@ -26,9 +26,9 @@
         </nav>
         <!--Duas áreas de texto, uma que mostra a lista de arquivos adicionadas e outra que ao clicar, mostra breviamente o código-fonte selecionado-->
         <div class="container">
-            <h1>Relatório de Características</h1>
+            <h1 style="text-align: center;">Relatório de Características</h1>
             <% nomesArquivos %>
-                <input id="inputcarac" type="text" placeholder="Filtrar por características...">
+        
 
                 <table id="tabelacarac" class="table table-bordered">
                     <thead>
@@ -82,11 +82,20 @@
                         "struct", "malloc", "free", "#include", "system", "default", "main", "functions",
                         "argc", "argv"
                     ];
+<<<<<<< HEAD
                 
                     $(document).ready(function () {
                         $("#inputcarac").on("keyup", function () {
                             var value = $(this).val().toLowerCase();
                 
+=======
+
+                   /* $(document).ready(function () {
+                        $("#inputcarac").on("keyup", function () {
+                        //    var value = $(this).val().toLowerCase();
+                            console.log('input: ', value);
+
+>>>>>>> ca42ec3db686a0a348e22e2465431f01a46d7b20
                             $("#tabelacarac tbody tr").each(function () {
                                 var match = false;
                 
@@ -100,9 +109,14 @@
                                 $(this).toggle(match);
                             });
                         });
-                    });
+                    });  // */
                 </script>
+<<<<<<< HEAD
         
                 <%- include('rodape') %>
+=======
+
+                <%- include('rodape') %> 
+>>>>>>> ca42ec3db686a0a348e22e2465431f01a46d7b20
 </body>
 </html>

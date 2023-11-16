@@ -27,11 +27,11 @@ table {
     width: 100%;
 }
 th, td {
-    border: 1px solid black;
+    border: 5px solid rgb(55, 218, 255);
     padding: 8px;
     text-align: center;
 }
-th {
-    background-color: #f2f2f2;
+body{
+    background-color: rgb(142, 212, 255);
 }
 

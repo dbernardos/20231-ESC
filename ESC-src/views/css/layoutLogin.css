@@ -9,12 +9,13 @@ section {
     background: rgb(212, 227, 233);
     background-position: center;
     background-size: cover;
+    background-color: rgb(255, 127, 127);
  }
  .form-box {
     position: absolute;
     width: 400px;
     height: 500px;
-    border: 2px solid rgba(255,255,255,0.5);
+    border: 2px solid rgba(146, 233, 255, 0.5);
     border-radius: 20px;
     backdrop-filter: blur(10px);
     display: flex;
@@ -30,7 +31,7 @@ section {
 
 }
 #form input {
-    background-color: rgba(168, 168, 224, 0.496);
+    background-color: rgba(35, 67, 211, 0.496);
 }
 
 button {
